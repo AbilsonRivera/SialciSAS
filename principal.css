@@ -1,5 +1,5 @@
 body{
-    background: url(img/cafe.jpg);
+    background: url(img/valdez.jpg);
     background-blend-mode: multiply;
     background-position: center;
     background-size: cover;
@@ -46,20 +46,22 @@ body{
     color: #000;
 }
 
-.nav-link::before {
-    content: "";
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 0;
-    height: 2px;
-    background-color: #FA5229;
-    visibility: hidden;
-    transition: 0.3s ease-in-out;
-}
-
-.nav-link:hover::before{
-    width: 100%;
-    visibility: visible;
+@media (min-width: 991px) {
+    .nav-link::before {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 0;
+        height: 2px;
+        background-color: #FA5229;
+        visibility: hidden;
+        transition: 0.3s ease-in-out;
+    }
+    
+    .nav-link:hover::before, .nav-link.active::before {
+        width: 100%;
+        visibility: visible;
+    }
 }
