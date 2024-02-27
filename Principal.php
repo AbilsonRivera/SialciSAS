@@ -11,13 +11,13 @@
     <!--Icon-Font-->
     <script src="https://kit.fontawesome.com/eb496ab1a0.js" crossorigin="anonymous"></script>
 </head>
-<body class="vh-100 overflow-hidden" >
+<body >
     <!-- icono whatsapp -->
     <a href="https://wa.me/573204146958?text=Hola" class="btn-wsp" target="_blank">
         <i class="fa fa-whatsapp icono" style="font-size: 35px;"></i>
     </a>
     <!-- video -->
-    <video muted autoplay loop src="img/principal.mp4" class="video"></video>
+    <video muted autoplay loop src="img/principal.mp4" class="video" id="sialci" ></video>
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg fixed-top">
     <div class="container-fluid">
@@ -30,10 +30,10 @@
             <div class="offcanvas-body">
                 <ul class="navbar-nav justify-content-center flex-grow-1 pe-3">
                     <li class="nav-item">
-                        <a class="nav-link mx-lg-2 active" aria-current="page" href="#">SIALCI SAS</a>
+                        <a class="nav-link mx-lg-2 active" aria-current="page" href="#sialci">SIALCI SAS</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link mx-lg-2" href="#">Productos</a>
+                        <a class="nav-link mx-lg-2" href="#productos">Productos</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link mx-lg-2" href="#">Servicios</a>
@@ -50,6 +50,21 @@
         </button>
     </div>
 </nav>
+<div class="ful-img" id="fulImgBox">
+        <img src="img/bizcocho .jpg" id="fulImg" alt="">
+        <span onclick="closeImg()">X</span>
+    </div>
 
+    <h1 id="productos" ><span>Productos que hemos importado</span></h1>
+
+    <div class="img-gallery">
+        <img src="img/bizcocho .jpg" onclick="openFulImg(this.src)" alt="">
+        <img src="img/bolso2.jpg" onclick="openFulImg(this.src)" alt="">
+        <img src="img/bolsos.jpg" onclick="openFulImg(this.src)" alt="">
+        <img src="img/cafe.jpg" onclick="openFulImg(this.src)" alt="">
+        <img src="img/valdez.jpg" onclick="openFulImg(this.src)" alt="">
+        <img src="img/dulces.jpg" onclick="openFulImg(this.src)" alt="">
+    </div>
+    <script src="slider.js"></script>
 </body>
 </html>
