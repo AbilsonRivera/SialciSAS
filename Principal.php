@@ -36,10 +36,10 @@
                         <a class="nav-link mx-lg-2" href="#productos">Productos</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link mx-lg-2" href="#">Servicios</a>
+                        <a class="nav-link mx-lg-2" href="#servicios">Servicios</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link mx-lg-2" href="#">Contacto</a>
+                        <a class="nav-link mx-lg-2" href="#contacto">Contacto</a>
                     </li>
                 </ul>
             </div>
@@ -55,7 +55,7 @@
         <span onclick="closeImg()">X</span>
     </div>
 
-    <h1 id="productos" ><span>Productos que hemos importado</span></h1>
+    <h1 id="productos" ><span>Productos que hemos Exportado</span></h1>
 
     <div class="img-gallery">
         <img src="img/bizcocho .jpg" onclick="openFulImg(this.src)" alt="">
@@ -66,5 +66,48 @@
         <img src="img/dulces.jpg" onclick="openFulImg(this.src)" alt="">
     </div>
     <script src="slider.js"></script>
+
+    <h1 id="servicios" ><span>Lugares a los que hemos Exportado</span></h1>
+    <div class="containerimg">
+        <img src="img/ubicacion.jpg" alt="" class="ubicacion">
+    </div>
+    <br><br><br>
+    <footer>
+    <div class="footer-col">
+        <h4>Products</h4>
+        <ul>
+            <li><a href="#">Teams</a></li>
+            <li><a href="#">Advertising</a></li>
+            <li><a href="#">Talent</a></li>
+        </ul>
+    </div>
+    <div class="footer-col">
+        <h4>Network</h4>
+        <ul>
+            <li><a href="#">Technology</a></li>
+            <li><a href="#">Science</a></li>
+            <li><a href="#">Business</a></li>
+            <li><a href="#">Professional</a></li>
+            <li><a href="#">API</a></li>
+        </ul>
+    </div>
+    <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Legal</a></li>
+            <li><a href="#">Contact Us</a></li>
+        </ul>
+    </div>
+    <div class="footer-col">
+        <h4>Follow Us</h4>
+        <div class="links">
+            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+        </div>
+    </div>
+</footer>
 </body>
 </html>
