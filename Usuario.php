@@ -47,47 +47,50 @@
     </nav>
     <section class="formulario">
         <div class="container">
-            <header>Registration</header>
+            <header>Registro de envío</header>
             <form action="#">
                 <div class="form first">
                     <div class=" details personal">
-                        <span class="title">Personal Details</span>
+                        <span class="title">Datos del remitente</span>
 
                         <div class="fields">
                             <div class="input-field">
-                                <label>full Name</label>
-                                <input type="text" placeholder="Enter your name" required>
+                                <label>Nombre(s):</label>
+                                <input type="text" name="nombre" placeholder="Ingrese su nombre" pattern="[A-Za-záéíóúÁÉÍÓÚñÑ\s]+"
+                                    title="Por favor, ingrese solo letras" required>
                             </div>
 
                             <div class="input-field">
-                                <label>Date of birth</label>
-                                <input type="date" placeholder="Enter birth date" required>
+                                <label>Apellidos:</label>
+                                <input type="text" name="apellidos" placeholder="Ingrese su apellido"pattern="[A-Za-záéíóúÁÉÍÓÚñÑ\s]+"
+                                    title="Por favor, ingrese solo letras" required>
                             </div>
 
                             <div class="input-field">
-                                <label>Email</label>
-                                <input type="text" placeholder="Enter your email" required>
+                                <label>Direccion</label>
+                                <input type="text" placeholder="ingrese su Direccion" required>
                             </div>
 
                             <div class="input-field">
-                                <label>Mobile Number</label>
-                                <input type="Number" placeholder="Enter mobile numbe" required>
+                                <label>Correo</label>
+                                <input type="email" name="correo" placeholder="Ingrese su correo " required>
                             </div>
 
                             <div class="input-field">
-                                <label>gender</label>
-                                <input type="text" placeholder="Enter your gender" required>
+                                <label>Telefono</label>
+                                <input type="Number" placeholder="Ingrese su numero de telefono" required>
                             </div>
 
                             <div class="input-field">
-                                <label>Occupation</label>
-                                <input type="text" placeholder="Enter your occupation" required>
+                                <label>Nombre de la empresa (si aplica):</label>
+                                <input type="text" name="empresa" placeholder="Ingrese nombre de la empresa">
                             </div>
+
                         </div>
                     </div>
 
                     <div class="details ID">
-                        <span class="title">Identity Details</span>
+                        <span class="title">Mercancia</span>
 
                         <div class="fields">
                             <div class="input-field">
@@ -215,10 +218,10 @@
                 </div>
             </form>
         </div>
-  
 
 
-    
+
+
     </section>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
