@@ -9,7 +9,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 
-    <link href="Usuario.css" rel="stylesheet"">
+    <link href="Usuario.css" rel="stylesheet">
     <link rel=" stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/thinline.css">
 </head>
 
@@ -94,34 +94,21 @@
 
                         <div class="fields">
                             <div class="input-field">
-                                <label>ID Type</label>
-                                <input type="text" placeholder="Enter ID type" required>
+                                <label>Paquetes</label>
+                                <input type="number" placeholder="Enter ID type" required>
                             </div>
 
                             <div class="input-field">
-                                <label>ID Number</label>
+                                <label>Peso</label>
                                 <input type="date" placeholder="Enter ID number" required>
                             </div>
 
                             <div class="input-field">
-                                <label>Issued Date</label>
+                                <label>Dimensiones</label>
                                 <input type="text" placeholder="Enter Issued date" required>
                             </div>
 
-                            <div class="input-field">
-                                <label>Mobile Number</label>
-                                <input type="Number" placeholder="Enter mobile numbe" required>
-                            </div>
-
-                            <div class="input-field">
-                                <label>gender</label>
-                                <input type="text" placeholder="Enter your gender" required>
-                            </div>
-
-                            <div class="input-field">
-                                <label>Occupation</label>
-                                <input type="text" placeholder="Enter your occupation" required>
-                            </div>
+                            
                         </div>
                         <button class="nextBtn">
                             <span class="btnText">Next</span>
@@ -188,20 +175,7 @@
                                 <input type="text" placeholder="Enter Issued date" required>
                             </div>
 
-                            <div class="input-field">
-                                <label>spous namer</label>
-                                <input type="Number" placeholder="spose name" required>
-                            </div>
-
-                            <div class="input-field">
-                                <label>gender</label>
-                                <input type="text" placeholder="Enter your gender" required>
-                            </div>
-
-                            <div class="input-field">
-                                <label>Occupation</label>
-                                <input type="text" placeholder="Enter your occupation" required>
-                            </div>
+                            
                         </div>
                         <div class="buttons">
                             <div class="backBtn">
