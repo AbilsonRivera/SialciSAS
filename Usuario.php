@@ -10,7 +10,6 @@
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 
     <link href="Usuario.css" rel="stylesheet">
-    <link rel=" stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/thinline.css">
 </head>
 
 <body class=" fondo">
@@ -41,9 +40,7 @@
             </button>
         </div>
 
-        </section>
-    </nav>
-    </section>
+
     </nav>
     <section class="formulario">
         <div class="container">
@@ -56,14 +53,14 @@
                         <div class="fields">
                             <div class="input-field">
                                 <label>Nombre(s):</label>
-                                <input type="text" name="nombre" placeholder="Ingrese su nombre" pattern="[A-Za-záéíóúÁÉÍÓÚñÑ\s]+"
-                                    title="Por favor, ingrese solo letras" required>
+                                <input type="text" name="nombre" placeholder="Ingrese su nombre"
+                                    pattern="[A-Za-záéíóúÁÉÍÓÚñÑ\s]+" title="Por favor, ingrese solo letras" required>
                             </div>
 
                             <div class="input-field">
                                 <label>Apellidos:</label>
-                                <input type="text" name="apellidos" placeholder="Ingrese su apellido"pattern="[A-Za-záéíóúÁÉÍÓÚñÑ\s]+"
-                                    title="Por favor, ingrese solo letras" required>
+                                <input type="text" name="nombre" placeholder="Ingrese su apellido"
+                                    pattern="[A-Za-záéíóúÁÉÍÓÚñÑ\s]+" title="Por favor, ingrese solo letras" required>
                             </div>
 
                             <div class="input-field">
@@ -108,11 +105,10 @@
                                 <input type="text" placeholder="Enter Issued date" required>
                             </div>
 
-                            
+
                         </div>
                         <button class="nextBtn">
                             <span class="btnText">Next</span>
-                            <i class="uil uil-navigator"></i>
                         </button>
 
 
@@ -120,76 +116,73 @@
                 </div>
 
                 <div class="form second">
-                    <div class=" details addres">
-                        <span class="title">addres Details</span>
+                    <div class="details addres">
+                        <span class="title">Detalles de la dirección</span>
 
                         <div class="fields">
                             <div class="input-field">
-                                <label>addres Type</label>
-                                <input type="text" placeholder="Enter addres type" required>
+                                <label>Tipo de dirección</label>
+                                <input type="text" placeholder="Ingrese tipo de dirección" required>
                             </div>
 
                             <div class="input-field">
-                                <label>Nationality</label>
-                                <input type="text" placeholder="Enter nationality" required>
+                                <label>Nacionalidad</label>
+                                <input type="text" placeholder="Ingrese su nacionalidad" required>
                             </div>
 
                             <div class="input-field">
-                                <label>state</label>
-                                <input type="text" placeholder="Enter you state" required>
+                                <label>Estado</label>
+                                <input type="text" placeholder="Ingrese su estado" required>
                             </div>
 
                             <div class="input-field">
-                                <label>distric</label>
-                                <input type="text" placeholder="Enter your dustric" required>
+                                <label>Distrito</label>
+                                <input type="text" placeholder="Ingrese su distrito" required>
                             </div>
 
                             <div class="input-field">
-                                <label>block number</label>
-                                <input type="number " placeholder="Enter block number" required>
+                                <label>Número de bloque</label>
+                                <input type="number" placeholder="Ingrese número de bloque" required>
                             </div>
 
                             <div class="input-field">
-                                <label>ward number</label>
-                                <input type="number" placeholder="Enter yourward" required>
+                                <label>Número de guardia</label>
+                                <input type="number" placeholder="Ingrese su número de guardia" required>
                             </div>
                         </div>
                     </div>
 
-                    <div class=" details family">
-                        <span class="title">family</span>
+                    <div class="details family">
+                        <span class="title">Familia</span>
 
                         <div class="fields">
                             <div class="input-field">
-                                <label>father name</label>
-                                <input type="text" placeholder="Enter father" required>
+                                <label>Nombre del padre</label>
+                                <input type="text" placeholder="Ingrese nombre del padre" required>
                             </div>
 
                             <div class="input-field">
-                                <label>moder name</label>
-                                <input type="text" placeholder="Enter mother" required>
+                                <label>Nombre de la madre</label>
+                                <input type="text" placeholder="Ingrese nombre de la madre" required>
                             </div>
 
                             <div class="input-field">
-                                <label>grand father</label>
-                                <input type="text" placeholder="Enter Issued date" required>
+                                <label>Nombre del abuelo</label>
+                                <input type="text" placeholder="Ingrese nombre del abuelo" required>
                             </div>
-
-                            
                         </div>
                         <div class="buttons">
                             <div class="backBtn">
-                                <i class="uil uil-navigator"></i>
-                                <span class="btnText">Back</span>
+                                <span class="btnText">Atrás</span>
                             </div>
 
                             <button class="nextBtn">
-                                <span class="btnText">Next</span>
-                                <i class="uil uil-navigator"></i>
+                                <span class="btnText">Siguiente</span>
                             </button>
                         </div>
                     </div>
                 </div>
+
             </form>
         </div>
 

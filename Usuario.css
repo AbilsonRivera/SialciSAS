@@ -129,21 +129,23 @@
     position: absolute;
     background-color: #fff;
     transition: 0.3s ease;
+    width: 100%;
 }
 
 .container form .form.second{
     opacity: 0;
     pointer-events: none;
     transform: translateX(100%);
+    width: 100%;
 }
-form.secActive .form.second{
+.container form .form.second.secActive{
     opacity: 1;
     pointer-events: auto;
     transform: translateX(0);
 }
-form.secActive .form.first{
+.container form .form.first.secActive{
     opacity: 0;
-    pointer-events: none;
+    pointer-events: auto;
     transform: translateX(-100%);
 }
 
@@ -193,11 +195,11 @@ form .fields .input-field{
     box-shadow: 0 3px 6px rgb(0, 0, 0,0.13);
 }
 
-.input-field input [type="date"]{
+.input-field input[type="date"]{
     color: #707070;
 }
 
-.input-field input [type="date"]:valid{
+.input-field input[type="date"]:valid{
     color: #333;
 }
 
