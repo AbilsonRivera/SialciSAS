@@ -43,7 +43,7 @@
 
     </nav>
     <section class="formulario">
-        <div class="container">
+        <div class="container" id="formularioContainer">
             <header>Registro de envío</header>
             <form action="#">
                 <div class="form first">
@@ -92,94 +92,92 @@
                         <div class="fields">
                             <div class="input-field">
                                 <label>Paquetes</label>
-                                <input type="number" placeholder="Enter ID type" required>
+                                <input type="number" name="paquetes" placeholder="#-?" required>
                             </div>
 
-                            <div class="input-field">
+                            <div class="input-field pesos">
                                 <label>Peso</label>
-                                <input type="date" placeholder="Enter ID number" required>
+                                <div class="input-group">
+                                    <input type="Number" name="peso" placeholder="#" required>
+                                    <select class="">
+                                        <option value="lb">lb</option>
+                                        <option value="kg">kg</option>
+                                    </select>
+                                </div>
                             </div>
+
+
 
                             <div class="input-field">
                                 <label>Dimensiones</label>
                                 <input type="text" placeholder="Enter Issued date" required>
                             </div>
 
+                            <div class="details addres">
+                                <span class="title">Detalles de la dirección</span>
+
+                                <div class="fields">
+                                    <div class="input-field">
+                                        <label>Tipo de dirección</label>
+                                        <input type="text" placeholder="Ingrese tipo de dirección" required>
+                                    </div>
+
+                                    <div class="input-field">
+                                        <label>Nacionalidad</label>
+                                        <input type="text" placeholder="Ingrese su nacionalidad" required>
+                                    </div>
+
+                                    <div class="input-field">
+                                        <label>Estado</label>
+                                        <input type="text" placeholder="Ingrese su estado" required>
+                                    </div>
+
+                                    <div class="input-field">
+                                        <label>Distrito</label>
+                                        <input type="text" placeholder="Ingrese su distrito" required>
+                                    </div>
+
+                                    <div class="input-field">
+                                        <label>Número de bloque</label>
+                                        <input type="number" placeholder="Ingrese número de bloque" required>
+                                    </div>
+
+                                    <div class="input-field">
+                                        <label>Número de guardia</label>
+                                        <input type="number" placeholder="Ingrese su número de guardia" required>
+                                    </div>
+                                    <div class="details family">
+                                        <span class="title">Familia</span>
+
+                                        <div class="fields">
+                                            <div class="input-field">
+                                                <label>Nombre del padre</label>
+                                                <input type="text" placeholder="Ingrese nombre del padre" required>
+                                            </div>
+
+                                            <div class="input-field">
+                                                <label>Nombre de la madre</label>
+                                                <input type="text" placeholder="Ingrese nombre de la madre" required>
+                                            </div>
+
+                                            <div class="input-field">
+                                                <label>Nombre del abuelo</label>
+                                                <input type="text" placeholder="Ingrese nombre del abuelo" required>
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                </div>
+                            </div>
+
 
                         </div>
                         <button class="nextBtn">
-                            <span class="btnText">Next</span>
+                            <span class="btnText">Enviar</span>
                         </button>
 
 
-                    </div>
-                </div>
-
-                <div class="form second">
-                    <div class="details addres">
-                        <span class="title">Detalles de la dirección</span>
-
-                        <div class="fields">
-                            <div class="input-field">
-                                <label>Tipo de dirección</label>
-                                <input type="text" placeholder="Ingrese tipo de dirección" required>
-                            </div>
-
-                            <div class="input-field">
-                                <label>Nacionalidad</label>
-                                <input type="text" placeholder="Ingrese su nacionalidad" required>
-                            </div>
-
-                            <div class="input-field">
-                                <label>Estado</label>
-                                <input type="text" placeholder="Ingrese su estado" required>
-                            </div>
-
-                            <div class="input-field">
-                                <label>Distrito</label>
-                                <input type="text" placeholder="Ingrese su distrito" required>
-                            </div>
-
-                            <div class="input-field">
-                                <label>Número de bloque</label>
-                                <input type="number" placeholder="Ingrese número de bloque" required>
-                            </div>
-
-                            <div class="input-field">
-                                <label>Número de guardia</label>
-                                <input type="number" placeholder="Ingrese su número de guardia" required>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="details family">
-                        <span class="title">Familia</span>
-
-                        <div class="fields">
-                            <div class="input-field">
-                                <label>Nombre del padre</label>
-                                <input type="text" placeholder="Ingrese nombre del padre" required>
-                            </div>
-
-                            <div class="input-field">
-                                <label>Nombre de la madre</label>
-                                <input type="text" placeholder="Ingrese nombre de la madre" required>
-                            </div>
-
-                            <div class="input-field">
-                                <label>Nombre del abuelo</label>
-                                <input type="text" placeholder="Ingrese nombre del abuelo" required>
-                            </div>
-                        </div>
-                        <div class="buttons">
-                            <div class="backBtn">
-                                <span class="btnText">Atrás</span>
-                            </div>
-
-                            <button class="nextBtn">
-                                <span class="btnText">Siguiente</span>
-                            </button>
-                        </div>
                     </div>
                 </div>
 

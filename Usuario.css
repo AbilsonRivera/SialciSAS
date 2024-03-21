@@ -1,4 +1,4 @@
-.navbar{
+.navbar {
     background-color: #fff;
     height: 80px;
     margin: 20px;
@@ -7,8 +7,8 @@
 }
 
 .navbar-brand img {
-    width: 50px; 
-    height: 50px; 
+    width: 50px;
+    height: 50px;
     border-radius: 20%;
 }
 
@@ -43,38 +43,40 @@
     position: relative;
 }
 
-.nav-link:hover, .nav-link.active {
+.nav-link:hover,
+.nav-link.active {
     color: #000;
 }
 
 
-@media ( min-width: 991px){
-.nav-link::before{
-    content: "";
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 0%;
-    height: 2px;
-    background-color: #ff0000;
-    visibility: hidden;
-    transition: 0.3 ease-in-out;
+@media (min-width: 991px) {
+    .nav-link::before {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 0%;
+        height: 2px;
+        background-color: #ff0000;
+        visibility: hidden;
+        transition: 0.3 ease-in-out;
+    }
+
+    .nav-link:hover::before,
+    .nav-link.active::before {
+        width: 100%;
+        visibility: visible;
+
+    }
 }
 
-.nav-link:hover::before, .nav-link.active::before{
-    width: 100%;
-    visibility: visible;
-
-}
-}
-
-.container{
+.container {
     margin-top: 20px;
 }
 
 .fondo {
-    background: url(img/CafeNaranja.jpg) no-repeat center;
+    background: url(img/CafeNaranja.jpg) center;
     background-size: cover;
     width: 100%;
     height: 100vh;
@@ -85,6 +87,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    margin-top: 50px;
 }
 
 .container {
@@ -96,16 +99,16 @@
     margin: 0 15px;
     top: 90px;
     background-color: rgb(255, 255, 255);
-    box-shadow: 0 5px 10px rgb(0, 0, 0,0.1);
+    box-shadow: 0 5px 10px rgb(0, 0, 0, 0.1);
 }
 
-.container header{
+.container header {
     font-size: 20px;
     font-weight: 600;
     color: #333;
 }
 
-.container header::before{
+.container header::before {
     content: "";
     position: absolute;
     top: 55px;
@@ -114,10 +117,10 @@
     height: 3px;
     width: 27px;
     border-radius: 8px;
-    background-color: #ff0000 ;
+    background-color: #ff0000;
 }
 
-.container form{
+.container form {
     position: relative;
     margin-top: 16px;
     min-height: 490px;
@@ -125,32 +128,9 @@
     overflow: hidden;
 }
 
-.container form .form{
-    position: absolute;
-    background-color: #fff;
-    transition: 0.3s ease;
-    width: 100%;
-}
-
-.container form .form.second{
-    opacity: 0;
-    pointer-events: none;
-    transform: translateX(100%);
-    width: 100%;
-}
-.container form .form.second.secActive{
-    opacity: 1;
-    pointer-events: auto;
-    transform: translateX(0);
-}
-.container form .form.first.secActive{
-    opacity: 0;
-    pointer-events: auto;
-    transform: translateX(-100%);
-}
 
 
-.container form .title{
+.container form .title {
     display: block;
     margin-bottom: 8px;
     font-size: 16px;
@@ -159,27 +139,27 @@
     color: #333;
 }
 
-.container form .fields{
+.container form .fields {
     display: flex;
     align-items: center;
     justify-content: space-between;
     flex-wrap: wrap;
 }
 
-form .fields .input-field{
+form .fields .input-field {
     display: flex;
     width: calc(100% / 3 - 15px);
     flex-direction: column;
     margin: 4px 0;
 }
 
-.input-field label{
+.input-field label {
     font-size: 12px;
     font-weight: 500;
     color: #2e2e2e;
 }
 
-.input-field input{
+.input-field input {
     outline: none;
     font-size: 14px;
     font-weight: 400;
@@ -191,19 +171,19 @@ form .fields .input-field{
     margin: 8px 0;
 }
 
-.input-field input:is(:focus, :valid){
-    box-shadow: 0 3px 6px rgb(0, 0, 0,0.13);
+.input-field input:is(:focus, :valid) {
+    box-shadow: 0 3px 6px rgb(0, 0, 0, 0.13);
 }
 
-.input-field input[type="date"]{
+.input-field input[type="date"] {
     color: #707070;
 }
 
-.input-field input[type="date"]:valid{
+.input-field input[type="date"]:valid {
     color: #333;
 }
 
-.container form button, .backBtn{
+.container form button {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -220,45 +200,85 @@ form .fields .input-field{
     cursor: pointer;
 }
 
-form button:hover{
+form button:hover {
     background-color: #00b383;
 }
 
-.container form button,
-.container form .backBtn{
+.container form button {
     font-size: 14px;
-    font-weight: 400;;
+    font-weight: 400;
+    ;
 }
 
-form button i,
-form .backBtn i{
+form button i {
     margin: 0 6px;
 }
 
-form .buttons{
+form .buttons {
     display: flex;
     align-items: center;
 
 }
-form .buttons button , .backBtn{
+
+form .buttons button {
     margin-right: 14px;
 
 }
 
 @media (max-width: 750px) {
-    .container form{
+    .container form {
         overflow-y: scroll;
     }
-    .container form::-webkit-scrollbar{
+
+    .container form::-webkit-scrollbar {
         display: none;
     }
-    form .fields .input-field{
+
+    form .fields .input-field {
         width: calc(100% / 2 - 15px);
     }
 }
 
 @media (max-width: 550px) {
-    form .fields .input-field{
+    form .fields .input-field {
         width: 100%;
     }
+}
+
+.input-field input[name="paquetes"] {
+    width: 65px;
+    /* Ajusta este valor según tus necesidades */
+}
+
+.input-field input[name="peso"] {
+    width: 65px;
+    /* Ajusta este valor según tus necesidades */
+}
+
+.input-field.pesos label,
+.input-field.pesos input[type="number"] {
+    margin-left: -160px;
+    /* Ajusta el valor según sea necesario */
+}
+
+.input-field.pesos select {
+    width: 57px;
+    /* Ajusta el ancho según tus necesidades */
+    margin-top: 8px;
+    margin-left: 10px;
+    /* Ajusta el margen izquierdo según sea necesario */
+    height: 42px;
+    /* Ajusta la altura según tus necesidades */
+    border-radius: 5px;
+    /* Ajusta el radio de borde según sea necesario */
+    border: 1px solid #aaa;
+    /* Ajusta el color y grosor del borde según sea necesario */
+    padding: 0 10px;
+    /* Ajusta el relleno según sea necesario */
+    font-size: 14px;
+    /* Ajusta el tamaño de fuente según sea necesario */
+    color: #333;
+    /* Ajusta el color del texto según sea necesario */
+    background-color: #fff;
+    /* Ajusta el color de fondo según sea necesario */
 }
