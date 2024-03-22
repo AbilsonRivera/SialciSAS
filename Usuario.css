@@ -282,3 +282,16 @@ form .buttons button {
     background-color: #fff;
     /* Ajusta el color de fondo según sea necesario */
 }
+
+.input-field.dimensiones label {
+    margin-left: -250px; /* Ajusta el valor según sea necesario */
+}
+
+.input-field.dimensiones .input-group {
+    margin-left: -250px; /* Ajusta el valor según sea necesario */
+    align-items: center;
+    
+}
+  
+
+

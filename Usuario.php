@@ -108,10 +108,22 @@
 
 
 
-                            <div class="input-field">
-                                <label>Dimensiones</label>
-                                <input type="text" placeholder="Enter Issued date" required>
+                            <div class="input-field dimensiones">
+                                <label>Dimensiones (en Centimetros)</label>
+                                <div class="input-group">
+                                    <input type="Number" class="form-control" style="width: 50px;" placeholder="Largo"
+                                        required>
+                                    <span style="margin: 0px 4px;">x</span>
+                                    <input type="Number" class="form-control" style="width: 50px;" placeholder="Ancho"
+                                        required>
+                                    <span style="margin: 0px 4px;">x</span>
+                                    <input type="Number" class="form-control" style="width: 50px;" placeholder="Alto"
+                                        required>
+                                    <span style="margin: 0 4px;">cm</span>
+                                </div>
                             </div>
+
+
 
                             <div class="details addres">
                                 <span class="title">Detalles de la dirección</span>
