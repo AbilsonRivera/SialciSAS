@@ -114,7 +114,7 @@
                                     <input type="Number" class="form-control auto-width" placeholder="A" required>
                                     <span style="margin: 0px 4px;">x</span>
                                     <input type="Number" class="form-control auto-width" placeholder="A" required>
-                                    <span style="margin: 0px 4px;">CM</span> <!-- Aquí estaba el error -->
+                                    <span style="margin: 0px 4px;">CM</span> 
                                 </div>
                             </div>
                         </div>
