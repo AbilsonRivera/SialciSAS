@@ -25,15 +25,15 @@
                 <div class="offcanvas-body">
                     <ul class="navbar-nav justify-content-center flex-grow-1 pe-3">
                         <li class="nav-item">
-                            <a class="nav-link mx-lg-2 active" aria-current="page" href="#">Shipment</a>
+                            <a class="nav-link mx-lg-2 active" aria-current="page" href="#">Envío</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link mx-lg-2" href="#">Edit information</a>
+                            <a class="nav-link mx-lg-2" href="#">Editar informacion personal</a>
                         </li>
                     </ul>
                 </div>
             </div>
-            <a href="#" class="out-button">go out</a>
+            <a href="#" class="out-button">Salir</a>
             <button class="navbar-toggler pe-0" type="button" data-bs-toggle="offcanvas"
                 data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -106,84 +106,61 @@
                                 </div>
                             </div>
 
-
-
                             <div class="input-field dimensiones">
-                                <label>Dimensiones (en Centimetros)</label>
+                                <label>Dimensiones (LARGO X ANCHO X ALTURA EN CM)</label>
                                 <div class="input-group">
-                                    <input type="Number" class="form-control" style="width: 50px;" placeholder="Largo"
-                                        required>
+                                    <input type="Number" class="form-control auto-width" placeholder="L" required>
                                     <span style="margin: 0px 4px;">x</span>
-                                    <input type="Number" class="form-control" style="width: 50px;" placeholder="Ancho"
-                                        required>
+                                    <input type="Number" class="form-control auto-width" placeholder="A" required>
                                     <span style="margin: 0px 4px;">x</span>
-                                    <input type="Number" class="form-control" style="width: 50px;" placeholder="Alto"
-                                        required>
-                                    <span style="margin: 0 4px;">cm</span>
+                                    <input type="Number" class="form-control auto-width" placeholder="A" required>
+                                    <span style="margin: 0px 4px;">CM</span> <!-- Aquí estaba el error -->
                                 </div>
                             </div>
+                        </div>
+                        <a href="#" class="add-more">Agregar más</a>
+                       
 
+                        <div class="details addres">
+                            <span class="title">Datos del destinatario</span>
 
-
-                            <div class="details addres">
-                                <span class="title">Detalles de la dirección</span>
-
-                                <div class="fields">
-                                    <div class="input-field">
-                                        <label>Tipo de dirección</label>
-                                        <input type="text" placeholder="Ingrese tipo de dirección" required>
-                                    </div>
-
-                                    <div class="input-field">
-                                        <label>Nacionalidad</label>
-                                        <input type="text" placeholder="Ingrese su nacionalidad" required>
-                                    </div>
-
-                                    <div class="input-field">
-                                        <label>Estado</label>
-                                        <input type="text" placeholder="Ingrese su estado" required>
-                                    </div>
-
-                                    <div class="input-field">
-                                        <label>Distrito</label>
-                                        <input type="text" placeholder="Ingrese su distrito" required>
-                                    </div>
-
-                                    <div class="input-field">
-                                        <label>Número de bloque</label>
-                                        <input type="number" placeholder="Ingrese número de bloque" required>
-                                    </div>
-
-                                    <div class="input-field">
-                                        <label>Número de guardia</label>
-                                        <input type="number" placeholder="Ingrese su número de guardia" required>
-                                    </div>
-                                    <div class="details family">
-                                        <span class="title">Familia</span>
-
-                                        <div class="fields">
-                                            <div class="input-field">
-                                                <label>Nombre del padre</label>
-                                                <input type="text" placeholder="Ingrese nombre del padre" required>
-                                            </div>
-
-                                            <div class="input-field">
-                                                <label>Nombre de la madre</label>
-                                                <input type="text" placeholder="Ingrese nombre de la madre" required>
-                                            </div>
-
-                                            <div class="input-field">
-                                                <label>Nombre del abuelo</label>
-                                                <input type="text" placeholder="Ingrese nombre del abuelo" required>
-                                            </div>
-                                        </div>
-
-                                    </div>
-
+                            <div class="fields">
+                                <div class="input-field">
+                                    <label>Nombre Completo</label>
+                                    <input type="text" placeholder="Ingrese Nombre" required>
                                 </div>
+
+                                <div class="input-field">
+                                    <label>Nombre de la empresa (si aplica):</label>
+                                    <input type="text" placeholder="Ingrese el nombre de la empresa" required>
+                                </div>
+
+                                <div class="input-field">
+                                    <label>Pais</label>
+                                    <input type="text" placeholder="Ingrese el pais" required>
+                                </div>
+
+                                <div class="input-field">
+                                    <label>Ciudad</label>
+                                    <input type="text" placeholder="Ingrese nombre de la ciudad" required>
+                                </div>
+
+                                <div class="input-field">
+                                    <label>Codigo postal</label>
+                                    <input type="number" placeholder="Ingrese codigo postal" required>
+                                </div>
+
+                                <div class="input-field">
+                                    <label>Correo</label>
+                                    <input type="email" placeholder="Ingrese el correo" required>
+                                </div>
+
+                                <div class="input-field">
+                                    <label>Numero del telefono</label>
+                                    <input type="number" placeholder="Ingrese el numero de telefono" required>
+                                </div>
+
                             </div>
-
-
                         </div>
                         <button class="nextBtn">
                             <span class="btnText">Enviar</span>
@@ -195,11 +172,9 @@
 
             </form>
         </div>
-
-
-
-
     </section>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
         crossorigin="anonymous"></script>

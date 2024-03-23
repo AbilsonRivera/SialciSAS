@@ -92,7 +92,7 @@
 
 .container {
     position: relative;
-    max-width: 800px;
+    max-width: 1000px;
     width: 100%;
     border-radius: 6px;
     padding: 25px;
@@ -245,26 +245,32 @@ form .buttons button {
     }
 }
 
-.input-field input[name="paquetes"] {
-    width: 65px;
-    /* Ajusta este valor según tus necesidades */
-}
 
-.input-field input[name="peso"] {
-    width: 65px;
+
+.input-field input[name="paquetes"] {
+    width: 100px;
     /* Ajusta este valor según tus necesidades */
 }
 
 .input-field.pesos label,
 .input-field.pesos input[type="number"] {
-    margin-left: -160px;
-    /* Ajusta el valor según sea necesario */
+    width: 100px;
+    margin-left: 0; /* Elimina el margen izquierdo negativo */
+}
+
+.input-field.pesos .input-group {
+    display: flex; /* Usa Flexbox */
+    align-items: center; /* Alinea los elementos verticalmente */
+}
+
+.input-field.pesos .input-group input[type="number"] {
+    margin-right: 10px; /* Ajusta el espacio entre los campos de entrada y las etiquetas */
 }
 
 .input-field.pesos select {
     width: 57px;
     /* Ajusta el ancho según tus necesidades */
-    margin-top: 8px;
+    margin-top: 0px;
     margin-left: 10px;
     /* Ajusta el margen izquierdo según sea necesario */
     height: 42px;
@@ -280,18 +286,24 @@ form .buttons button {
     color: #333;
     /* Ajusta el color del texto según sea necesario */
     background-color: #fff;
-    /* Ajusta el color de fondo según sea necesario */
-}
+    }
 
-.input-field.dimensiones label {
-    margin-left: -250px; /* Ajusta el valor según sea necesario */
+.input-field.dimensiones label,
+.input-field.dimensiones .input-group {
+    margin-left: 0; /* Elimina el margen izquierdo negativo */
 }
 
 .input-field.dimensiones .input-group {
-    margin-left: -250px; /* Ajusta el valor según sea necesario */
-    align-items: center;
-    
+    display: flex; /* Usa Flexbox */
+    align-items: center; /* Alinea los elementos verticalmente */
 }
-  
+
+.input-field.dimensiones .input-group input[type="number"] {
+    margin-right: -1px; /* Ajusta el espacio entre los campos de entrada y las etiquetas */
+}
 
 
+
+.details.addres {
+    margin-top: 100px;
+}
