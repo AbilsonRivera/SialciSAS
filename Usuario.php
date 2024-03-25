@@ -25,6 +25,9 @@
                 <div class="offcanvas-body">
                     <ul class="navbar-nav justify-content-center flex-grow-1 pe-3">
                         <li class="nav-item">
+                            <a class="nav-link mx-lg-2 " aria-current="page" href="Servicios.php">Servicios</a>
+                        </li>
+                        <li class="nav-item">
                             <a class="nav-link mx-lg-2 active" aria-current="page" href="#">Envío</a>
                         </li>
                         <li class="nav-item">
@@ -114,12 +117,12 @@
                                     <input type="Number" class="form-control auto-width" placeholder="A" required>
                                     <span style="margin: 0px 4px;">x</span>
                                     <input type="Number" class="form-control auto-width" placeholder="A" required>
-                                    <span style="margin: 0px 4px;">CM</span> 
+                                    <span style="margin: 0px 4px;">CM</span>
                                 </div>
                             </div>
                         </div>
                         <a href="#" class="add-more">Agregar más</a>
-                       
+
 
                         <div class="details addres">
                             <span class="title">Datos del destinatario</span>
