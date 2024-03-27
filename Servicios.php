@@ -10,6 +10,10 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+        integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
     <!-- Enlace a tu archivo CSS personalizado -->
     <link href="Servicios.css" rel="stylesheet">
 </head>
@@ -45,6 +49,32 @@
             </button>
         </div>
     </nav>
+    <div class="parrafos">
+        <div class="contenido">
+            <i class="fa-solid fa-users"></i>
+            <h3>Asesoria</h3>
+            <p><Em>Apoyamos sus ventas internacionales desde su preparacion del producto hasta la entrega final a su
+                    cliente.</Em></p>
+        </div>
+        <div class="contenido">
+            <i class="fa-solid fa-truck"></i>
+            <h3>Transporte terrestre</h3>
+            <p><Em>Especializados en transporte de cualquier tipo de mercancia, desde carga hasta contenedores y carga
+                    proyectos.</Em></p>
+        </div>
+        <div class="contenido">
+        <i class="fa-solid fa-anchor"></i>
+            <h3>Transporte maritimo</h3>
+            <p><Em>Excelente fletes internacionales y gran cubrimiento a nivel mundial, encios FCL, LCL, BREAK BULL Y
+                    carga proyecto.</em></p>
+        </div>
+        <div class="contenido">
+        <i class="fa-solid fa-plane-departure"></i>
+            <h3>Transporte Aereo</h3>
+            <p><Em>Envía desde un simple sobre sobre hasta cargar proyecto para exportación via aerea</Em></p>
+        </div>
+    </div>
+
 
     <!-- Scripts de Bootstrap (jQuery y Popper.js) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
