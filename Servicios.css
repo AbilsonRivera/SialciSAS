@@ -1,0 +1,147 @@
+body {
+    background-color:  #ff480053;  /* Color de fondo para toda la página */
+}
+.navbar {
+    background-color: #ffffff;
+    height: 80px;
+    margin: 20px;
+    border-radius: 16px;
+    padding: 0.5rem;
+}
+.navbar-brand img {
+    width: 50px;
+    height: 50px;
+    border-radius: 20%;
+}
+.out-button {
+    background-color: #FA5229;
+    color: white;
+    font-size: 14px;
+    padding: 8px 20px;
+    border-radius: 50px;
+    text-decoration: none;
+    transition: 0.3s background-color;
+}
+.out-button:hover {
+    background-color: #00b383;
+}
+.navbar-toggler {
+    border: none;
+    font-size: 1.25rem;
+}
+.navbar-toggler:focus,
+.btn-close:focus {
+    box-shadow: none;
+    outline: none;
+}
+
+.nav-link {
+    color: #666777;
+    font-weight: 500;
+    position: relative;
+}
+
+.nav-link:hover,
+.nav-link.active {
+    color: #000;
+}
+
+
+@media (min-width: 991px) {
+    .nav-link::before {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 0%;
+        height: 2px;
+        background-color: #ff0000;
+        visibility: hidden;
+        transition: 0.3 ease-in-out;
+    }
+
+    .nav-link:hover::before,
+    .nav-link.active::before {
+        width: 100%;
+        visibility: visible;
+
+    }
+}
+.fa-solid {
+    font-size: 80px;
+    margin-left: 10px
+    ; /* Ajusta el tamaño de los iconos según sea necesario */
+}
+
+.parrafos {
+    display: flex;
+    margin-top: 140px;
+    margin-left: 60px;
+}
+
+.contenido {
+    margin-right: 120px;
+    background-color: #ef652e; /* Color de fondo del contenedor */
+    border-radius: 10px; /* Bordes redondeados */
+    padding: 40px; /* Espacio interno del contenedor */
+    margin-bottom: 20px;
+    box-shadow: 63px 33px 90px 3px rgba(0,0,0,0.76);
+}
+.contenido h3 {
+    margin: 45px 0; /* Ajusta el espacio arriba y abajo del h3 */
+}
+
+
+h2, p {
+    margin: 0; /* Elimina el margen predeterminado de los elementos */
+}
+@media (max-width: 1200px) {
+    .parrafos {
+        flex-wrap: wrap; /* Envolver los elementos en filas si el ancho de la pantalla es menor a 1200px */
+        margin-left: 30px; /* Ajustar el margen izquierdo para centrar los elementos en pantallas más pequeñas */
+        margin-right: 30px; /* Ajustar el margen derecho para centrar los elementos en pantallas más pequeñas */
+    }
+
+    .contenido {
+        flex-basis: 50%; /* Ajustar el tamaño de los elementos para que ocupen el 50% del ancho en pantallas más pequeñas */
+        margin-right: 0; /* Eliminar el margen derecho en pantallas más pequeñas */
+        margin-bottom: 20px; /* Añadir un espacio entre los elementos en pantallas más pequeñas */
+    }
+}
+
+@media (max-width: 768px) {
+    .parrafos {
+        margin-top: 100px; /* Ajustar el margen superior en pantallas más pequeñas */
+        margin-left: 15px; /* Ajustar el margen izquierdo para centrar los elementos en pantallas más pequeñas */
+        margin-right: 15px; /* Ajustar el margen derecho para centrar los elementos en pantallas más pequeñas */
+    }
+
+    .contenido {
+        flex-basis: 100%; /* Hacer que los elementos ocupen el 100% del ancho en pantallas más pequeñas */
+        margin-bottom: 20px; /* Añadir un espacio entre los elementos en pantallas más pequeñas */
+    }
+
+    .fa-solid {
+        font-size: 40px; /* Reducir el tamaño de los iconos en pantallas más pequeñas */
+        margin-left: 0; /* Eliminar el margen izquierdo en pantallas más pequeñas */
+        margin-bottom: 10px; /* Añadir un espacio entre los iconos y los títulos en pantallas más pequeñas */
+    }
+
+    .contenido h3 {
+        margin: 30px 0; /* Ajustar el espacio arriba y abajo del h3 en pantallas más pequeñas */
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+

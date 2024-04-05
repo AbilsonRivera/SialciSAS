@@ -1,17 +1,15 @@
-.navbar{
+.navbar {
     background-color: #fff;
     height: 80px;
     margin: 20px;
     border-radius: 16px;
     padding: 0.5rem;
 }
-
 .navbar-brand img {
-    width: 50px; 
-    height: 50px; 
+    width: 50px;
+    height: 50px;
     border-radius: 20%;
 }
-
 .out-button {
     background-color: #FA5229;
     color: white;
@@ -21,16 +19,13 @@
     text-decoration: none;
     transition: 0.3s background-color;
 }
-
 .out-button:hover {
     background-color: #00b383;
 }
-
 .navbar-toggler {
     border: none;
     font-size: 1.25rem;
 }
-
 .navbar-toggler:focus,
 .btn-close:focus {
     box-shadow: none;
@@ -43,45 +38,267 @@
     position: relative;
 }
 
-.nav-link:hover, .nav-link.active {
+.nav-link:hover,
+.nav-link.active {
     color: #000;
 }
 
 
-@media ( min-width: 991px){
-.nav-link::before{
-    content: "";
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 0%;
-    height: 2px;
-    background-color: #FA5229;
-    visibility: hidden;
-    transition: 0.3 ease-in-out;
+@media (min-width: 991px) {
+    .nav-link::before {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 0%;
+        height: 2px;
+        background-color: #ff0000;
+        visibility: hidden;
+        transition: 0.3 ease-in-out;
+    }
+
+    .nav-link:hover::before,
+    .nav-link.active::before {
+        width: 100%;
+        visibility: visible;
+
+    }
 }
 
-.nav-link:hover::before, .nav-link.active::before{
-    width: 100%;
-    visibility: visible;
-
-}
+.container {
+    margin-top: 20px;
 }
 
-.hero-section{
-    background: url(img/CafeNaranja.jpg) no-repeat center;
+.fondo {
+    background: url(img/CafeNaranja.jpg) center;
     background-size: cover;
     width: 100%;
     height: 100vh;
 }
 
-.hero-section::before {
-    background-color: rgb(0, 0, 0, 0.6);
+.formulario {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 50px;
+}
+
+.container {
+    position: relative;
+    max-width: 1000px;
+    width: 100%;
+    border-radius: 6px;
+    padding: 25px;
+    margin: 0 15px;
+    top: 90px;
+    background-color: rgb(255, 255, 255);
+    box-shadow: 0 5px 10px rgb(0, 0, 0, 0.1);
+}
+
+.container header {
+    font-size: 20px;
+    font-weight: 600;
+    color: #333;
+}
+
+.container header::before {
     content: "";
     position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
+    top: 55px;
+    left: 25px;
+    bottom: -2px;
+    height: 3px;
+    width: 27px;
+    border-radius: 8px;
+    background-color: #ff0000;
+}
+
+.container form {
+    position: relative;
+    margin-top: 16px;
+    min-height: 490px;
+    background-color: #fff;
+    overflow: hidden;
+}
+
+
+
+.container form .title {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 16px;
+    font-weight: 500;
+    margin: 6px 0;
+    color: #333;
+}
+
+.container form .fields {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+form .fields .input-field {
+    display: flex;
+    width: calc(100% / 3 - 15px);
+    flex-direction: column;
+    margin: 4px 0;
+}
+
+.input-field label {
+    font-size: 12px;
+    font-weight: 500;
+    color: #2e2e2e;
+}
+
+.input-field input {
+    outline: none;
+    font-size: 14px;
+    font-weight: 400;
+    color: #333;
+    border-radius: 5px;
+    border: 1px solid #aaa;
+    padding: 0 15px;
+    height: 42px;
+    margin: 8px 0;
+}
+
+.input-field input:is(:focus, :valid) {
+    box-shadow: 0 3px 6px rgb(0, 0, 0, 0.13);
+}
+
+.input-field input[type="date"] {
+    color: #707070;
+}
+
+.input-field input[type="date"]:valid {
+    color: #333;
+}
+
+.container form button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 45px;
+    max-width: 200px;
+    width: 100%;
+    border: none;
+    outline: none;
+    color: #fff;
+    border-radius: 5px;
+    margin: 25px 0;
+    background-color: #ff0000;
+    transition: all 0.3s linear;
+    cursor: pointer;
+}
+
+form button:hover {
+    background-color: #00b383;
+}
+
+.container form button {
+    font-size: 14px;
+    font-weight: 400;
+    ;
+}
+
+form button i {
+    margin: 0 6px;
+}
+
+form .buttons {
+    display: flex;
+    align-items: center;
+
+}
+
+form .buttons button {
+    margin-right: 14px;
+
+}
+
+@media (max-width: 750px) {
+    .container form {
+        overflow-y: scroll;
+    }
+
+    .container form::-webkit-scrollbar {
+        display: none;
+    }
+
+    form .fields .input-field {
+        width: calc(100% / 2 - 15px);
+    }
+}
+
+@media (max-width: 550px) {
+    form .fields .input-field {
+        width: 100%;
+    }
+}
+
+
+
+.input-field input[name="paquetes"] {
+    width: 100px;
+    /* Ajusta este valor según tus necesidades */
+}
+
+.input-field.pesos label,
+.input-field.pesos input[type="number"] {
+    width: 100px;
+    margin-left: 0; /* Elimina el margen izquierdo negativo */
+}
+
+.input-field.pesos .input-group {
+    display: flex; /* Usa Flexbox */
+    align-items: center; /* Alinea los elementos verticalmente */
+}
+
+.input-field.pesos .input-group input[type="number"] {
+    margin-right: 10px; /* Ajusta el espacio entre los campos de entrada y las etiquetas */
+}
+
+.input-field.pesos select {
+    width: 57px;
+    /* Ajusta el ancho según tus necesidades */
+    margin-top: 0px;
+    margin-left: 10px;
+    /* Ajusta el margen izquierdo según sea necesario */
+    height: 42px;
+    /* Ajusta la altura según tus necesidades */
+    border-radius: 5px;
+    /* Ajusta el radio de borde según sea necesario */
+    border: 1px solid #aaa;
+    /* Ajusta el color y grosor del borde según sea necesario */
+    padding: 0 10px;
+    /* Ajusta el relleno según sea necesario */
+    font-size: 14px;
+    /* Ajusta el tamaño de fuente según sea necesario */
+    color: #333;
+    /* Ajusta el color del texto según sea necesario */
+    background-color: #fff;
+    }
+
+.input-field.dimensiones label,
+.input-field.dimensiones .input-group {
+    margin-left: 0; /* Elimina el margen izquierdo negativo */
+}
+
+.input-field.dimensiones .input-group {
+    display: flex; /* Usa Flexbox */
+    align-items: center; /* Alinea los elementos verticalmente */
+}
+
+.input-field.dimensiones .input-group input[type="number"] {
+    margin-right: -1px; /* Ajusta el espacio entre los campos de entrada y las etiquetas */
+}
+
+
+
+.details.addres {
+    margin-top: 100px;
 }
