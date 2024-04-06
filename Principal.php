@@ -80,40 +80,40 @@
     <section>
         <div class="container1">
             <div class="slider">
-                <div class="slides" style="--img: url('img/cafe.jpg')" >
+                <div class="slides" style="--img: url('img/acevedo.jpg')" >
                     <div class="content1">
-                    <h2>cafe 1</h2>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit saepe laudantium facilis porro itaque</p>
+                    <h2>ACEVEDO-HUILA</h2>
+                    <p>Su perfil en taza se caracteriza por poseer una fragancia y aroma expresiva flora, un sabor a frutas y con notas a caramelo, acidez cítrica y un cuerpo redondo cremoso, balanceado y limpio.</p>
                     </div>
                 </div>
-                <div class="slides" style="--img: url('img/dulces.jpg')" >
+                <div class="slides" style="--img: url('img/garzon.jpg')" >
                     <div class="content1">
-                    <h2>Dulce 2</h2>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit saepe laudantium facilis porro itaque</p>
+                    <h2>GARZON-HUILA</h2>
+                    <p>Estos cafés se caracterizan por su acidez brillante y suavidad en boca, con matices de frutas cítricas y caramelo.</p>
                     </div>
                 </div>
-                <div class="slides" style="--img: url('img/valdez.jpg')" >
+                <div class="slides" style="--img: url('img/plata.jpg')" >
                     <div class="content1">
-                    <h2>Cafe 3</h2>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit saepe laudantium facilis porro itaque</p>
+                    <h2>LA PLATA-HUILA</h2>
+                    <p>El café Castillo y Colombia de La Plata ofrece un sabor distintivo, con notas que van desde matices frutales hasta tonos suaves y equilibrados. </p>
                     </div>
                 </div>
-                <div class="slides" style="--img: url('img/bolsos.jpg')" >
+                <div class="slides" style="--img: url('img/pitalito.jpg')" >
                     <div class="content1">
-                    <h2>Bolso 4</h2>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit saepe laudantium facilis porro itaque</p>
+                    <h2>PITALITO-HUILA</h2>
+                    <p> En taza se caracteriza por una fragancia y aroma a chocolate, buen dulzor y frutos rojos, notas frutales, flor de café, acidez media alta y un cuerpo medio balanceado.</p>
                     </div>
                 </div>
-                <div class="slides" style="--img: url('img/bolso2.jpg')" >
+                <div class="slides" style="--img: url('img/san.jpg')" >
                     <div class="content1">
-                    <h2>Bolso 5</h2>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit saepe laudantium facilis porro itaque</p>
+                    <h2>SAN AGUSTIN-HUILA</h2>
+                    <p>Sus principales cultivos desde tiempo inmemorial han sido los cereales: trigo, cebada, avena y forrajeras como la veza y esparceta o pipirigallo.</p>
                     </div>
                 </div>
-                <div class="slides" style="--img: url('img/valdez.jpg')" >
+                <div class="slides" style="--img: url('img/santa.jpg')" >
                     <div class="content1">
-                    <h2>Cafe 6</h2>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit saepe laudantium facilis porro itaque</p>
+                    <h2>SANTA MARIA-HUILA</h2>
+                    <p>Este municipio del Huila está marcando la pauta en café de calidad y por eso lo visitan extranjeros interesados en llevar un grano excelso y suave para los más exigentes gustos. </p>
                     </div>
                 </div>
             </div>
@@ -157,44 +157,83 @@
     </div>
 </div>
 
-
-
-    <footer>
-    <div class="footer-col">
-        <h4>Products</h4>
-        <ul>
-            <li><a href="#">Teams</a></li>
-            <li><a href="#">Advertising</a></li>
-            <li><a href="#">Talent</a></li>
-        </ul>
-    </div>
-    <div class="footer-col">
-        <h4>Network</h4>
-        <ul>
-            <li><a href="#">Technology</a></li>
-            <li><a href="#">Science</a></li>
-            <li><a href="#">Business</a></li>
-            <li><a href="#">Professional</a></li>
-            <li><a href="#">API</a></li>
-        </ul>
-    </div>
-    <div class="footer-col">
-        <h4>Company</h4>
-        <ul>
-            <li><a href="#">About</a></li>
-            <li><a href="#">Legal</a></li>
-            <li><a href="#">Contact Us</a></li>
-        </ul>
-    </div>
-    <div class="footer-col">
-        <h4>Follow Us</h4>
-        <div class="links">
-            <a href="#"><i class="fab fa-linkedin-in"></i></a>
-            <a href="#"><i class="fab fa-facebook-f"></i></a>
-            <a href="#"><i class="fab fa-twitter"></i></a>
-            <a href="#"><i class="fab fa-instagram"></i></a>
-        </div>
-    </div>
-</footer>
+<footer class="bg-light text-dark pt-5 pb-4">
+            <div class="container text-center text-md-start">
+                <div class="row text-center text-md-start">
+                    <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3">
+                        <h5 class="text-uppercase mb-4 font-weight-bold text-primary">Nosotros</h5>
+                        <hr class="mb-4">
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore cum sit, architecto rerum suscipit illum officiis fugit maiores quo similique ipsam assumenda impedit voluptatem aspernatur id ducimus voluptatum tempore hic?</p>
+                    </div>
+                        <div class="col-md-2 col-lg-2 col-lx-2 mx-auto mt-3">
+                            <h5 class="text-uppercase mb-4 font-weight-bold text-primary">Dejanos</h5>
+                            <hr class="mb-4">
+                            <p>
+                                <a href="#" class="text-dark">Tu Cuenta</a>
+                            </p>
+                            <p>
+                                <a href="#" class="text-dark">Tus Ordenes</a>
+                            </p>
+                            <p>
+                            <a href="#" class="text-dark">Manejo de Cuenta</a>
+                            </p>
+                            <p>
+                            <a href="#" class="text-dark">Ayuda</a>
+                            </p>
+                        </div>
+                        <div class="col-md-2 col-lg-2 col-lx-2 mx-auto mt-3">
+                            <h5 class="text-uppercase mb-4 font-weight-bold text-primary">Has dinero</h5>
+                            <hr class="mb-4">
+                            <p>
+                                <a href="#" class="text-dark">Tu Cuenta</a>
+                            </p>
+                            <p>
+                                <a href="#" class="text-dark">Tus Ordenes</a>
+                            </p>
+                            <p>
+                            <a href="#" class="text-dark">Manejo de Cuenta</a>
+                            </p>
+                            <p>
+                            <a href="#" class="text-dark">Ayuda</a>
+                            </p>
+                        </div>
+                        <div class="col-md-2 col-lg-2 col-lx-2 mx-auto mt-3">
+                            <h5 class="text-uppercase mb-4 font-weight-bold text-primary">Contacto</h5>
+                            <hr class="mb-4">
+                            <p>
+                                <li class="fas fa-home me-3"></li>Mexico,ciudad 255
+                            </p>
+                            <p>
+                                <li class="fas fa-envelope me-3"></li>amaf@gmail.com
+                            </p>
+                            <p>
+                                <li class="fas fa-phone me-3"></li>32056946457
+                            </p>
+                            <p>
+                                <li class="fas fa-print me-3"></li>+5732056946457
+                            </p>
+                        </div>
+                        <hr class="mb-4">
+                        <div class="text-center mb-2">
+                            <p>
+                                Copyright Todos los derechos reservados
+                                <a href="#">
+                                    <strong class="text-primary" >test</strong>
+                                </a>
+                            </p>
+                        </div>
+                        <div class="text-center">
+                            <ul class="list-unstyled list-inline">
+                                <li class="list-inline-item">
+                                    <a href="#" class="text-dark"><i class="fab fa-2x fa-facebook"></i></a>
+                                </li>
+                                <li class="list-inline-item">
+                                    <a href="#" class="text-dark"><i class="fab fa-2x fa-whatsapp"></i></a>
+                                </li>
+                            </ul>
+                        </div>
+                </div>
+            </div>
+    </footer>
 </body>
 </html>

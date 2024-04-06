@@ -47,7 +47,7 @@
                     </button>
                 </div>
         </div>
-        <span class="agreement"><a href="#">¿No tienes cuenta? Registrate</a></span>
+        <span class="agreement"><a href="registro.php">¿No tienes cuenta? Registrate</a></span>
 </div>
 </body>
 </html>
