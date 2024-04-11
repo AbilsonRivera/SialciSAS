@@ -4,7 +4,6 @@ $usuario = "root";
 $clave = "";
 $baseDeDatos = "sialcis";
 
-// Verificar la conexión a la base de datos
 $enlace = mysqli_connect($servidor, $usuario, $clave, $baseDeDatos);
 
 if (!$enlace) {
@@ -14,8 +13,7 @@ if (!$enlace) {
 if (isset($_POST['InicioSesion'])) {
     $Correo = $_POST['email'];
     $Contraseña = $_POST['password'];
-
-    // Escapar las variables para prevenir inyección SQL
+    
     $Correo = mysqli_real_escape_string($enlace, $Correo);
     $Contraseña = mysqli_real_escape_string($enlace, $Contraseña);
 
@@ -25,11 +23,10 @@ if (isset($_POST['InicioSesion'])) {
 
     // Verificar si se encontró un registro
     if (mysqli_num_rows($resultado) == 1) {
-        // Usuario autenticado, redireccionar a la página de inicio o realizar otras acciones
+
         header("Location: Servicios.php");
         exit();
     } else {
-        // Usuario no encontrado o credenciales incorrectas, mostrar mensaje de error
         echo "Correo electrónico o contraseña incorrectos. Por favor, inténtelo de nuevo.";
     }
 }
