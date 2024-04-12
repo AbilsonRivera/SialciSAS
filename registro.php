@@ -46,6 +46,7 @@ if (isset($_POST['Registro'])) {
 ?>
 
 
+
 <!DOCTYPE html>
 <html lang="en">
 
