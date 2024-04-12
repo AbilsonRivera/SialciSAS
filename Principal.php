@@ -77,76 +77,80 @@
 
     <h1 id="productos" ><span>Origenes de nuestros Productos</span></h1>
 
-    <section>
-        <div class="container1">
-            <div class="slider">
-                <div class="slides" style="--img: url('img/acevedo.jpg')" >
-                    <div class="content1">
-                    <h2>ACEVEDO-HUILA</h2>
-                    <p>Su perfil en taza se caracteriza por poseer una fragancia y aroma expresiva flora, un sabor a frutas y con notas a caramelo, acidez cítrica y un cuerpo redondo cremoso, balanceado y limpio.</p>
-                    </div>
-                </div>
-                <div class="slides" style="--img: url('img/garzon.jpg')" >
-                    <div class="content1">
-                    <h2>GARZON-HUILA</h2>
-                    <p>Estos cafés se caracterizan por su acidez brillante y suavidad en boca, con matices de frutas cítricas y caramelo.</p>
-                    </div>
-                </div>
-                <div class="slides" style="--img: url('img/plata.jpg')" >
-                    <div class="content1">
-                    <h2>LA PLATA-HUILA</h2>
-                    <p>El café Castillo y Colombia de La Plata ofrece un sabor distintivo, con notas que van desde matices frutales hasta tonos suaves y equilibrados. </p>
-                    </div>
-                </div>
-                <div class="slides" style="--img: url('img/pitalito.jpg')" >
-                    <div class="content1">
-                    <h2>PITALITO-HUILA</h2>
-                    <p> En taza se caracteriza por una fragancia y aroma a chocolate, buen dulzor y frutos rojos, notas frutales, flor de café, acidez media alta y un cuerpo medio balanceado.</p>
-                    </div>
-                </div>
-                <div class="slides" style="--img: url('img/san.jpg')" >
-                    <div class="content1">
-                    <h2>SAN AGUSTIN-HUILA</h2>
-                    <p>Sus principales cultivos desde tiempo inmemorial han sido los cereales: trigo, cebada, avena y forrajeras como la veza y esparceta o pipirigallo.</p>
-                    </div>
-                </div>
-                <div class="slides" style="--img: url('img/santa.jpg')" >
-                    <div class="content1">
-                    <h2>SANTA MARIA-HUILA</h2>
-                    <p>Este municipio del Huila está marcando la pauta en café de calidad y por eso lo visitan extranjeros interesados en llevar un grano excelso y suave para los más exigentes gustos. </p>
-                    </div>
-                </div>
-            </div>
-            <div class="buttons">
-                    <span class="prev"></span>
-                    <span class="next"></span>
-            </div>
+    <div class="d-flex justify-content-center">
+  <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000" style="max-width: 1000px;">
+    <div class="carousel-indicators">
+      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+      <!-- Agrega botones indicadores para las imágenes adicionales -->
+      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="3" aria-label="Slide 4"></button>
+      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="4" aria-label="Slide 5"></button>
+      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="5" aria-label="Slide 6"></button>
+    </div>
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img src="img/acevedo.jpg" class="d-block w-100" alt="...">
+        <div class="carousel-caption d-none d-md-block">
+          <h5>First slide label</h5>
+          <p>Some representative placeholder content for the first slide.</p>
         </div>
-        <script>
-            let next = document.querySelector('.next');
-            let prev = document.querySelector('.prev');
-            let slider = document.querySelector('.slider');
+      </div>
+      <div class="carousel-item">
+        <img src="img/garzon.jpg" class="d-block w-100" alt="...">
+        <div class="carousel-caption d-none d-md-block">
+          <h5>Second slide label</h5>
+          <p>Some representative placeholder content for the second slide.</p>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <img src="img/cafe.jpg" class="d-block w-100" alt="...">
+        <div class="carousel-caption d-none d-md-block">
+          <h5>Third slide label</h5>
+          <p>Some representative placeholder content for the third slide.</p>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <img src="img/Cafesub.jpeg" class="d-block w-100" alt="...">
+        <div class="carousel-caption d-none d-md-block">
+          <h5>Fourth slide label</h5>
+          <p>Some representative placeholder content for the fourth slide.</p>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <img src="img/valdez.jpg" class="d-block w-100" alt="...">
+        <div class="carousel-caption d-none d-md-block">
+          <h5>Fifth slide label</h5>
+          <p>Some representative placeholder content for the fifth slide.</p>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <img src="img/bolso2.jpg" class="d-block w-100" alt="...">
+        <div class="carousel-caption d-none d-md-block">
+          <h5>Sixth slide label</h5>
+          <p>Some representative placeholder content for the sixth slide.</p>
+        </div>
+      </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+</div>
 
-            next.addEventListener('click', function(){
-                let slides = document.querySelectorAll('.slides');
-                slider.appendChild(slides[0]);
-            })
 
-            prev.addEventListener('click', function(){
-                let slides = document.querySelectorAll('.slides');
-                slider.prepend(slides[slides.length - 1]);
-            })
-        </script>
-    </section>
-    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+
     <article>
         <div class="contenedorimg">
             <h1>Hola Mundo</h1>
             <p>Soy un parrafo </p>
         </div>
     </article>
-
-    <br><br><br><br><br>
 
     <div class="qr">
     <div class="text">
@@ -157,7 +161,9 @@
     </div>
 </div>
 
-<footer class="bg-light text-dark pt-5 pb-4">
+
+
+    <footer class="bg-light text-dark pt-5 pb-4">
             <div class="container text-center text-md-start">
                 <div class="row text-center text-md-start">
                     <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3">
