@@ -9,7 +9,13 @@ $(document).ready(function() {
         e.preventDefault(); // Evitar el comportamiento predeterminado del enlace
         var fields = $(this).prev('.fields'); // Obtener el contenedor de campos
         var clone = fields.clone(); // Clonar los campos
-        fields.after(clone); // Agregar el clon después del contenedor original
+
+        // Limpiar los valores de los campos clonados
+        clone.find('input[type="text"], input[type="email"], input[type="number"]').val('');
+
+        // Agregar el clon después del contenedor original
+        fields.after(clone);
     });
 });
+
 

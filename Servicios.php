@@ -1,3 +1,10 @@
+<?php 
+session_start();
+if (empty($_SESSION["id"])){
+    header("location: logueo.php");
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -46,7 +53,7 @@
                 </ul>
             </div>
         </div>
-            <a href="Principal.php" class="login-button" >cerrar sesion</a>
+            <a href="controlador/controlador_cerrar_session.php" class="login-button" >cerrar sesion</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -77,6 +84,7 @@
         <i class="fa-solid fa-plane-departure"></i>
             <h3>Transporte Aereo</h3>
             <p><Em>Envía desde un simple sobre sobre hasta cargar proyecto para exportación via aerea</Em></p>
+            
         </div>
     </div>
 
