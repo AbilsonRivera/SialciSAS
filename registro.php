@@ -2,7 +2,7 @@
 $servidor = "localhost";
 $usuario = "root";
 $clave = "";
-$baseDeDatos = "sialcis";
+$baseDeDatos = "sialci";
 
 $enlace = mysqli_connect($servidor, $usuario, $clave, $baseDeDatos);
 
@@ -14,24 +14,30 @@ if (isset($_POST['Registro'])) {
     $confirmarContraseña = $_POST['confirmarContraseña'];
 
     if ($Contraseña !== $confirmarContraseña) {
-        // Aquí eliminamos la línea que imprime el mensaje
+        $errorMessage = "Las contraseñas no coinciden. Por favor, inténtelo de nuevo.";
     } else {
         // Verificar si el correo ya está en uso
         $consultaCorreo = "SELECT * FROM login WHERE Correo = '$Correo'";
         $resultado = mysqli_query($enlace, $consultaCorreo);
-        if (mysqli_num_rows($resultado) > 0) {
-            // Aquí eliminamos la línea que imprime el mensaje
+        if (!$resultado) {
+            $errorMessage = "Error en la consulta: " . mysqli_error($enlace);
+        } elseif (mysqli_num_rows($resultado) > 0) {
+            $errorMessage = "El correo electrónico '$Correo' ya está en uso. Por favor, elija otro.";
         } else {
-            
             $insertarDatosLogin = "INSERT INTO login (Correo, Contraseña) VALUES ('$Correo', '$Contraseña')";
             $ejecutarInsertarLogin = mysqli_query($enlace, $insertarDatosLogin);
 
             if ($ejecutarInsertarLogin) {
-                // Insertar datos en la tabla "usuarios" si el registro en la tabla "login" fue exitoso
                 $insertarDatosUsuarios = "INSERT INTO usuarios (Nombre, Apellidos, Correo) VALUES ('$Nombre', '$Apellidos', '$Correo')";
                 $ejecutarInsertarUsuarios = mysqli_query($enlace, $insertarDatosUsuarios);
 
-        
+                if ($ejecutarInsertarUsuarios) {
+                    $successMessage = "Datos insertados correctamente.";
+                } else {
+                    $errorMessage = "Error al insertar datos en la tabla 'usuarios': " . mysqli_error($enlace);
+                }
+            } else {
+                $errorMessage = "Error al insertar datos en la tabla 'login': " . mysqli_error($enlace);
             }
         }
     }
@@ -92,7 +98,30 @@ if (isset($_POST['Registro'])) {
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body error-modal-body">
-                    <p id="errorMessage"></p>
+                    <?php
+                    if (isset($errorMessage)) {
+                        echo "<p>$errorMessage</p>";
+                    }
+                    ?>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de éxito -->
+    <div class="modal fade" id="successModal" tabindex="-1" aria-labelledby="successModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="successModalLabel">Registro exitoso</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body success-modal-body">
+                    <?php
+                    if (isset($successMessage)) {
+                        echo "<p>$successMessage</p>";
+                    }
+                    ?>
                 </div>
             </div>
         </div>
@@ -103,45 +132,11 @@ if (isset($_POST['Registro'])) {
     <script>
         $(document).ready(function() {
             <?php
-            if (isset($_POST['Registro'])) {
-                $Nombre = $_POST['Nombre'];
-                $Apellidos = $_POST['Apellidos'];
-                $Correo = $_POST['Correo'];
-                $Contraseña = $_POST['Contraseña'];
-                $confirmarContraseña = $_POST['confirmarContraseña'];
-
-                if ($Contraseña !== $confirmarContraseña) {
-                    echo '$("#errorMessage").text("Las contraseñas no coinciden. Por favor, inténtelo de nuevo.");';
-                    echo '$("#errorModal").modal("show");';
-                } else {
-                    // Verificar si el correo ya está en uso
-                    $consultaCorreo = "SELECT * FROM login WHERE Correo = '$Correo'";
-                    $resultado = mysqli_query($enlace, $consultaCorreo);
-                    if (mysqli_num_rows($resultado) > 0) {
-                        echo '$("#errorMessage").text("El correo electrónico \'' . $Correo . '\' ya está en uso. Por favor, elija otro.");';
-                        echo '$("#errorModal").modal("show");';
-                    } else {
-                        $insertarDatosLogin = "INSERT INTO login (Correo, Contraseña) VALUES ('$Correo', '$Contraseña')";
-                        $ejecutarInsertarLogin = mysqli_query($enlace, $insertarDatosLogin);
-
-                        if ($ejecutarInsertarLogin) {
-                            // Insertar datos en la tabla "usuarios" si el registro en la tabla "login" fue exitoso
-                            $insertarDatosUsuarios = "INSERT INTO usuarios (Nombre, Apellidos, Correo) VALUES ('$Nombre', '$Apellidos', '$Correo')";
-                            $ejecutarInsertarUsuarios = mysqli_query($enlace, $insertarDatosUsuarios);
-
-                            if ($ejecutarInsertarUsuarios) {
-                                echo '$("#errorMessage").text("Datos insertados correctamente.");';
-                                echo '$("#errorModal").modal("show");';
-                            } else {
-                                echo '$("#errorMessage").text("Error al insertar datos en la tabla \'usuarios\'.");';
-                                echo '$("#errorModal").modal("show");';
-                            }
-                        } else {
-                            echo '$("#errorMessage").text("Error al insertar datos en la tabla \'login\'.");';
-                            echo '$("#errorModal").modal("show");';
-                        }
-                    }
-                }
+            if (isset($errorMessage)) {
+                echo '$("#errorModal").modal("show");';
+            }
+            if (isset($successMessage)) {
+                echo '$("#successModal").modal("show");';
             }
             ?>
         });
