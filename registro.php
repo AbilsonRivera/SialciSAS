@@ -2,7 +2,7 @@
 $servidor = "localhost";
 $usuario = "root";
 $clave = "";
-$baseDeDatos = "sialci";
+$baseDeDatos = "sialcis";
 
 $enlace = mysqli_connect($servidor, $usuario, $clave, $baseDeDatos);
 
@@ -37,12 +37,6 @@ if (isset($_POST['Registro'])) {
     }
 }
 ?>
-
-<<<<<<< HEAD
-
-
-=======
->>>>>>> f781f0566b96a5f99dafe19a79319e05af827210
 <!DOCTYPE html>
 <html lang="en">
 <head>
