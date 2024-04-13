@@ -38,7 +38,7 @@
                         <a class="nav-link mx-lg-2 active" aria-current="page" href="#sialci">Servicios</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link mx-lg-2" href="#productos">Envio</a>
+                        <a class="nav-link mx-lg-2" href="Usuario.php">Envio</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link mx-lg-2" href="#contacto">Editar Informacion</a>
