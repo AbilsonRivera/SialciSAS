@@ -83,7 +83,6 @@
       <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
       <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
       <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
-      <!-- Agrega botones indicadores para las imágenes adicionales -->
       <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="3" aria-label="Slide 4"></button>
       <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="4" aria-label="Slide 5"></button>
       <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="5" aria-label="Slide 6"></button>
@@ -157,7 +156,7 @@
         <p>¡Escanea el código QR para contactarnos por WhatsApp!</p>
     </div>
     <div class="qr">
-        <img id="contacto" src="img/qr.jpg" alt="Código QR de WhatsApp">
+        <img id="contacto" src="img/qr1.jpg" alt="Código QR de WhatsApp">
     </div>
 </div>
 
