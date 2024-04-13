@@ -32,10 +32,10 @@
             <div class="offcanvas-body">
                 <ul class="navbar-nav justify-content-center flex-grow-1 pe-3">
                     <li class="nav-item">
-                        <a class="nav-link mx-lg-2 active" aria-current="page" href="#sialci">Servicios</a>
+                        <a class="nav-link mx-lg-2 " aria-current="page" href="#sialci">Servicios</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link mx-lg-2" href="#productos">Envio</a>
+                        <a class="nav-link mx-lg-2 active" href="#productos">Envio</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link mx-lg-2" href="#contacto">Editar Informacion</a>
