@@ -129,7 +129,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             <a class="nav-link mx-lg-2 active" href="#productos">Envio</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link mx-lg-2" href="#contacto">Editar Informacion</a>
+                            <a class="nav-link mx-lg-2" href="EditarInformacion.php">Editar Informacion</a>
                         </li>
                     </ul>
                 </div>

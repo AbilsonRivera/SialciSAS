@@ -1,4 +1,8 @@
-<?php
+<?php 
+session_start();
+if (empty($_SESSION["id"])){
+    header("location: logueo.php");
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -14,9 +18,6 @@
 <body>
     <form class="form" action="#" name="sialcis" method="post">
         <p class="title">Editar Información </p>
-        <?php
-
-        ?>
         <div class="flex">
             <label>
                 <input class="input" type="text" name="Nombre" placeholder="" required="">
