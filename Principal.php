@@ -18,7 +18,7 @@
         <i class="fa fa-whatsapp icono" style="font-size: 35px;"></i>
     </a>
     <!-- video -->
-    <video muted autoplay loop playsinline src="img/coffe.mp4" class="video" id="sialci"></video>
+    <video muted autoplay loop playsinline src="img/portada.mp4" class="video" id="sialci"></video>
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg fixed-top">
     <div class="container-fluid">
@@ -103,28 +103,28 @@
         </div>
       </div>
       <div class="carousel-item">
-        <img src="img/cafe.jpg" class="d-block w-100" alt="...">
+        <img src="img/pitalito.jpg" class="d-block w-100" alt="...">
         <div class="carousel-caption d-none d-md-block">
           <h5>Third slide label</h5>
           <p>Some representative placeholder content for the third slide.</p>
         </div>
       </div>
       <div class="carousel-item">
-        <img src="img/Cafesub.jpeg" class="d-block w-100" alt="...">
+        <img src="img/plata.jpg" class="d-block w-100" alt="...">
         <div class="carousel-caption d-none d-md-block">
           <h5>Fourth slide label</h5>
           <p>Some representative placeholder content for the fourth slide.</p>
         </div>
       </div>
       <div class="carousel-item">
-        <img src="img/valdez.jpg" class="d-block w-100" alt="...">
+        <img src="img/san.jpg" class="d-block w-100" alt="...">
         <div class="carousel-caption d-none d-md-block">
           <h5>Fifth slide label</h5>
           <p>Some representative placeholder content for the fifth slide.</p>
         </div>
       </div>
       <div class="carousel-item">
-        <img src="img/bolso2.jpg" class="d-block w-100" alt="...">
+        <img src="img/santa.jpg" class="d-block w-100" alt="...">
         <div class="carousel-caption d-none d-md-block">
           <h5>Sixth slide label</h5>
           <p>Some representative placeholder content for the sixth slide.</p>
@@ -174,66 +174,57 @@
                             <h5 class="text-uppercase mb-4 font-weight-bold text-primary">Dejanos</h5>
                             <hr class="mb-4">
                             <p>
-                                <a href="#" class="text-dark">Tu Cuenta</a>
+                                <a href="#" class="text-dark">Tus Datos</a>
                             </p>
                             <p>
                                 <a href="#" class="text-dark">Tus Ordenes</a>
                             </p>
                             <p>
-                            <a href="#" class="text-dark">Manejo de Cuenta</a>
-                            </p>
-                            <p>
-                            <a href="#" class="text-dark">Ayuda</a>
+                            <a href="#" class="text-dark">Manejo de tus pedidos</a>
                             </p>
                         </div>
                         <div class="col-md-2 col-lg-2 col-lx-2 mx-auto mt-3">
-                            <h5 class="text-uppercase mb-4 font-weight-bold text-primary">Has dinero</h5>
+                            <h5 class="text-uppercase mb-4 font-weight-bold text-primary">Direccion</h5>
                             <hr class="mb-4">
                             <p>
-                                <a href="#" class="text-dark">Tu Cuenta</a>
+                                <a href="#" class="text-dark">Colombia</a>
                             </p>
                             <p>
-                                <a href="#" class="text-dark">Tus Ordenes</a>
+                                <a href="#" class="text-dark">Neiva-Huila</a>
                             </p>
                             <p>
-                            <a href="#" class="text-dark">Manejo de Cuenta</a>
-                            </p>
-                            <p>
-                            <a href="#" class="text-dark">Ayuda</a>
+                            <a href="#" class="text-dark">Calle 13a # 35 - 11, neiva</a>
                             </p>
                         </div>
                         <div class="col-md-2 col-lg-2 col-lx-2 mx-auto mt-3">
                             <h5 class="text-uppercase mb-4 font-weight-bold text-primary">Contacto</h5>
                             <hr class="mb-4">
                             <p>
-                                <li class="fas fa-home me-3"></li>Mexico,ciudad 255
+                                <li class="fas fa-home me-3"></li>Colombia, Huila +57
                             </p>
                             <p>
-                                <li class="fas fa-envelope me-3"></li>amaf@gmail.com
+                                <li class="fas fa-envelope me-3"></li>andres.morales@sialcisas.com
                             </p>
                             <p>
-                                <li class="fas fa-phone me-3"></li>32056946457
+                                <li class="fas fa-phone me-3"></li>3204146958
                             </p>
                             <p>
-                                <li class="fas fa-print me-3"></li>+5732056946457
+                                <li class="fas fa-print me-3"></li> +573204146958
                             </p>
                         </div>
                         <hr class="mb-4">
                         <div class="text-center mb-2">
                             <p>
                                 Copyright Todos los derechos reservados
-                                <a href="#">
-                                    <strong class="text-primary" >test</strong>
-                                </a>
                             </p>
                         </div>
                         <div class="text-center">
                             <ul class="list-unstyled list-inline">
                                 <li class="list-inline-item">
-                                    <a href="#" class="text-dark"><i class="fab fa-2x fa-facebook"></i></a>
+                                    <a href="https://www.facebook.com/SIALCI?mibextid=ZbWKwL" class="text-dark"><i class="fab fa-2x fa-facebook"></i></a>
                                 </li>
                                 <li class="list-inline-item">
-                                    <a href="#" class="text-dark"><i class="fab fa-2x fa-whatsapp"></i></a>
+                                    <a href="https://wa.me/573204146958?text=Hola" class="text-dark"><i class="fab fa-2x fa-whatsapp"></i></a>
                                 </li>
                             </ul>
                         </div>
