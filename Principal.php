@@ -78,69 +78,69 @@
     <h1 id="productos" ><span>Origenes de nuestros Productos</span></h1>
 
     <div class="d-flex justify-content-center">
-  <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000" style="max-width: 1000px;">
-    <div class="carousel-indicators">
-      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
-      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
-      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="3" aria-label="Slide 4"></button>
-      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="4" aria-label="Slide 5"></button>
-      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="5" aria-label="Slide 6"></button>
+        <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000" style="max-width: 1000px;">
+            <div class="carousel-indicators">
+                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="3" aria-label="Slide 4"></button>
+                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="4" aria-label="Slide 5"></button>
+                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="5" aria-label="Slide 6"></button>
+            </div>
+            <div class="carousel-inner">
+                    <div class="carousel-item active">
+                            <img src="img/acevedo.jpg" class="d-block w-100 img-responsive" alt="..." >
+                        <div class="carousel-caption d-sm-block">
+                            <h5>Acevedo-Huila</h5>
+                            <p>Altura:	1.348 m s. n. m.</p>
+                        </div>
+                    </div>
+                <div class="carousel-item">
+                        <img src="img/garzon.jpg" class="d-block w-100 img-responsive" alt="...">
+                    <div class="carousel-caption d-sm-block">
+                        <h5>Garzon-Huila</h5>
+                        <p>Altura: 1.355 m s. n. m.</p>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                        <img src="img/pitalito.jpg" class="d-block w-100 img-responsive" alt="...">
+                    <div class="carousel-caption d-sm-block">
+                        <h5>Pitalito-Huila</h5>
+                        <p>Altura: 1.318 m s. n. m.</p>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                        <img src="img/plata.jpg" class="d-block w-100 img-responsive" alt="...">
+                    <div class="carousel-caption d-sm-block">
+                        <h5>La Plata-Huila</h5>
+                        <p>Altura: 1.050 m s. n. m.</p>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                        <img src="img/san.jpg" class="d-block w-100 img-responsive" alt="...">
+                    <div class="carousel-caption d-sm-block">
+                        <h5>San Agustin-Huila</h5>
+                        <p>Altura: 1.730 m s. n. m.</p>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                        <img src="img/santa.jpg" class="d-block w-100 img-responsive" alt="...">
+                    <div class="carousel-caption d-sm-block">
+                        <h5>La Santa Maria-Huila</h5>
+                        <p>Altura: 1.320 m s. n. m.</p>
+                    </div>
+                </div>
+            </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+        </div>
     </div>
-    <div class="carousel-inner">
-      <div class="carousel-item active">
-        <img src="img/acevedo.jpg" class="d-block w-100 img-responsive" alt="..." >
-        <div class="carousel-caption d-sm-block">
-          <h5>Acevedo-Huila</h5>
-          <p>Altura:	1.348 m s. n. m.</p>
-        </div>
-      </div>
-      <div class="carousel-item">
-        <img src="img/garzon.jpg" class="d-block w-100 img-responsive" alt="...">
-        <div class="carousel-caption d-sm-block">
-          <h5>Garzon-Huila</h5>
-          <p>Altura: 1.355 m s. n. m.</p>
-        </div>
-      </div>
-      <div class="carousel-item">
-        <img src="img/pitalito.jpg" class="d-block w-100 img-responsive" alt="...">
-        <div class="carousel-caption d-sm-block">
-          <h5>Pitalito-Huila</h5>
-          <p>Altura: 1.318 m s. n. m.</p>
-        </div>
-      </div>
-      <div class="carousel-item">
-        <img src="img/plata.jpg" class="d-block w-100 img-responsive" alt="...">
-        <div class="carousel-caption d-sm-block">
-          <h5>La Plata-Huila</h5>
-          <p>Altura: 1.050 m s. n. m.</p>
-        </div>
-      </div>
-      <div class="carousel-item">
-        <img src="img/san.jpg" class="d-block w-100 img-responsive" alt="...">
-        <div class="carousel-caption d-sm-block">
-          <h5>San Agustin-Huila</h5>
-          <p>Altura: 1.730 m s. n. m.</p>
-        </div>
-      </div>
-      <div class="carousel-item">
-        <img src="img/santa.jpg" class="d-block w-100 img-responsive" alt="...">
-        <div class="carousel-caption d-sm-block">
-          <h5>La Santa Maria-Huila</h5>
-          <p>Altura: 1.320 m s. n. m.</p>
-        </div>
-      </div>
-    </div>
-    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Previous</span>
-    </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Next</span>
-    </button>
-  </div>
-</div>
 
 
 
