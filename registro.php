@@ -2,7 +2,7 @@
 $servidor = "localhost";
 $usuario = "root";
 $clave = "";
-$baseDeDatos = "sialcis";
+$baseDeDatos = "sialci";
 
 $enlace = mysqli_connect($servidor, $usuario, $clave, $baseDeDatos);
 

@@ -121,18 +121,27 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                 </div>
                 <div class="offcanvas-body">
-                    <ul class="navbar-nav justify-content-center flex-grow-1 pe-3">
-                        <li class="nav-item">
-                            <a class="nav-link mx-lg-2 " aria-current="page" href="Servicios.php">Servicios</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link mx-lg-2 active" href="#productos">Envio</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link mx-lg-2" href="EditarInformacion.php">Editar Informacion</a>
-                        </li>
-                    </ul>
-                </div>
+                <ul class="navbar-nav justify-content-center flex-grow-1 pe-3">
+                    <li class="nav-item">
+                        <a class="nav-link mx-lg-2 active" aria-current="page" href="Principal2.php">SIALCI SAS</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link mx-lg-2" href="Principal2.php">Productos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link mx-lg-2" href="Servicios.php">Servicios</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link mx-lg-2" href="#producto">Envio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link mx-lg-2" href="EditarInformacion.php">Informacion Personal</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link mx-lg-2" href="Principal2.php">Contacto</a>
+                    </li>
+                </ul>
+            </div>
             </div>
             <a href="controlador/controlador_cerrar_session.php" class="login-button">cerrar sesion</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
