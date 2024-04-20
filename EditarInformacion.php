@@ -113,7 +113,7 @@ $usuario = mysqli_fetch_assoc($usuario_result);
         </label>
 
         <label>
-            <input class="input" type="password" name="Contraseña" required="">
+            <input class="input" type="password" name="Contraseña">
             <span>Nueva Contraseña</span>
         </label>
     </div>

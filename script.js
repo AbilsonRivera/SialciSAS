@@ -18,4 +18,8 @@ $(document).ready(function() {
     });
 });
 
+window.onload = function() {
+    window.scrollTo(0, 0); // Desplaza la ventana hacia la parte superior cuando la página se carga
+}
+
 

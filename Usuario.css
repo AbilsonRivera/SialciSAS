@@ -1,13 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap');
 
-*{
+* {
     font-family: "Noto Sans", sans-serif;
     margin: 0;
     padding: 0;
     line-height: 1.2;
 }
 
-body{
+body {
     display: flex;
     flex-direction: column;
     height: 100vh;
@@ -15,18 +15,18 @@ body{
     overflow-x: hidden;
 }
 
-.navbar{
+.navbar {
     background-color: #fff;
     color: #000;
-} 
+}
 
 .navbar-brand img {
-    width: 50px; 
-    height: 50px; 
+    width: 50px;
+    height: 50px;
     border-radius: 20%;
 }
 
-.login-button{
+.login-button {
     background-color: #FA5229;
     color: white;
     font-size: 14px;
@@ -36,16 +36,17 @@ body{
     transition: 0.3s background-color;
 }
 
-.login-button:hover{
+.login-button:hover {
     background-color: #00b383;
 }
 
-.navbar-toggler{
+.navbar-toggler {
     border: none;
     font-size: 1.25rem;
 }
 
-.navbar-toggler:focus, .btn-close:focus {
+.navbar-toggler:focus,
+.btn-close:focus {
     box-shadow: none;
     outline: none;
 }
@@ -56,12 +57,13 @@ body{
     position: relative;
 }
 
-.nav-link:hover, .nav-link.active {
+.nav-link:hover,
+.nav-link.active {
     color: #000;
 }
 
-@media (min-width: 991px){
-    body{
+@media (min-width: 991px) {
+    body {
         overflow-x: hidden;
     }
 
@@ -77,8 +79,8 @@ body{
         visibility: hidden;
         transition: 0.3s ease-in-out;
     }
-    
-    .nav-link:hover::before{
+
+    .nav-link:hover::before {
         width: 100%;
         visibility: visible;
     }
@@ -100,7 +102,7 @@ body{
     display: flex;
     align-items: center;
     justify-content: center;
-    text-decoration: none; 
+    text-decoration: none;
 }
 
 .btn-wsp:hover {
@@ -115,7 +117,7 @@ body{
 
 
 @media only screen and (min-width:320px) and (max-width:768px) {
-    body{
+    body {
         overflow-x: hidden;
     }
 
@@ -289,19 +291,27 @@ form .buttons button {
 
 }
 
-@media (max-width: 750px) {
-    .container form {
-        overflow-y: scroll;
+@media only screen and (max-width: 768px) {
+    .formulario {
+        margin-top: 570px;
+        /* Reducir el margen superior del formulario en dispositivos móviles */
     }
 
-    .container form::-webkit-scrollbar {
-        display: none;
+    .container {
+        margin-top: 0px;
+        /* Ajustar el margen superior del contenedor del formulario */
+        width: 90%;
+        /* Reducir el ancho del contenedor del formulario en dispositivos móviles */
     }
 
-    form .fields .input-field {
-        width: calc(100% / 2 - 15px);
+    /* Ajustar el ancho de los campos de entrada en dispositivos móviles */
+    .container form .fields .input-field {
+        width: 100%;
     }
+
+    /* Otros ajustes de diseño si es necesario */
 }
+
 
 @media (max-width: 550px) {
     form .fields .input-field {
@@ -319,16 +329,20 @@ form .buttons button {
 .input-field.pesos label,
 .input-field.pesos input[type="number"] {
     width: 100px;
-    margin-left: 0; /* Elimina el margen izquierdo negativo */
+    margin-left: 0;
+    /* Elimina el margen izquierdo negativo */
 }
 
 .input-field.pesos .input-group {
-    display: flex; /* Usa Flexbox */
-    align-items: center; /* Alinea los elementos verticalmente */
+    display: flex;
+    /* Usa Flexbox */
+    align-items: center;
+    /* Alinea los elementos verticalmente */
 }
 
 .input-field.pesos .input-group input[type="number"] {
-    margin-right: 10px; /* Ajusta el espacio entre los campos de entrada y las etiquetas */
+    margin-right: 10px;
+    /* Ajusta el espacio entre los campos de entrada y las etiquetas */
 }
 
 .input-field.pesos select {
@@ -350,20 +364,24 @@ form .buttons button {
     color: #333;
     /* Ajusta el color del texto según sea necesario */
     background-color: #fff;
-    }
+}
 
 .input-field.dimensiones label,
 .input-field.dimensiones .input-group {
-    margin-left: 0; /* Elimina el margen izquierdo negativo */
+    margin-left: 0;
+    /* Elimina el margen izquierdo negativo */
 }
 
 .input-field.dimensiones .input-group {
-    display: flex; /* Usa Flexbox */
-    align-items: center; /* Alinea los elementos verticalmente */
+    display: flex;
+    /* Usa Flexbox */
+    align-items: center;
+    /* Alinea los elementos verticalmente */
 }
 
 .input-field.dimensiones .input-group input[type="number"] {
-    margin-right: -1px; /* Ajusta el espacio entre los campos de entrada y las etiquetas */
+    margin-right: -1px;
+    /* Ajusta el espacio entre los campos de entrada y las etiquetas */
 }
 
 
@@ -371,5 +389,3 @@ form .buttons button {
 .details.addres {
     margin-top: 100px;
 }
-
-
