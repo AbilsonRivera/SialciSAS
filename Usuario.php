@@ -9,6 +9,8 @@ if (empty($_SESSION["id"])) {
 
 $id_usuario = $_SESSION["id"];
 
+$array_ids_pedidos = array();
+
 $sql = $conexion->query("SELECT * FROM usuarios WHERE Id_Usuario = $id_usuario");
 
 if ($datos = $sql->fetch_object()) {
@@ -58,6 +60,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $sql_insert_des = "INSERT INTO pedidos (Id_Usuario, Direccion_Remi, Telefono_Remi, NombreEmprese_Remi, Id_Mercancia, Fecha)
                        VALUES ('$id_usuario', '$direccion_remi', '$telefono_remi', '$nombre_empresa_remi', '$id_mercancia', NOW())";
         $conexion->query($sql_insert_des);
+
+        // Obtener el ID del pedido insertado
+        $id_pedido = $conexion->insert_id;
+
+        // Almacenar el ID del pedido en el array
+        $array_ids_pedidos[] = $id_pedido;
     }
 
     
@@ -99,12 +107,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     } else {
         echo "Datos enviados correctamente a Formspree";
     }
-
+    
     // Cerrar CURL
     curl_close($curl);
 
-    // Redirigir después de enviar el formulario
-    header("location: Usuario.php");
+    // Mostrar un mensaje de éxito y redirigir
+    echo "<script>alert('Se han enviado sus pedidos correctamente (Guarde los siguientes numeros de pedidos). Sus números de pedido son: " . implode(", ", $array_ids_pedidos) . "'); window.location.href='Usuario.php';</script>";
     exit;
 }
 ?>
@@ -197,7 +205,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
                         <div class="input-field">
                             <label>Apellidos:</label>
-                            <input type="text" name="nombre" placeholder="Ingrese su apellido"
+                            <input type="text" name="apellidos" placeholder="Ingrese su apellido"
                                 pattern="[A-Za-záéíóúÁÉÍÓÚñÑ\s]+" title="Por favor, ingrese solo letras" required
                                 value="<?php echo $apellidos; ?>">
                         </div>
