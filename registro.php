@@ -16,7 +16,6 @@ if (isset($_POST['Registro'])) {
     if ($Contraseña !== $confirmarContraseña) {
         $errorMessage = "Las contraseñas no coinciden. Por favor, inténtelo de nuevo.";
     } else {
-        // Verificar si el correo ya está en uso
         $consultaCorreo = "SELECT * FROM login WHERE Correo = '$Correo'";
         $resultado = mysqli_query($enlace, $consultaCorreo);
         if (!$resultado) {

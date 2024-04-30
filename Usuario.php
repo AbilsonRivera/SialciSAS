@@ -110,13 +110,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     
     // Cerrar CURL
     curl_close($curl);
-
-    // Mostrar un mensaje de éxito y redirigir
-    echo "<script>alert('Se han enviado sus pedidos correctamente (Guarde los siguientes numeros de pedidos). Sus números de pedido son: " . implode(", ", $array_ids_pedidos) . "'); window.location.href='Usuario.php';</script>";
-    exit;
 }
 ?>
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -133,6 +128,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
         integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
         crossorigin="anonymous"></script>
@@ -190,151 +186,177 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <section class="formulario">
         <div class="container" id="formularioContainer">
             <header>Registro de envío</header>
-            <form action="" method="POST" />
-            <div class="form first">
-                <div class=" details personal">
-                    <span class="title">Datos del remitente</span>
+            <form action="" method="POST">
+                <div class="form first">
+                    <div class=" details personal">
+                        <span class="title">Datos del remitente</span>
 
-                    <div class="fields">
-                        <div class="input-field">
-                            <label>Nombre(s):</label>
-                            <input type="text" name="nombre" placeholder="Ingrese su nombre"
-                                pattern="[A-Za-záéíóúÁÉÍÓÚñÑ\s]+" title="Por favor, ingrese solo letras" required
-                                value="<?php echo $nombre; ?>">
+                        <div class="fields">
+                            <div class="input-field">
+                                <label>Nombre(s):</label>
+                                <input type="text" name="nombre" placeholder="Ingrese su nombre"
+                                    pattern="[A-Za-záéíóúÁÉÍÓÚñÑ\s]+" title="Por favor, ingrese solo letras" required
+                                    value="<?php echo $nombre; ?>">
+                            </div>
+
+                            <div class="input-field">
+                                <label>Apellidos:</label>
+                                <input type="text" name="apellidos" placeholder="Ingrese su apellido"
+                                    pattern="[A-Za-záéíóúÁÉÍÓÚñÑ\s]+" title="Por favor, ingrese solo letras" required
+                                    value="<?php echo $apellidos; ?>">
+                            </div>
+
+                            <div class="input-field">
+                                <label>Direccion</label>
+                                <input type="text" name="Direccion_Remi" placeholder="ingrese su Direccion" required>
+                            </div>
+
+                            <div class="input-field">
+                                <label>Correo</label>
+                                <input type="email" name="correo" placeholder="Ingrese su correo " required
+                                    value="<?php echo $correo; ?>">
+                            </div>
+
+                            <div class="input-field">
+                                <label>Telefono</label>
+                                <input type="Number" name="Telefono_Remi"
+                                    placeholder="Ingrese su numero de telefono" required>
+                            </div>
+
+                            <div class="input-field">
+                                <label>Nombre de la empresa (si aplica):</label>
+                                <input type="text" name="NombreEmprese_Remi" placeholder="Ingrese nombre de la empresa">
+                            </div>
+
                         </div>
-
-                        <div class="input-field">
-                            <label>Apellidos:</label>
-                            <input type="text" name="apellidos" placeholder="Ingrese su apellido"
-                                pattern="[A-Za-záéíóúÁÉÍÓÚñÑ\s]+" title="Por favor, ingrese solo letras" required
-                                value="<?php echo $apellidos; ?>">
-                        </div>
-
-                        <div class="input-field">
-                            <label>Direccion</label>
-                            <input type="text" name="Direccion_Remi" placeholder="ingrese su Direccion" required>
-                        </div>
-
-                        <div class="input-field">
-                            <label>Correo</label>
-                            <input type="email" name="correo" placeholder="Ingrese su correo " required
-                                value="<?php echo $correo; ?>">
-                        </div>
-
-                        <div class="input-field">
-                            <label>Telefono</label>
-                            <input type="Number" name="Telefono_Remi" placeholder="Ingrese su numero de telefono"
-                                required>
-                        </div>
-
-                        <div class="input-field">
-                            <label>Nombre de la empresa (si aplica):</label>
-                            <input type="text" name="NombreEmprese_Remi" placeholder="Ingrese nombre de la empresa">
-                        </div>
-
                     </div>
-                </div>
 
-                <div class="details ID">
-                    <span class="title">Mercancia</span>
-                    <div class="fields">
-                        <div class="input-field">
-                            <label>Paquetes</label>
-                            <input type="number" name="paquetes[]" placeholder="#-?" required>
-                        </div>
+                    <div class="details ID">
+                        <span class="title">Mercancia</span>
+                        <div class="fields">
+                            <div class="input-field">
+                                <label>Paquetes</label>
+                                <input type="number" name="paquetes[]" placeholder="#-?" required>
+                            </div>
 
-                        <div class="input-field pesos">
-                            <label>Peso</label>
-                            <div class="input-group">
-                                <input type="number" name="peso[]" placeholder="#" required>
-                                <select class="">
-                                    <option value="lb">lb</option>
-                                    <option value="kg">kg</option>
-                                </select>
+                            <div class="input-field pesos">
+                                <label>Peso</label>
+                                <div class="input-group">
+                                    <input type="number" name="peso[]" placeholder="#" required>
+                                    <select class="">
+                                        <option value="lb">lb</option>
+                                        <option value="kg">kg</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="input-field dimensiones">
+                                <label>Dimensiones (LARGO X ANCHO X ALTURA EN CM)</label>
+                                <div class="input-group">
+                                    <input type="number" name="Largo[]" class="form-control auto-width" placeholder="L"
+                                        required>
+                                    <span style="margin: 0px 4px;">x</span>
+                                    <input type="number" name="Ancho[]" class="form-control auto-width" placeholder="A"
+                                        required>
+                                    <span style="margin: 0px 4px;">x</span>
+                                    <input type="number" name="Alto[]" class="form-control auto-width" placeholder="A"
+                                        required>
+                                    <span style="margin: 0px 4px;">CM</span>
+                                </div>
+                            </div>
+
+                            <div class="input-field">
+                                <label>Valor Mercancia</label>
+                                <input type="number" name="Valor_mercancia[]" placeholder="#-?" required>
                             </div>
                         </div>
+                        <a href="#" class="add-more">Agregar más</a>
+                    </div>
 
-                        <div class="input-field dimensiones">
-                            <label>Dimensiones (LARGO X ANCHO X ALTURA EN CM)</label>
-                            <div class="input-group">
-                                <input type="number" name="Largo[]" class="form-control auto-width" placeholder="L"
-                                    required>
-                                <span style="margin: 0px 4px;">x</span>
-                                <input type="number" name="Ancho[]" class="form-control auto-width" placeholder="A"
-                                    required>
-                                <span style="margin: 0px 4px;">x</span>
-                                <input type="number" name="Alto[]" class="form-control auto-width" placeholder="A"
-                                    required>
-                                <span style="margin: 0px 4px;">CM</span>
+                    <div class="details addres">
+                        <span class="title">Datos del destinatario</span>
+
+                        <div class="fields">
+                            <div class="input-field">
+                                <label>Nombre Completo</label>
+                                <input type="text" name="Nombre_Des" placeholder="Ingrese Nombre" required>
                             </div>
-                        </div>
 
-                        <div class="input-field">
-                            <label>Valor Mercancia</label>
-                            <input type="number" name="Valor_mercancia[]" placeholder="#-?" required>
+                            <div class="input-field">
+                                <label>Nombre de la empresa (si aplica):</label>
+                                <input type="text" name="NombreEmpresa_Des"
+                                    placeholder="Ingrese el nombre de la empresa">
+                            </div>
+
+                            <div class="input-field">
+                                <label>Pais</label>
+                                <input type="text" name="Pais_Des" placeholder="Ingrese el pais" required>
+                            </div>
+
+                            <div class="input-field">
+                                <label>Ciudad</label>
+                                <input type="text" name="Ciudad" placeholder="Ingrese nombre de la ciudad" required>
+                            </div>
+
+                            <div class="input-field">
+                                <label>Codigo postal</label>
+                                <input type="number" name="Codigo_postal" placeholder="Ingrese codigo postal" required>
+                            </div>
+
+                            <div class="input-field">
+                                <label>Correo</label>
+                                <input type="email" name="Email_Des" placeholder="Ingrese el correo" required>
+                            </div>
+
+                            <div class="input-field">
+                                <label>Numero del telefono</label>
+                                <input type="number" name="Telefono" placeholder="Ingrese el numero de telefono"
+                                    required>
+                            </div>
+
                         </div>
                     </div>
-                    <a href="#" class="add-more">Agregar más</a>
+                    <button class="nextBtn">
+                        <span class="btnText" type="submit">Enviar</span>
+                    </button>
+
+
                 </div>
-
-                <div class="details addres">
-                    <span class="title">Datos del destinatario</span>
-
-                    <div class="fields">
-                        <div class="input-field">
-                            <label>Nombre Completo</label>
-                            <input type="text" name="Nombre_Des" placeholder="Ingrese Nombre" required>
-                        </div>
-
-                        <div class="input-field">
-                            <label>Nombre de la empresa (si aplica):</label>
-                            <input type="text" name="NombreEmpresa_Des" placeholder="Ingrese el nombre de la empresa">
-                        </div>
-
-                        <div class="input-field">
-                            <label>Pais</label>
-                            <input type="text" name="Pais_Des" placeholder="Ingrese el pais" required>
-                        </div>
-
-                        <div class="input-field">
-                            <label>Ciudad</label>
-                            <input type="text" name="Ciudad" placeholder="Ingrese nombre de la ciudad" required>
-                        </div>
-
-                        <div class="input-field">
-                            <label>Codigo postal</label>
-                            <input type="number" name="Codigo_postal" placeholder="Ingrese codigo postal" required>
-                        </div>
-
-                        <div class="input-field">
-                            <label>Correo</label>
-                            <input type="email" name="Email_Des" placeholder="Ingrese el correo" required>
-                        </div>
-
-                        <div class="input-field">
-                            <label>Numero del telefono</label>
-                            <input type="number" name="Telefono" placeholder="Ingrese el numero de telefono" required>
-                        </div>
-
-                    </div>
-                </div>
-                <button class="nextBtn">
-                    <span class="btnText" type="submit">Enviar</span>
-                </button>
-
-
-            </div>
         </div>
 
         </form>
         </div>
     </section>
     
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+       <!-- Modal Registro Exitoso -->
+       <div class="modal fade" id="registroExitosoModal" tabindex="-1" aria-labelledby="registroExitosoModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="registroExitosoModalLabel">Registro Exitoso</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>Se han enviado sus pedidos correctamente. <?php echo implode(", ", $array_ids_pedidos); ?></p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Aceptar</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-        crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            // Mostrar el modal de registro exitoso después de enviar el formulario
+            <?php if ($_SERVER["REQUEST_METHOD"] == "POST") { ?>
+                $('#registroExitosoModal').modal('show');
+            <?php } ?>
+        });
+    </script>
+
     <script src="script.js"></script>
 
 </body>
