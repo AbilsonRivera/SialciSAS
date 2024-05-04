@@ -11,7 +11,7 @@
 <body class="text-center">
     
 <main class="form-signin w-100 m-auto">
-  <form action="recuperarclave.php" method="POST">
+  <form action="cambiarlo" method="POST">
     <h1>Recuperar Contraseña </h1>
     <div class="form-floating my-3">
       <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com" name="email">
