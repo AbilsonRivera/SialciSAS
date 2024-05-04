@@ -1,6 +1,6 @@
 <?php
 session_start();
-include 'modelo/conexion.php';
+include '../modelo/conexion.php';
 
 if (empty($_SESSION["id"])) {
     header("location: logueo.php");
@@ -120,7 +120,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sialci.SAS</title>
-    <link rel="icon" href="img/icono.jpg">
+    <link rel="icon" href="../img/icono.jpg">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -134,7 +134,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         crossorigin="anonymous"></script>
     <!--Icon-Font-->
     <script src="https://kit.fontawesome.com/eb496ab1a0.js" crossorigin="anonymous"></script>
-    <link href="Usuario.css" rel="stylesheet">
+    <link href="../CSS/Usuario.css" rel="stylesheet">
 </head>
 
 <body class=" fondo">
@@ -145,7 +145,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg fixed-top">
         <div class="container-fluid">
-            <a class="navbar-brand me-auto" href="#"> <img src="img/icono.jpg" alt="icono de la pagina"> </a>
+            <a class="navbar-brand me-auto" href="#"> <img src="../img/icono.jpg" alt="icono de la pagina"> </a>
             <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar"
                 aria-labelledby="offcanvasNavbarLabel">
                 <div class="offcanvas-header">
@@ -357,7 +357,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         });
     </script>
 
-    <script src="script.js"></script>
+    <script src="../JS/script.js"></script>
 
 </body>
 

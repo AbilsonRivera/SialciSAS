@@ -5,9 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Logueo</title>
-    <link rel="stylesheet" href="logueo.css">
+    <link rel="stylesheet" href="../CSS/logueo.css">
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-    <link rel="icon" href="img/icono.jpg">
+    <link rel="icon" href="../img/icono.jpg">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <style>
@@ -65,8 +65,8 @@
 
 <body>
     <?php
-    include "modelo/conexion.php";
-    include "controlador/controlador_login.php";
+    include "../modelo/conexion.php";
+    include "../controlador/controlador_login.php";
     ?>
     <div class="container">
         <div class="heading">Inicio de sesión</div>
@@ -75,7 +75,7 @@
 
             <input placeholder="E-mail" id="email" name="email" type="email" class="input" required="" />
             <input placeholder="Contraseña" id="password" name="password" type="password" class="input" required="" />
-            <span class="forgot-password"><a href="#">¿Olvidaste tu contraseña?</a></span>
+            <span class="forgot-password"><a href="restablecer.php">¿Olvidaste tu contraseña?</a></span>
             <input class="btn btn-primary login-button" type="submit" name="InicioSesion" value="Iniciar sesión">
 
         </form>
@@ -93,6 +93,30 @@
         </div>
         <span class="agreement"><a href="registro.php">¿No tienes cuenta? Regístrate</a></span>
     </div>
+
+    <?php 
+    if(isset($_GET['message'])){
+     
+    ?>
+      <div class="alert alert-primary" role="alert">
+        <?php 
+        switch ($_GET['message']) {
+          case 'ok':
+            echo 'Por favor, revisa tu correo';
+            break;
+          case 'success_password':
+            echo 'Inicia sesión con tu nueva contraseña';
+            break;
+            
+          default:
+            echo 'Algo salió mal, intenta de nuevo';
+            break;
+        }
+        ?>
+      </div>
+    <?php
+    }
+    ?>
 
     <!-- Modal de error -->
     <div class="modal fade" id="errorModal" tabindex="-1" aria-labelledby="errorModalLabel" aria-hidden="true">

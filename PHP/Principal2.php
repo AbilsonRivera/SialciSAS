@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SIALCI.SAS</title>
-    <link rel="icon" href="img/icono.jpg" >
-    <link rel="stylesheet" href="principal2.css">
+    <link rel="icon" href="../img/icono.jpg" >
+    <link rel="stylesheet" href="../CSS/principal2.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
@@ -18,11 +18,11 @@
         <i class="fa fa-whatsapp icono" style="font-size: 35px;"></i>
     </a>
     <!-- video -->
-    <video muted autoplay loop playsinline src="img/portada.mp4" class="video" id="sialci"></video>
+    <video muted autoplay loop playsinline src="../img/portada.mp4" class="video" id="sialci"></video>
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg fixed-top">
     <div class="container-fluid">
-        <a class="navbar-brand me-auto" href="#"> <img src="img/icono.jpg" alt="icono de la pagina"  > </a>
+        <a class="navbar-brand me-auto" href="#"> <img src="../img/icono.jpg" alt="icono de la pagina"  > </a>
         <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
             <div class="offcanvas-header">
                 <h5 class="offcanvas-title" id="offcanvasNavbarLabel">SIALCI-SAS</h5>
@@ -51,7 +51,7 @@
                 </ul>
             </div>
         </div>
-            <a href="controlador/controlador_cerrar_session.php" class="login-button" >Cerrar sesion</a>
+            <a href="../controlador/controlador_cerrar_session.php" class="login-button" >Cerrar sesion</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -64,13 +64,13 @@
         <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000" style="max-width: 1000px;">
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                    <img src="img/bolso2.jpg" class="d-block w-100" alt="...">
+                    <img src="../img/bolso2.jpg" class="d-block w-100" alt="...">
                 </div>
                 <div class="carousel-item">
-                    <img src="img/valdez.jpg" class="d-block w-100" alt="...">
+                    <img src="../img/valdez.jpg" class="d-block w-100" alt="...">
                 </div>
                 <div class="carousel-item">
-                    <img src="img/cafe.jpg" class="d-block w-100" alt="...">
+                    <img src="../img/cafe.jpg" class="d-block w-100" alt="...">
                 </div>
             </div>
             <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
@@ -98,42 +98,42 @@
             </div>
             <div class="carousel-inner">
                     <div class="carousel-item active">
-                            <img src="img/acevedo.jpg" class="d-block w-100 img-responsive" alt="..." >
+                            <img src="../img/acevedo.jpg" class="d-block w-100 img-responsive" alt="..." >
                         <div class="carousel-caption d-sm-block">
                             <h5>Acevedo-Huila</h5>
                             <p>Altura:	1.348 m s. n. m.</p>
                         </div>
                     </div>
                 <div class="carousel-item">
-                        <img src="img/garzon.jpg" class="d-block w-100 img-responsive" alt="...">
+                        <img src="../img/garzon.jpg" class="d-block w-100 img-responsive" alt="...">
                     <div class="carousel-caption d-sm-block">
                         <h5>Garzon-Huila</h5>
                         <p>Altura: 1.355 m s. n. m.</p>
                     </div>
                 </div>
                 <div class="carousel-item">
-                        <img src="img/pitalito.jpg" class="d-block w-100 img-responsive" alt="...">
+                        <img src="../img/pitalito.jpg" class="d-block w-100 img-responsive" alt="...">
                     <div class="carousel-caption d-sm-block">
                         <h5>Pitalito-Huila</h5>
                         <p>Altura: 1.318 m s. n. m.</p>
                     </div>
                 </div>
                 <div class="carousel-item">
-                        <img src="img/plata.jpg" class="d-block w-100 img-responsive" alt="...">
+                        <img src="../img/plata.jpg" class="d-block w-100 img-responsive" alt="...">
                     <div class="carousel-caption d-sm-block">
                         <h5>La Plata-Huila</h5>
                         <p>Altura: 1.050 m s. n. m.</p>
                     </div>
                 </div>
                 <div class="carousel-item">
-                        <img src="img/san.jpg" class="d-block w-100 img-responsive" alt="...">
+                        <img src="../img/san.jpg" class="d-block w-100 img-responsive" alt="...">
                     <div class="carousel-caption d-sm-block">
                         <h5>San Agustin-Huila</h5>
                         <p>Altura: 1.730 m s. n. m.</p>
                     </div>
                 </div>
                 <div class="carousel-item">
-                        <img src="img/santa.jpg" class="d-block w-100 img-responsive" alt="...">
+                        <img src="../img/santa.jpg" class="d-block w-100 img-responsive" alt="...">
                     <div class="carousel-caption d-sm-block">
                         <h5>La Santa Maria-Huila</h5>
                         <p>Altura: 1.320 m s. n. m.</p>
@@ -165,7 +165,7 @@
         <p>¡Escanea el código QR para contactarnos por WhatsApp!</p>
     </div>
     <div class="qr">
-        <img id="contacto" src="img/qr1.jpg" alt="Código QR de WhatsApp">
+        <img id="contacto" src="../img/qr1.jpg" alt="Código QR de WhatsApp">
     </div>
 </div>
 
