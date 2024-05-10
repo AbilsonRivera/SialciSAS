@@ -52,7 +52,7 @@ if (empty($_SESSION["id"])){
                 </ul>
             </div>
         </div>
-            <a href="controlador/controlador_cerrar_session.php" class="login-button" >Cerrar sesion</a>
+            <a href="../controlador/controlador_cerrar_session.php" class="login-button" >Cerrar sesion</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -68,14 +68,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $correo = $_POST["Correo"];
     $contraseña = $_POST["Contraseña"];
 
-    // Obtener el ID de usuario de la sesión
+
     $id_usuario = $_SESSION["id"];
 
-    // Actualizar los datos del usuario en la tabla 'usuarios'
+
     $update_usuario_sql = "UPDATE usuarios SET Nombre='$nombre', Apellidos='$apellidos', Correo='$correo' WHERE Id_Usuario=$id_usuario";
     $update_usuario_result = mysqli_query($conexion, $update_usuario_sql);
 
-    // Actualizar la contraseña del usuario en la tabla 'login'
+
     $update_contraseña_sql = "UPDATE login SET Contraseña='$contraseña' WHERE Correo='$correo'";
     $update_contraseña_result = mysqli_query($conexion, $update_contraseña_sql);
 
@@ -85,8 +85,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         echo '<div class="alert alert-danger" role="alert">Error al actualizar los datos.</div>';
     }
 }
-
-// Obtener los datos del usuario actual para mostrarlos en los campos del formulario
 $id_usuario = $_SESSION["id"];
 $usuario_query = "SELECT * FROM usuarios WHERE Id_Usuario=$id_usuario";
 $usuario_result = mysqli_query($conexion, $usuario_query);
@@ -121,6 +119,56 @@ $usuario = mysqli_fetch_assoc($usuario_result);
     <button class="submit" name="Registro">Editar</button>
     
 </form>
+
+    <!-- Modal de éxito -->
+    <div class="modal fade" id="successModal" tabindex="-1" aria-labelledby="successModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="successModalLabel">Verificado</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    Los datos se han actualizado correctamente.
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Aceptar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <!-- Bootstrap Bundle con Popper.js -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+            crossorigin="anonymous"></script>
+
+    <script>
+        $(document).ready(function() {
+        <?php
+            $nombre = $_POST["Nombre"];
+            $apellidos = $_POST["Apellidos"];
+            $correo = $_POST["Correo"];
+            $contraseña = $_POST["Contraseña"];
+
+            $id_usuario = $_SESSION["id"];
+
+            $update_usuario_sql = "UPDATE usuarios SET Nombre='$nombre', Apellidos='$apellidos', Correo='$correo' WHERE Id_Usuario=$id_usuario";
+            $update_usuario_result = mysqli_query($conexion, $update_usuario_sql);
+
+            $update_contraseña_sql = "UPDATE login SET Contraseña='$contraseña' WHERE Correo='$correo'";
+            $update_contraseña_result = mysqli_query($conexion, $update_contraseña_sql);
+
+            if ($update_usuario_result && $update_contraseña_result) {
+                echo '$("#successModal").modal("show");';
+            } else {
+                echo 'alert("Error al actualizar los datos.");';
+            }
+        ?>
+    });
+    </script>
 </body>
 
 </html>

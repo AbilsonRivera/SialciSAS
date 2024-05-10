@@ -1,3 +1,12 @@
+<?php
+session_start();
+include '../modelo/conexion.php';
+
+if (empty($_SESSION["id"])) {
+    header("location: logueo.php");
+    exit;
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
