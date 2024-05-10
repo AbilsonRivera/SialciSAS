@@ -218,7 +218,7 @@ if (empty($_SESSION["id"])) {
                             <h5 class="text-uppercase mb-4 font-weight-bold text-primary">Contacto</h5>
                             <hr class="mb-4">
                             <p>
-                                <li class="fas fa-home me-3"></li>Colombia, Huila +57
+                                <li class="fas fa-home me-3"></li>Colombia, Huila 
                             </p>
                             <p>
                                 <li class="fas fa-envelope me-3"></li>andres.morales@sialcisas.com
