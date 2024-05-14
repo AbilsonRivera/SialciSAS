@@ -42,6 +42,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $codigo_postal_des = $_POST["Codigo_postal"];
     $correo_des = $_POST["Email_Des"];
     $telefono_des = $_POST["Telefono"];
+    $peso_units = $_POST["peso_units"];
 
     // Insertar datos en la base de datos
     $sql_insert_Des = "INSERT INTO destinatario (Nombre_Des, NombreEmpresa_Des, Pais_Des, Ciudad, Codigo_postal, Email_Des, Telefono)
@@ -50,9 +51,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $id_destinatario = $conexion->insert_id;
 
     foreach ($paquetes as $key => $paquete) {
+        // Capturar el valor de la unidad de peso seleccionada
+        $unidad_peso = $peso_units[$key];
+
         // Insertar datos de la mercancía en la base de datos
-        $sql_insert_mercancia = "INSERT INTO mercancia (Paquetes, Valor_Mercancia, Peso, Largo, Ancho, Alto, Id_destinatario)
-                                VALUES ('$paquete', '{$valor_mercancia[$key]}', '{$peso[$key]}', '{$largo[$key]}', '{$ancho[$key]}', '{$alto[$key]}', '$id_destinatario')";
+        $sql_insert_mercancia = "INSERT INTO mercancia (Paquetes, Valor_Mercancia, Peso, Largo, Ancho, Alto, Peso_units, Id_destinatario)
+                                VALUES ('$paquete', '{$valor_mercancia[$key]}', '{$peso[$key]}', '{$largo[$key]}', '{$ancho[$key]}', '{$alto[$key]}', '$unidad_peso', '$id_destinatario')";
         $conexion->query($sql_insert_mercancia);
         $id_mercancia = $conexion->insert_id;
 
@@ -68,7 +72,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $array_ids_pedidos[] = $id_pedido;
     }
 
-    
     $formspree_url = "https://formspree.io/f/meqyvgpn";
     $form_data = array(
         'nombre' => $nombre_remi,
@@ -77,11 +80,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         'correo' => $correo_remi,
         'Telefono_Remi' => $telefono_remi,
         'NombreEmprese_Remi' => $nombre_empresa_remi,
-        'paquetes' => implode(', ', $paquetes), 
-        'peso' => implode(', ', $peso), 
-        'largo' => implode(', ', $largo), 
-        'ancho' => implode(', ', $ancho), 
-        'alto' => implode(', ', $alto), 
+        'paquetes' => implode(', ', $paquetes),
+        'peso' => implode(', ', $peso),
+        'peso_units' => $peso_units,
+        'largo' => implode(', ', $largo),
+        'ancho' => implode(', ', $ancho),
+        'alto' => implode(', ', $alto),
         'valor_mercancia' => implode(', ', $valor_mercancia),
         'nombre_des' => $nombre_des,
         'nombre_empresa_des' => $nombre_empresa_des,
@@ -90,6 +94,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         'codigo_postal_des' => $codigo_postal_des,
         'correo_des' => $correo_des,
         'telefono_des' => $telefono_des
+        
     );
 
     // Inicializar y configurar CURL
@@ -107,7 +112,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     } else {
         echo "Datos enviados correctamente a Formspree";
     }
-    
+
     // Cerrar CURL
     curl_close($curl);
 }
@@ -219,8 +224,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
                             <div class="input-field">
                                 <label>Telefono</label>
-                                <input type="Number" name="Telefono_Remi"
-                                    placeholder="Ingrese su numero de telefono" required>
+                                <input type="Number" name="Telefono_Remi" placeholder="Ingrese su numero de telefono"
+                                    required>
                             </div>
 
                             <div class="input-field">
@@ -243,12 +248,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                 <label>Peso</label>
                                 <div class="input-group">
                                     <input type="number" name="peso[]" placeholder="#" required>
-                                    <select class="">
+                                    <select name="peso_units[]" class="">
                                         <option value="lb">lb</option>
                                         <option value="kg">kg</option>
                                     </select>
                                 </div>
                             </div>
+
 
                             <div class="input-field dimensiones">
                                 <label>Dimensiones (LARGO X ANCHO X ALTURA EN CM)</label>
@@ -300,7 +306,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
                             <div class="input-field">
                                 <label>Codigo postal</label>
-                                <input type="number" name="Codigo_postal" placeholder="Ingrese codigo postal" required>
+                                <input type="text" name="Codigo_postal" placeholder="Ingrese codigo postal" required>
                             </div>
 
                             <div class="input-field">
@@ -327,9 +333,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         </form>
         </div>
     </section>
-    
-       <!-- Modal Registro Exitoso -->
-       <div class="modal fade" id="registroExitosoModal" tabindex="-1" aria-labelledby="registroExitosoModalLabel"
+
+    <!-- Modal Registro Exitoso -->
+    <div class="modal fade" id="registroExitosoModal" tabindex="-1" aria-labelledby="registroExitosoModalLabel"
         aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
@@ -338,7 +344,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <p>Se han enviado sus pedidos correctamente. <?php echo implode(", ", $array_ids_pedidos); ?></p>
+                    <p>Se han enviado sus pedidos correctamente. El ID del usuario es: <?php echo $id_usuario; ?>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Aceptar</button>
@@ -346,6 +352,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             </div>
         </div>
     </div>
+
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script>
