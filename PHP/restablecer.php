@@ -15,7 +15,7 @@
         <form class="form" action="restablecer.php" name="sialcis" method="POST">
 
         <div class="form-floating my-3">
-            <input type="email" class="form-control input" id="floatingInput" name="email" required=""/>
+            <input type="email" class="form-control input" id="floatingInput" oninput="this.value = this.value.replace(/[^A-Za-z@.]/g, '');" name="email" required=""/>
             <label for="floatingInput">Correo electrónico</label>
         </div>
             <input class="btn btn-primary login-button" type="submit" name="EnviarCorreo" value="Enviar Correo">
@@ -84,27 +84,48 @@
         crossorigin="anonymous"></script>
 
         <script>
-    // Coloca aquí el código JavaScript para activar los modales
-    $(document).ready(function() {
-        <?php
-        try {
-            if(isset($_POST['email']) && !empty($_POST['email'])) {
-                $pass = substr(md5(microtime()), 1, 10);
-                $email = $_POST['email'];
+        $(document).ready(function() {
+            <?php
+            try {
+                if (isset($_POST['email']) && !empty($_POST['email'])) {
+                    $email = filter_var($_POST['email'], FILTER_SANITIZE_EMAIL);
+                    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+                        echo 'alert("Correo electrónico no válido");';
+                        return;
+                    }
 
-                // Conexión con la base de datos
-                $conn = new mysqli("localhost", "root", "", "sialci");
-                if ($conn->connect_error) {
-                    die("Connection failed: " . $conn->connect_error);
-                }
+                    $pass = substr(md5(microtime()), 1, 10);
 
-                $check_sql = "SELECT * FROM login WHERE Correo='$email'";
-                $result = $conn->query($check_sql);
-                if ($result->num_rows > 0) {
-                    // Actualiza la contraseña en la base de datos
-                    $sql = "UPDATE login SET Contraseña='$pass' WHERE Correo='$email'";
-                    if ($conn->query($sql) === TRUE) {
-                        // Configuración del correo electrónico
+                    $conn = new mysqli("localhost", "root", "", "sialcis");
+                    if ($conn->connect_error) {
+                        die("Connection failed: " . $conn->connect_error);
+                    }
+
+                    $updated = false;
+
+                    $check_sql_login = "SELECT * FROM login WHERE Correo='$email'";
+                    $result_login = $conn->query($check_sql_login);
+                    if ($result_login->num_rows > 0) {
+                        $sql_login = "UPDATE login SET Contraseña='$pass' WHERE Correo='$email'";
+                        if ($conn->query($sql_login) === TRUE) {
+                            $updated = true;
+                        } else {
+                            echo 'alert("Error modificando en login: ' . $conn->error . '");';
+                        }
+                    }
+
+                    $check_sql_admi = "SELECT * FROM admi WHERE email='$email'";
+                    $result_admi = $conn->query($check_sql_admi);
+                    if ($result_admi->num_rows > 0) {
+                        $admin_sql = "UPDATE admi SET contraseña='$pass' WHERE email='$email'";
+                        if ($conn->query($admin_sql) === TRUE) {
+                            $updated = true;
+                        } else {
+                            echo 'alert("Error modificando en admi: ' . $conn->error . '");';
+                        }
+                    }
+
+                    if ($updated) {
                         $to = $email;
                         $subject = "Recordar contraseña";
                         $message = "El sistema le asignó la siguiente clave: " . $pass . "\r\n";
@@ -113,26 +134,23 @@
                         $message .= "http://localhost/SIALCI.SAS/PHP/logueo.php"; 
                         $headers = "From: SIALCI-SAS@gmail.com\r\n";
 
-                        // Envía el correo electrónico utilizando la función mail() de PHP
                         if (mail($to, $subject, $message, $headers)) {
                             echo '$("#successModal").modal("show");';
                         } else {
                             echo '$("#errorModal").modal("show");';
+                            echo 'alert("Error al enviar el correo");';
                         }
                     } else {
-                        echo 'alert("Error modificando: ' . $conn->error . '");';
+                        echo '$("#errorModal").modal("show");';
                     }
-                } else {
-                    echo '$("#error").modal("show");';
-                }
-                $conn->close();
-            } 
-        } catch (Exception $e) {
-            echo 'alert("Excepción capturada: ' . $e->getMessage() . '");';
-        }
-        ?>
-    });
-</script>
 
+                    $conn->close();
+                } 
+            } catch (Exception $e) {
+                echo 'alert("Excepción capturada: ' . $e->getMessage() . '");';
+            }
+            ?>
+        });
+    </script>
 </body>
 </html>

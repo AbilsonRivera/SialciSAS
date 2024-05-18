@@ -71,8 +71,8 @@
     <div class="container">
         <div class="heading">Inicio de sesión</div>
         <form class="form" action="#" name="sialcis" method="post">
-
-            <input placeholder="E-mail" id="email" name="email" type="email" class="input" required="" />
+            
+            <input placeholder="E-mail" id="email" name="email" oninput="this.value = this.value.replace(/[^A-Za-z@.]/g, '');" type="email" class="input" required="" />
             <input placeholder="Contraseña" id="password" name="password" type="password" class="input" required="" />
             <span class="forgot-password"><a href="restablecer.php">¿Olvidaste tu contraseña?</a></span>
             <input class="btn btn-primary login-button" type="submit" name="InicioSesion" value="Iniciar sesión">

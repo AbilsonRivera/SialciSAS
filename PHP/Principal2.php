@@ -1,10 +1,7 @@
-<?php
+<?php 
 session_start();
-include '../modelo/conexion.php';
-
-if (empty($_SESSION["id"])) {
+if (empty($_SESSION["id_usuario"])){
     header("location: logueo.php");
-    exit;
 }
 ?>
 <!DOCTYPE html>
