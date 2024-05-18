@@ -1,9 +1,40 @@
-<?php 
+<?php
 session_start();
-if (empty($_SESSION["id"])){
+if (empty($_SESSION["id_usuario"])){
     header("location: logueo.php");
+    exit; 
 }
+
+include "../modelo/conexion.php";
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $nombre = $_POST["Nombre"];
+    $apellidos = $_POST["Apellidos"];
+    $correo = $_POST["Correo"];
+    $contraseña = $_POST["Contraseña"];
+
+    $id_usuario = $_SESSION["id_usuario"];
+
+    $update_usuario_sql = "UPDATE usuarios SET Nombre='$nombre', Apellidos='$apellidos', Correo='$correo' WHERE Id_Usuario=$id_usuario";
+    $update_usuario_result = mysqli_query($conexion, $update_usuario_sql);
+
+    $update_contraseña_sql = "UPDATE login SET Contraseña='$contraseña' WHERE Correo='$correo'";
+    $update_contraseña_result = mysqli_query($conexion, $update_contraseña_sql);
+
+    if ($update_usuario_result && $update_contraseña_result) {
+        echo '<div class="alert alert-success" role="alert">¡Los datos se actualizaron correctamente!</div>';
+    } else {
+        echo '<div class="alert alert-danger" role="alert">Error al actualizar los datos.</div>';
+        echo mysqli_error($conexion); 
+    }
+}
+
+$id_usuario = $_SESSION["id_usuario"];
+$usuario_query = "SELECT * FROM usuarios WHERE Id_Usuario=$id_usuario";
+$usuario_result = mysqli_query($conexion, $usuario_query);
+$usuario = mysqli_fetch_assoc($usuario_result);
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -59,46 +90,13 @@ if (empty($_SESSION["id"])){
     </div>
 </nav>
 
-<?php
-include "../modelo/conexion.php";
-
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $nombre = $_POST["Nombre"];
-    $apellidos = $_POST["Apellidos"];
-    $correo = $_POST["Correo"];
-    $contraseña = $_POST["Contraseña"];
-
-
-    $id_usuario = $_SESSION["id"];
-
-
-    $update_usuario_sql = "UPDATE usuarios SET Nombre='$nombre', Apellidos='$apellidos', Correo='$correo' WHERE Id_Usuario=$id_usuario";
-    $update_usuario_result = mysqli_query($conexion, $update_usuario_sql);
-
-
-    $update_contraseña_sql = "UPDATE login SET Contraseña='$contraseña' WHERE Correo='$correo'";
-    $update_contraseña_result = mysqli_query($conexion, $update_contraseña_sql);
-
-    if ($update_usuario_result && $update_contraseña_result) {
-        echo '<div class="alert alert-success" role="alert">¡Los datos se actualizaron correctamente!</div>';
-    } else {
-        echo '<div class="alert alert-danger" role="alert">Error al actualizar los datos.</div>';
-    }
-}
-$id_usuario = $_SESSION["id"];
-$usuario_query = "SELECT * FROM usuarios WHERE Id_Usuario=$id_usuario";
-$usuario_result = mysqli_query($conexion, $usuario_query);
-$usuario = mysqli_fetch_assoc($usuario_result);
-?>
-
 <form class="form" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
-    <p class="title">Editar Información </p>
+    <p class="title">Editar Información Usuario</p>
     <div class="flex">
         <label>
             <input class="input" type="text" name="Nombre" value="<?php echo $usuario['Nombre']; ?>" required="">
             <span>Nombre</span>
         </label>
-
         <label>
             <input class="input" type="text" name="Apellidos" value="<?php echo $usuario['Apellidos']; ?>" required="">
             <span>Apellido</span>
@@ -109,15 +107,12 @@ $usuario = mysqli_fetch_assoc($usuario_result);
             <input class="input" type="email" name="Correo" value="<?php echo $usuario['Correo']; ?>" required="">
             <span>Email</span>
         </label>
-
         <label>
             <input class="input" type="password" name="Contraseña">
             <span>Nueva Contraseña</span>
         </label>
     </div>
-    
     <button class="submit" name="Registro">Editar</button>
-    
 </form>
 
     <!-- Modal de éxito -->
@@ -148,23 +143,12 @@ $usuario = mysqli_fetch_assoc($usuario_result);
     <script>
         $(document).ready(function() {
         <?php
-            $nombre = $_POST["Nombre"];
-            $apellidos = $_POST["Apellidos"];
-            $correo = $_POST["Correo"];
-            $contraseña = $_POST["Contraseña"];
-
-            $id_usuario = $_SESSION["id"];
-
-            $update_usuario_sql = "UPDATE usuarios SET Nombre='$nombre', Apellidos='$apellidos', Correo='$correo' WHERE Id_Usuario=$id_usuario";
-            $update_usuario_result = mysqli_query($conexion, $update_usuario_sql);
-
-            $update_contraseña_sql = "UPDATE login SET Contraseña='$contraseña' WHERE Correo='$correo'";
-            $update_contraseña_result = mysqli_query($conexion, $update_contraseña_sql);
-
-            if ($update_usuario_result && $update_contraseña_result) {
-                echo '$("#successModal").modal("show");';
-            } else {
-                echo 'alert("Error al actualizar los datos.");';
+            if ($_SERVER["REQUEST_METHOD"] == "POST") {
+                if ($update_usuario_result) {
+                    echo '$("#successModal").modal("show");';
+                } else {
+                    echo 'alert("Error al actualizar los datos.");';
+                }
             }
         ?>
     });
