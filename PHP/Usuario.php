@@ -29,6 +29,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $telefono_remi = $_POST["Telefono_Remi"];
     $nombre_empresa_remi = $_POST["NombreEmprese_Remi"];
     $paquetes = $_POST["paquetes"];
+    $DescripcionPaquete =  $_POST["DescripcionPaquete"];
     $peso = $_POST["peso"];
     $largo = $_POST["Largo"];
     $ancho = $_POST["Ancho"];
@@ -52,9 +53,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         $unidad_peso = $peso_units[$key];
 
-        
-        $sql_insert_mercancia = "INSERT INTO mercancia (Paquetes, Valor_Mercancia, Peso, Largo, Ancho, Alto, Peso_units, Id_destinatario)
-                                VALUES ('$paquete', '{$valor_mercancia[$key]}', '{$peso[$key]}', '{$largo[$key]}', '{$ancho[$key]}', '{$alto[$key]}', '$unidad_peso', '$id_destinatario')";
+       
+        $sql_insert_mercancia = "INSERT INTO mercancia (Paquetes, DescripcionPaquete, Valor_Mercancia, Peso, Largo, Ancho, Alto, Peso_units, Id_destinatario)
+                                VALUES ('$paquete', ' {$DescripcionPaquete[$key]}', '{$valor_mercancia[$key]}', '{$peso[$key]}', '{$largo[$key]}', '{$ancho[$key]}', '{$alto[$key]}', '$unidad_peso', '$id_destinatario')";
         $conexion->query($sql_insert_mercancia);
         $id_mercancia = $conexion->insert_id;
 
@@ -76,6 +77,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         'Telefono_Remi' => $telefono_remi,
         'NombreEmprese_Remi' => $nombre_empresa_remi,
         'paquetes' => implode(', ', $paquetes),
+        'DescripcionPaquete' => $DescripcionPaquete,
         'peso' => implode(', ', $peso),
         'peso_units' => $peso_units,
         'largo' => implode(', ', $largo),
@@ -235,6 +237,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                 <input type="number" name="paquetes[]" placeholder="#-?" oninput="this.value = this.value.replace(/[^0-9]/g, '');" required>
                             </div>
 
+                            <div class="input-field">
+                                <label>Descripcion del paquete: </label>
+                                <input type="text" name="DescripcionPaquete[]" placeholder="Ingrese una Descripcion"
+                                oninput="this.value = this.value.replace(/[^A-Za-z]/g, '');" title="Por favor, ingrese solo letras" required>
+                            </div>
+
                             <div class="input-field pesos">
                                 <label>Peso</label>
                                 <div class="input-group">
@@ -247,6 +255,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             </div>
 
 
+
+                            <div class="input-field">
+                                <label>Valor Mercancia</label>
+                                <input type="number" oninput="this.value = this.value.replace(/[^0-9]/g, '');"  name="Valor_mercancia[]" placeholder="#-?" required>
+                            </div>
+
+                            
                             <div class="input-field dimensiones">
                                 <label>Dimensiones (LARGO X ANCHO X ALTURA EN CM)</label>
                                 <div class="input-group">
@@ -260,11 +275,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                         required>
                                     <span style="margin: 0px 4px;">CM</span>
                                 </div>
-                            </div>
-
-                            <div class="input-field">
-                                <label>Valor Mercancia</label>
-                                <input type="number" oninput="this.value = this.value.replace(/[^0-9]/g, '');"  name="Valor_mercancia[]" placeholder="#-?" required>
                             </div>
                         </div>
                         <a href="#" class="add-more">Agregar más</a>

@@ -368,7 +368,7 @@ form .buttons button {
 
 .input-field.dimensiones label,
 .input-field.dimensiones .input-group {
-    margin-left: 0;
+    margin-left: -325px;
     /* Elimina el margen izquierdo negativo */
 }
 
@@ -377,6 +377,7 @@ form .buttons button {
     /* Usa Flexbox */
     align-items: center;
     /* Alinea los elementos verticalmente */
+    
 }
 
 .input-field.dimensiones .input-group input[type="number"] {
