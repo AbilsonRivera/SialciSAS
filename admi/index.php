@@ -49,6 +49,9 @@ $resultado = $mysqli->query($sql);
                         <li class="nav-item">
                             <a class="nav-link mx-lg-2" href="Editar_infor.php">Editar Contraseña</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link mx-lg-2" href="fpdf/reporte_pedidos.php" target="_blank" >Generar Reporte</a>
+                        </li>
                     </ul>
                 </div>
             </div>
