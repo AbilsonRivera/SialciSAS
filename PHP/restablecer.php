@@ -96,17 +96,17 @@
 
                     $pass = substr(md5(microtime()), 1, 10);
 
-                    $conn = new mysqli("localhost", "root", "", "sialcis");
+                    $conn = new mysqli("localhost", "root", "", "sialci");
                     if ($conn->connect_error) {
                         die("Connection failed: " . $conn->connect_error);
                     }
 
                     $updated = false;
 
-                    $check_sql_login = "SELECT * FROM login WHERE Correo='$email'";
+                    $check_sql_login = "SELECT * FROM usuario WHERE correo_Usua='$email'";
                     $result_login = $conn->query($check_sql_login);
                     if ($result_login->num_rows > 0) {
-                        $sql_login = "UPDATE login SET Contraseña='$pass' WHERE Correo='$email'";
+                        $sql_login = "UPDATE usuario SET password_Usua='$pass' WHERE correo_Usua='$email'";
                         if ($conn->query($sql_login) === TRUE) {
                             $updated = true;
                         } else {
@@ -114,10 +114,10 @@
                         }
                     }
 
-                    $check_sql_admi = "SELECT * FROM admi WHERE email='$email'";
+                    $check_sql_admi = "SELECT * FROM usuario WHERE correo_Admi='$email'";
                     $result_admi = $conn->query($check_sql_admi);
                     if ($result_admi->num_rows > 0) {
-                        $admin_sql = "UPDATE admi SET contraseña='$pass' WHERE email='$email'";
+                        $admin_sql = "UPDATE usuario SET password_Admi='$pass' WHERE correo_Admi='$email'";
                         if ($conn->query($admin_sql) === TRUE) {
                             $updated = true;
                         } else {

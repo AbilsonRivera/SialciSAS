@@ -1,10 +1,10 @@
 <?php 
 session_start();
-if (empty($_SESSION["id_usuario"])){
+if (empty($_SESSION["usuario"])){
     header("location: logueo.php");
+    exit; 
 }
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -23,6 +23,20 @@ if (empty($_SESSION["id_usuario"])){
         integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link href="../CSS/Servicios.css" rel="stylesheet">
+    <style>
+        body{
+            background-color: white;
+        }
+
+        .contenido {
+            margin-right: 120px;
+            background-color: #ef652e;
+            border-radius: 10px; 
+            padding: 40px; 
+            margin-bottom: 20px;
+            box-shadow: 63px 33px 90px 3px rgba(0,0,0,0.180);
+        }
+    </style>
 </head>
 
 <body class="fondo">
@@ -54,7 +68,7 @@ if (empty($_SESSION["id_usuario"])){
                         <a class="nav-link mx-lg-2" href="Usuario.php">Envio</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link mx-lg-2" href="#contacto">Informacion Personal</a>
+                        <a class="nav-link mx-lg-2" href="EditarInformacion.php">Informacion Personal</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link mx-lg-2" href="Principal2.php">Contacto</a>

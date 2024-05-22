@@ -1,51 +1,52 @@
 <?php
+
 session_start();
 
-$mysqli = new mysqli("localhost", "root", "", "sialcis");
-
-if ($mysqli->connect_errno) {
-    echo "Error al conectar a la base de datos: " . $mysqli->connect_error;
-    exit();
-}
+$mensajeError = "";
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $correo = $_POST["email"];
-    $contraseña = $_POST["password"];
+    $mysqli = new mysqli("localhost", "root", "", "sialci");
 
-    $stmt = $mysqli->prepare("SELECT * FROM admi WHERE email = ? AND contraseña = ?");
-    $stmt->bind_param("ss", $correo, $contraseña);
+    if ($mysqli->connect_errno) {
+        echo "Error al conectar a la base de datos: " . $mysqli->connect_error;
+        exit();
+    }
+
+    $usuario = $_POST["email"];
+    $password = $_POST["password"];
+    $rol = $_POST["role"]; 
+
+    if ($rol === '1') {
+        $sql = "SELECT * FROM usuario WHERE correo_Admi = ? AND password_Admi = ? AND rol = '1'";
+    } else {
+        $sql = "SELECT * FROM usuario WHERE correo_Usua = ? AND password_Usua = ? AND rol = ''";
+    }
+
+    $stmt = $mysqli->prepare($sql);
+    $stmt->bind_param("ss", $usuario, $password);
     $stmt->execute();
-    $resultado_admi = $stmt->get_result();
+    $resultado = $stmt->get_result();
 
-    $stmt = $mysqli->prepare("SELECT * FROM login WHERE Correo = ? AND Contraseña = ?");
-    $stmt->bind_param("ss", $correo, $contraseña);
-    $stmt->execute();
-    $resultado_login = $stmt->get_result();
-
-    if ($resultado_admi->num_rows === 1) {
-        $_SESSION["tipo_usuario"] = "admin";
-        $_SESSION["correo"] = $correo;
-        header("Location: ../admi/index.php"); 
-        exit;
-    } elseif ($resultado_login->num_rows === 1) {
-        $stmt = $mysqli->prepare("SELECT Id_Usuario FROM usuarios WHERE Correo = ?");
-        $stmt->bind_param("s", $correo);
-        $stmt->execute();
-        $resultado_id = $stmt->get_result();
-        $usuario = $resultado_id->fetch_assoc();
-        
-        $_SESSION["tipo_usuario"] = "usuario";
-        $_SESSION["correo"] = $correo;
-        $_SESSION["id_usuario"] = $usuario["Id_Usuario"]; 
-        header("Location: Principal2.php"); 
+    if ($resultado->num_rows === 1) {
+        $row = $resultado->fetch_assoc();
+        $_SESSION["usuario"] = $usuario;
+        $_SESSION["rol"] = $rol; 
+        $_SESSION["correo_usuario"] = $usuario; 
+        if ($rol === '1') {
+            $_SESSION["admin"] = true;
+            header("Location: ../admi/index.php");
+        } else {
+            header("Location: Principal2.php");
+        }
         exit;
     } else {
         echo '<script type="text/javascript">
-                $(document).ready(function(){
-                    $("#errorModal").modal("show");
-                });
-              </script>';
+        $(document).ready(function(){
+            $("#errorModal").modal("show");
+        });
+      </script>';
     }
+
     $stmt->close();
 }
 ?>

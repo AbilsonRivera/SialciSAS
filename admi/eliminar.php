@@ -1,5 +1,5 @@
 <?php
-$mysqli = new mysqli("localhost", "root", "", "sialcis");
+$mysqli = new mysqli("localhost", "root", "", "sialci");
 
 if ($mysqli->connect_errno) {
     echo "Error al conectar a la base de datos: " . $mysqli->connect_error;
@@ -8,13 +8,14 @@ if ($mysqli->connect_errno) {
 
 $id = $_GET['id'];
 
-$sql = "DELETE FROM pedidos WHERE Id_pedidos = '$id'";
+$sql = "DELETE FROM pedidos WHERE id_pedidos = '$id'";
 $resultado = $mysqli->query($sql);
 ?>
 
 <html lang="es">
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="../img/icono.jpg">
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/bootstrap-theme.css" rel="stylesheet">
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">

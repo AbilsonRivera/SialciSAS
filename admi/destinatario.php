@@ -1,5 +1,5 @@
 <?php
-$mysqli = new mysqli("localhost", "root", "", "sialcis");
+$mysqli = new mysqli("localhost", "root", "", "sialci");
 
 if ($mysqli->connect_errno) {
     echo "Error al conectar a la base de datos: " . $mysqli->connect_error;
@@ -57,7 +57,7 @@ $resultado = $mysqli->query($sql);
         </div>
     </nav>
     <div class="container">
-        <h2 class="text-center">Mercancia</h2>
+        <h2 class="text-center">Destinatario</h2>
         <br>
         <div class="col-md-12 table-responsive">
             <table class="table table-bordered custom-table" id="mitabla">
@@ -71,23 +71,21 @@ $resultado = $mysqli->query($sql);
                         <th>Codigo Postal</th>
                         <th>Correo</th>
                         <th>Telefono</th>
-                        <th>Editar</th>
                         <th>Eliminar</th>
                     </tr>
                 </thead>
                 <tbody>
                     <?php while ($row = $resultado->fetch_array(MYSQLI_ASSOC)) { ?>
                         <tr>
-                            <td><?php echo $row['Id_destinatario']; ?></td>
-                            <td><?php echo $row['Nombre_Des']; ?></td>
-                            <td><?php echo $row['NombreEmpresa_Des']; ?></td>
-                            <td><?php echo $row['Pais_Des']; ?></td>
-                            <td><?php echo $row['Ciudad']; ?></td>
-                            <td><?php echo $row['Codigo_postal']; ?></td>
-                            <td><?php echo $row['Email_Des']; ?></td>
-                            <td><?php echo $row['Telefono']; ?></td>
-                            <td><a href="modificar.php?id=<?php echo $row['Id_destinatario']; ?>"><span class="glyphicon glyphicon-pencil"></span></a></td>
-                            <td><a href="#" data-href="eliminar.php?id=<?php echo $row['Id_destinatario']; ?>" data-toggle="modal" data-target="#confirm-delete"><span class="glyphicon glyphicon-trash"></span></a></td>
+                            <td><?php echo $row['id_Destinatario']; ?></td>
+                            <td><?php echo $row['nombre_Des']; ?></td>
+                            <td><?php echo $row['nombreempresa_Des']; ?></td>
+                            <td><?php echo $row['pais_Des']; ?></td>
+                            <td><?php echo $row['ciudad_Des']; ?></td>
+                            <td><?php echo $row['codigo_Postal']; ?></td>
+                            <td><?php echo $row['email_Des']; ?></td>
+                            <td><?php echo $row['telefono']; ?></td>
+                            <td><a href="#" data-href="eliminardesti.php?id=<?php echo $row['id_Destinatario']; ?>" data-toggle="modal" data-target="#confirm-delete"><span class="glyphicon glyphicon-trash"></span></a></td>
                         </tr>
                     <?php } ?>
                 </tbody>

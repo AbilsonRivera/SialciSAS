@@ -1,5 +1,5 @@
 <?php
-$mysqli = new mysqli("localhost", "root", "", "sialcis");
+$mysqli = new mysqli("localhost", "root", "", "sialci");
 
 if ($mysqli->connect_errno) {
     echo "Error al conectar a la base de datos: " . $mysqli->connect_error;
@@ -12,7 +12,8 @@ $resultado = $mysqli->query($sql);
 <html lang="es">
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="css/bootstrap.min.css" rel="stylesheet">
+        <link rel="icon" href="../img/icono.jpg">
+        <link href="css/bootstrap.min.css" rel="stylesheet">
         <link href="css/bootstrap-theme.css" rel="stylesheet">
         <script src="js/jquery-3.1.1.min.js"></script>
         <script src="js/bootstrap.min.js"></script>
@@ -64,8 +65,8 @@ $resultado = $mysqli->query($sql);
                 <thead>
                     <tr>
                         <th>ID Pedidos</th>
-                        <th>ID Usuario</th>
                         <th>ID Mercancia</th>
+                        <th>Correo Usuario</th>
                         <th>Dirección Remitente</th>
                         <th>Teléfono Remitente</th>
                         <th>Nombre Empresa Remitente</th>
@@ -77,15 +78,15 @@ $resultado = $mysqli->query($sql);
                 <tbody>
                     <?php while ($row = $resultado->fetch_array(MYSQLI_ASSOC)) { ?>
                         <tr>
-                            <td><?php echo $row['Id_pedidos']; ?></td>
-                            <td><?php echo $row['Id_Usuario']; ?></td>
-                            <td><?php echo $row['Id_Mercancia']; ?></td>
-                            <td><?php echo $row['Direccion_Remi']; ?></td>
-                            <td><?php echo $row['Telefono_Remi']; ?></td>
-                            <td><?php echo $row['NombreEmprese_Remi']; ?></td>
-                            <td><?php echo $row['Fecha']; ?></td>
-                            <td><a href="modificar.php?id=<?php echo $row['Id_pedidos']; ?>"><span class="glyphicon glyphicon-pencil"></span></a></td>
-                            <td><a href="#" data-href="eliminar.php?id=<?php echo $row['Id_pedidos']; ?>" data-toggle="modal" data-target="#confirm-delete"><span class="glyphicon glyphicon-trash"></span></a></td>
+                            <td><?php echo $row['id_pedidos']; ?></td>
+                            <td><?php echo $row['id_Mercancia']; ?></td>
+                            <td><?php echo $row['correo_Usua']; ?></td>
+                            <td><?php echo $row['direccion_Remi']; ?></td>
+                            <td><?php echo $row['telefono_Remi']; ?></td>
+                            <td><?php echo $row['nombreempresa_Remi']; ?></td>
+                            <td><?php echo $row['fecha']; ?></td>
+                            <td><a href="modificar.php?id=<?php echo $row['id_pedidos']; ?>"><span class="glyphicon glyphicon-pencil"></span></a></td>
+                            <td><a href="#" data-href="eliminar.php?id=<?php echo $row['id_pedidos']; ?>" data-toggle="modal" data-target="#confirm-delete"><span class="glyphicon glyphicon-trash"></span></a></td>
                         </tr>
                     <?php } ?>
                 </tbody>

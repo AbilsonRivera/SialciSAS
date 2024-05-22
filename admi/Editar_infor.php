@@ -1,29 +1,26 @@
 <?php
 include "conexion.php";
 
-// Inicializar $correo para evitar errores
 $correo = '';
 $usuario = null;
 
-// Obtener los datos del usuario si es la primera carga de la página
 if ($_SERVER["REQUEST_METHOD"] == "GET") {
-    // Definir el correo del usuario que quieres traer los datos (este puede venir de un formulario de login o session)
-    $correo = "andres.morales@sialcisas.com"; // Aquí puedes poner el correo dinámicamente si lo necesitas
 
-    $usuario_query = "SELECT * FROM admi WHERE email='$correo'";
+    $correo = "andres.morales@sialcisas.com"; 
+
+    $usuario_query = "SELECT * FROM usuario WHERE correo_Admi='$correo'";
     $usuario_result = mysqli_query($conexion, $usuario_query);
     if ($usuario_result) {
         $usuario = mysqli_fetch_assoc($usuario_result);
     }
 }
 
-// Procesar el formulario de cambio de contraseña
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (isset($_POST["Correo"]) && isset($_POST["Contraseña"])) {
         $correo = $_POST["Correo"];
         $contraseña = $_POST["Contraseña"];
 
-        $update_usuario_sql = "UPDATE admi SET contraseña='$contraseña' WHERE email='$correo'";
+        $update_usuario_sql = "UPDATE usuario SET password_Admi='$contraseña' WHERE correo_Admi='$correo'";
         $update_usuario_result = mysqli_query($conexion, $update_usuario_sql);
 
         if ($update_usuario_result) {

@@ -1,23 +1,29 @@
 <?php
 
-require 'conexion.php';
+$mysqli = new mysqli("localhost", "root", "", "sialci");
+
+if ($mysqli->connect_errno) {
+    echo "Error al conectar a la base de datos: " . $mysqli->connect_error;
+    exit();
+}
 
     $id = $_POST['id'];
-    $id_usuario = $_POST['id_usuario'];
+    $correo_Usua = $_POST['correo_Usua'];
     $direccion_remitente = $_POST['direccion_remitente'];
     $telefono_remitente = $_POST['telefono_remitente'];
     $nombre_empresa_remitente = $_POST['nombre_empresa_remitente'];
     $id_mercancia = $_POST['id_mercancia'];
     $fecha = $_POST['fecha'];
 
+
     $sql = "UPDATE pedidos SET 
-            Id_Usuario='$id_usuario',
-            Direccion_Remi='$direccion_remitente', 
-            Telefono_Remi='$telefono_remitente', 
-            NombreEmprese_Remi='$nombre_empresa_remitente', 
-            Id_Mercancia='$id_mercancia', 
-            Fecha='$fecha' 
-        WHERE Id_pedidos = '$id'";
+            correo_Usua='$correo_Usua',
+            direccion_Remi='$direccion_remitente', 
+            telefono_Remi='$telefono_remitente', 
+            nombreempresa_Remi='$nombre_empresa_remitente', 
+            id_Mercancia='$id_mercancia', 
+            fecha='$fecha' 
+        WHERE id_pedidos = '$id'";
 
 
             $resultado = $mysqli->query($sql);
@@ -26,6 +32,7 @@ require 'conexion.php';
 <html lang="es">
     <head>
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="icon" href="../img/icono.jpg">
         <link href="css/bootstrap.min.css" rel="stylesheet">
         <link href="css/bootstrap-theme.css" rel="stylesheet">
         <script src="js/jquery-3.1.1.min.js"></script>

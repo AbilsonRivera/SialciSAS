@@ -2,46 +2,45 @@
 $servidor = "localhost";
 $usuario = "root";
 $clave = "";
-$baseDeDatos = "sialcis";
+$baseDeDatos = "sialci";
 
 $enlace = mysqli_connect($servidor, $usuario, $clave, $baseDeDatos);
+
+if (!$enlace) {
+    die("Conexión fallida: " . mysqli_connect_error());
+}
 
 if (isset($_POST['Registro'])) {
     $Nombre = $_POST['Nombre'];
     $Apellidos = $_POST['Apellidos'];
     $Correo = $_POST['Correo'];
-    $Contraseña = $_POST['Contraseña'];
+    $Contraseña = $_POST['Contraseña']; 
     $confirmarContraseña = $_POST['confirmarContraseña'];
 
     if ($Contraseña !== $confirmarContraseña) {
         $errorMessage = "Las contraseñas no coinciden. Por favor, inténtelo de nuevo.";
     } else {
-        $consultaCorreo = "SELECT * FROM login WHERE Correo = '$Correo'";
+        $consultaCorreo = "SELECT * FROM Usuario WHERE correo_Usua = '$Correo'";
         $resultado = mysqli_query($enlace, $consultaCorreo);
         if (!$resultado) {
             $errorMessage = "Error en la consulta: " . mysqli_error($enlace);
         } elseif (mysqli_num_rows($resultado) > 0) {
             $errorMessage = "El correo electrónico '$Correo' ya está en uso. Por favor, elija otro.";
         } else {
-            $insertarDatosLogin = "INSERT INTO login (Correo, Contraseña) VALUES ('$Correo', '$Contraseña')";
-            $ejecutarInsertarLogin = mysqli_query($enlace, $insertarDatosLogin);
+            $insertarDatos = "INSERT INTO Usuario (correo_Usua, password_Usua, nombre_Usua, apellidos_Usua) 
+                                VALUES ('$Correo', '$Contraseña', '$Nombre', '$Apellidos')"; 
+            $ejecutarInsertar = mysqli_query($enlace, $insertarDatos);
 
-            if ($ejecutarInsertarLogin) {
-                $insertarDatosUsuarios = "INSERT INTO usuarios (Nombre, Apellidos, Correo) VALUES ('$Nombre', '$Apellidos', '$Correo')";
-                $ejecutarInsertarUsuarios = mysqli_query($enlace, $insertarDatosUsuarios);
-
-                if ($ejecutarInsertarUsuarios) {
-                    $successMessage = "Datos insertados correctamente.";
-                } else {
-                    $errorMessage = "Error al insertar datos en la tabla 'usuarios': " . mysqli_error($enlace);
-                }
+            if ($ejecutarInsertar) {
+                $successMessage = "Datos insertados correctamente.";
             } else {
-                $errorMessage = "Error al insertar datos en la tabla 'login': " . mysqli_error($enlace);
+                $errorMessage = "Error al insertar datos en la tabla 'Usuarios': " . mysqli_error($enlace);
             }
         }
     }
 }
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>

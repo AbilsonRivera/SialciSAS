@@ -1,7 +1,8 @@
 <?php 
 session_start();
-if (empty($_SESSION["id_usuario"])){
+if (empty($_SESSION["correo_usuario"])){
     header("location: logueo.php");
+    exit; 
 }
 ?>
 <!DOCTYPE html>
@@ -156,8 +157,6 @@ if (empty($_SESSION["id_usuario"])){
                 </button>
         </div>
     </div>
-
-
 
     <article>
         <div class="contenedorimg">

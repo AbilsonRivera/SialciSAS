@@ -1,5 +1,5 @@
 <?php
-$mysqli = new mysqli("localhost", "root", "", "sialcis");
+$mysqli = new mysqli("localhost", "root", "", "sialci");
 
 if ($mysqli->connect_errno) {
     echo "Error al conectar a la base de datos: " . $mysqli->connect_error;
@@ -66,30 +66,30 @@ $resultado = $mysqli->query($sql);
                         <th>ID Mercancia</th>
                         <th>ID Destinatario</th>
                         <th>Paquetes</th>
+                        <th>Decripcion del Paquete</th>
                         <th>Valor Mercancia</th>
                         <th>Peso</th>
                         <th>Medida</th>
                         <th>Largo</th>
                         <th>Ancho</th>
                         <th>Alto</th>
-                        <th>Editar</th>
                         <th>Eliminar</th>
                     </tr>
                 </thead>
                 <tbody>
                     <?php while ($row = $resultado->fetch_array(MYSQLI_ASSOC)) { ?>
                         <tr>
-                            <td><?php echo $row['Id_Mercancia']; ?></td>
-                            <td><?php echo $row['Id_destinatario']; ?></td>
-                            <td><?php echo $row['Paquetes']; ?></td>
-                            <td><?php echo $row['Valor_Mercancia']; ?></td>
+                            <td><?php echo $row['id_Mercancia']; ?></td>
+                            <td><?php echo $row['id_Destinatario']; ?></td>
+                            <td><?php echo $row['paquetes']; ?></td>
+                            <td><?php echo $row['descripcion_Paque']; ?></td>
+                            <td><?php echo $row['valor_Mercancia']; ?></td>
                             <td><?php echo $row['peso']; ?></td>
-                            <td><?php echo $row['Peso_units']; ?></td>
-                            <td><?php echo $row['Largo']; ?></td>
-                            <td><?php echo $row['Ancho']; ?></td>
-                            <td><?php echo $row['Alto']; ?></td>
-                            <td><a href="modificar.php?id=<?php echo $row['Id_Mercancia']; ?>"><span class="glyphicon glyphicon-pencil"></span></a></td>
-                            <td><a href="#" data-href="eliminar.php?id=<?php echo $row['Id_Mercancia']; ?>" data-toggle="modal" data-target="#confirm-delete"><span class="glyphicon glyphicon-trash"></span></a></td>
+                            <td><?php echo $row['peso_Units']; ?></td>
+                            <td><?php echo $row['largo']; ?></td>
+                            <td><?php echo $row['ancho']; ?></td>
+                            <td><?php echo $row['alto']; ?></td>
+                            <td><a href="#" data-href="eliminarmer.php?id=<?php echo $row['id_Mercancia']; ?>" data-toggle="modal" data-target="#confirm-delete"><span class="glyphicon glyphicon-trash"></span></a></td>
                         </tr>
                     <?php } ?>
                 </tbody>

@@ -1,38 +1,44 @@
 <?php
 session_start();
-if (empty($_SESSION["id_usuario"])){
+if (empty($_SESSION["correo_usuario"])){
     header("location: logueo.php");
     exit; 
 }
-
 include "../modelo/conexion.php";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $nombre = $_POST["Nombre"];
-    $apellidos = $_POST["Apellidos"];
     $correo = $_POST["Correo"];
     $contraseña = $_POST["Contraseña"];
+    $nombre = $_POST["Nombre"];
+    $apellidos = $_POST["Apellidos"];
 
-    $id_usuario = $_SESSION["id_usuario"];
+    $correo_usuario = $_SESSION["correo_usuario"];
 
-    $update_usuario_sql = "UPDATE usuarios SET Nombre='$nombre', Apellidos='$apellidos', Correo='$correo' WHERE Id_Usuario=$id_usuario";
-    $update_usuario_result = mysqli_query($conexion, $update_usuario_sql);
+    $update_usuario_sql = "UPDATE usuario SET nombre_Usua=?, apellidos_Usua=?, correo_Usua=? WHERE correo_Usua=?";
+    $update_usuario_stmt = $conexion->prepare($update_usuario_sql);
+    $update_usuario_stmt->bind_param("ssss", $nombre, $apellidos, $correo, $correo_usuario);
+    $update_usuario_result = $update_usuario_stmt->execute();
 
-    $update_contraseña_sql = "UPDATE login SET Contraseña='$contraseña' WHERE Correo='$correo'";
-    $update_contraseña_result = mysqli_query($conexion, $update_contraseña_sql);
+    $update_contraseña_sql = "UPDATE usuario SET password_Usua=? WHERE correo_Usua=?";
+    $update_contraseña_stmt = $conexion->prepare($update_contraseña_sql);
+    $update_contraseña_stmt->bind_param("ss", $contraseña, $correo);
+    $update_contraseña_result = $update_contraseña_stmt->execute();
 
     if ($update_usuario_result && $update_contraseña_result) {
         echo '<div class="alert alert-success" role="alert">¡Los datos se actualizaron correctamente!</div>';
     } else {
         echo '<div class="alert alert-danger" role="alert">Error al actualizar los datos.</div>';
-        echo mysqli_error($conexion); 
+        echo $conexion->error; 
     }
 }
 
-$id_usuario = $_SESSION["id_usuario"];
-$usuario_query = "SELECT * FROM usuarios WHERE Id_Usuario=$id_usuario";
-$usuario_result = mysqli_query($conexion, $usuario_query);
-$usuario = mysqli_fetch_assoc($usuario_result);
+$correo_usuario = $_SESSION["correo_usuario"];
+$usuario_query = "SELECT * FROM usuario WHERE correo_Usua=?";
+$usuario_stmt = $conexion->prepare($usuario_query);
+$usuario_stmt->bind_param("s", $correo_usuario);
+$usuario_stmt->execute();
+$usuario_result = $usuario_stmt->get_result();
+$usuario = $usuario_result->fetch_assoc();
 ?>
 
 <!DOCTYPE html>
@@ -94,17 +100,17 @@ $usuario = mysqli_fetch_assoc($usuario_result);
     <p class="title">Editar Información Usuario</p>
     <div class="flex">
         <label>
-            <input class="input" type="text" name="Nombre" value="<?php echo $usuario['Nombre']; ?>" required="">
+            <input class="input" type="text" name="Nombre" value="<?php echo $usuario['nombre_Usua']; ?>" required="">
             <span>Nombre</span>
         </label>
         <label>
-            <input class="input" type="text" name="Apellidos" value="<?php echo $usuario['Apellidos']; ?>" required="">
+            <input class="input" type="text" name="Apellidos" value="<?php echo $usuario['apellidos_Usua']; ?>" required="">
             <span>Apellido</span>
         </label>
     </div>
     <div class="fle">
         <label>
-            <input class="input" type="email" name="Correo" value="<?php echo $usuario['Correo']; ?>" required="">
+            <input class="input" type="email" name="Correo" value="<?php echo $usuario['correo_Usua']; ?>" required="">
             <span>Email</span>
         </label>
         <label>

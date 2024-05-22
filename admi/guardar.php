@@ -8,16 +8,16 @@ function calcularEdad($fecha_nacimiento) {
     return $edad;
 }
 
-$id_usuario = $_POST['id_usuario'];
-$direccion_remitente = $_POST['direccion_remitente'];
-$telefono_remitente = $_POST['telefono_remitente'];
-$nombre_empresa_remitente = $_POST['nombre_empresa_remitente'];
-$id_mercancia = $_POST['id_mercancia'];
+$correo_usuario = $_POST['correo_Usua'];
+$direccion_remitente = $_POST['direccion_Remi'];
+$telefono_remitente = $_POST['telefono_Remi'];
+$nombre_empresa_remitente = $_POST['nombreempresa_Remi'];
+$id_mercancia = $_POST['id_Mercancia'];
 $fecha = $_POST['fecha'];
 
 try {
-    $sql = "INSERT INTO pedidos (Id_Usuario, Direccion_Remi, Telefono_Remi, NombreEmprese_Remi, Id_Mercancia, Fecha) 
-            VALUES ('$id_usuario', '$direccion_remitente', '$telefono_remitente', '$nombre_empresa_remitente', '$id_mercancia', '$fecha')";
+    $sql = "INSERT INTO pedidos (correo_Usua, direccion_Remi, telefono_Remi, nombreempresa_Remi, id_Mercancia, fecha) 
+            VALUES ('$correo_usuario', '$direccion_remitente', '$telefono_remitente', '$nombre_empresa_remitente', '$id_mercancia', '$fecha')";
     
     $resultado = $mysqli->query($sql);
 
@@ -34,6 +34,7 @@ try {
 <html lang="es">
     <head>
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="icon" href="../img/icono.jpg">
         <link href="css/bootstrap.min.css" rel="stylesheet">
         <link href="css/bootstrap-theme.css" rel="stylesheet">
         <script src="js/jquery-3.1.1.min.js"></script>
