@@ -248,7 +248,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                 </div>
                             </div>
                         </div>
-                        <a href="#" class="add-more">Agregar más</a>
                     </div>
 
                     <div class="details addres">
