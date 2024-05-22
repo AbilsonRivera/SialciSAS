@@ -57,12 +57,12 @@ if (isset($_POST['Registro'])) {
         <p class="message">Regístrese ahora y obtenga acceso completo a nuestra aplicación.</p>
         <div class="flex">
             <label>
-                <input class="input" type="text" name="Nombre" placeholder="" required="">
+                <input class="input" type="text" oninput="this.value = this.value.replace(/[^A-Za-z\s]/g, '');"  name="Nombre" placeholder="" required="">
                 <span>Nombre</span>
             </label>
 
             <label>
-                <input class="input" type="text" name="Apellidos" placeholder="" required="">
+                <input class="input" type="text" oninput="this.value = this.value.replace(/[^A-Za-z\s]/g, '');"  name="Apellidos" placeholder="" required="">
                 <span>Apellido</span>
             </label>
         </div>

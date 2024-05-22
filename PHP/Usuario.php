@@ -156,14 +156,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             <div class="input-field">
                                 <label>Nombre(s):</label>
                                 <input type="text" name="nombre_Usua" placeholder="Ingrese su nombre"
-                                    oninput="this.value = this.value.replace(/[^A-Za-z]/g, '');"
+                                    oninput="this.value = this.value.replace(/[^A-Za-z\s]/g, '');" 
                                     title="Por favor, ingrese solo letras" required value="<?php echo $nombre; ?>">
                             </div>
 
                             <div class="input-field">
                                 <label>Apellidos:</label>
                                 <input type="text" name="apellidos_Usua" placeholder="Ingrese su apellido"
-                                    oninput="this.value = this.value.replace(/[^A-Za-z]/g, '');"
+                                oninput="this.value = this.value.replace(/[^A-Za-z\s]/g, '');" 
                                     title="Por favor, ingrese solo letras" required value="<?php echo $apellidos; ?>">
                             </div>
 
@@ -190,7 +190,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
                             <div class="input-field">
                                 <label>Nombre de la empresa (si aplica):</label>
-                                <input type="text" oninput="this.value = this.value.replace(/[^A-Za-z]/g, '');"
+                                <input type="text" oninput="this.value = this.value.replace(/[^A-Za-z\s]/g, '');" 
                                     name="nombreempresa_Remi" placeholder="Ingrese nombre de la empresa">
                             </div>
 
@@ -257,25 +257,25 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         <div class="fields">
                             <div class="input-field">
                                 <label>Nombre Completo</label>
-                                <input type="text" oninput="this.value = this.value.replace(/[^A-Za-z]/g, '');"
+                                <input type="text" oninput="this.value = this.value.replace(/[^A-Za-z\s]/g, '');" 
                                     name="nombre_Des" placeholder="Ingrese Nombre" required>
                             </div>
 
                             <div class="input-field">
                                 <label>Nombre de la empresa (si aplica):</label>
-                                <input type="text" oninput="this.value = this.value.replace(/[^A-Za-z]/g, '');"
+                                <input type="text" oninput="this.value = this.value.replace(/[^A-Za-z\s]/g, '');" 
                                     name="nombreempresa_Des" placeholder="Ingrese el nombre de la empresa">
                             </div>
 
                             <div class="input-field">
                                 <label>Pais</label>
-                                <input type="text" oninput="this.value = this.value.replace(/[^A-Za-z]/g, '');"
+                                <input type="text" oninput="this.value = this.value.replace(/[^A-Za-z\s]/g, '');" 
                                     name="pais_Des" placeholder="Ingrese el pais" required>
                             </div>
 
                             <div class="input-field">
                                 <label>Ciudad</label>
-                                <input type="text" oninput="this.value = this.value.replace(/[^A-Za-z]/g, '');"
+                                <input type="text" oninput="this.value = this.value.replace(/[^A-Za-z\s]/g, '');" 
                                     name="ciudad_Des" placeholder="Ingrese nombre de la ciudad" required>
                             </div>
 

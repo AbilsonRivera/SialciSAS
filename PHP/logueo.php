@@ -72,7 +72,7 @@
         <div class="heading">Inicio de sesión</div>
         <form class="form" action="#" name="sialci" method="post">
             
-            <input placeholder="E-mail" id="email" name="email" oninput="this.value = this.value.replace(/[^A-Za-z@.]/g, '');" type="email" class="input" required="" />
+            <input placeholder="E-mail" id="email" name="email"  type="email" class="input" required="" />
             <input placeholder="Contraseña" id="password" name="password" type="password" class="input" required="" />
 
             <select id="role" name="role" class="input" required>

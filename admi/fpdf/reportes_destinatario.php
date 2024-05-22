@@ -5,10 +5,9 @@ class PDF extends FPDF
 {
    function Header()
    {
-      include '../../modelo/conexion.php'; 
-
-      $consulta_info = $conexion->query(" select * from pedidos "); 
-      $dato_info = $consulta_info->fetch_object();
+    include '../../modelo/conexion.php';
+    $consulta_info = $conexion->query(" select * from destinatario "); 
+    $dato_info = $consulta_info->fetch_object();
       $this->Image('icono.jpg', 270, 5, 20); 
       $this->SetFont('Arial', 'B', 19); 
       $this->Cell(95); 
@@ -21,7 +20,7 @@ class PDF extends FPDF
       $this->SetTextColor(0, 95, 189);
       $this->Cell(100); 
       $this->SetFont('Arial', 'B', 15);
-      $this->Cell(100, 10, utf8_decode("REPORTE DE PEDIDOS "), 0, 1, 'C', 0);
+      $this->Cell(100, 10, utf8_decode("REPORTE DE DESTINATARIOS "), 0, 1, 'C', 0);
       $this->Ln(7);
 
       /* CAMPOS DE LA TABLA */
@@ -30,13 +29,13 @@ class PDF extends FPDF
       $this->SetDrawColor(163, 163, 163); 
       $this->SetFont('Arial', 'B', 11);
       $this->Cell(15, 10, utf8_decode('ID'), 1, 0, 'C', 1);
-      $this->Cell(85, 10, utf8_decode('Correo Usuario'), 1, 0, 'C', 1);
-      $this->Cell(40, 10, utf8_decode('Dirección Remitente'), 1, 0, 'C', 1);
-      $this->Cell(30, 10, utf8_decode('Teléfono'), 1, 0, 'C', 1);
-      $this->Cell(50, 10, utf8_decode('Nombre Empresa'), 1, 0, 'C', 1);
-      $this->Cell(25, 10, utf8_decode('ID Mercancia'), 1, 0, 'C', 1);
-      $this->Cell(25, 10, utf8_decode('Fecha'), 1, 1, 'C', 1);
-      
+      $this->Cell(30, 10, utf8_decode('Nombre'), 1, 0, 'C', 1);
+      $this->Cell(40, 10, utf8_decode('Nombre Empresa'), 1, 0, 'C', 1);
+      $this->Cell(30, 10, utf8_decode('País'), 1, 0, 'C', 1);
+      $this->Cell(30, 10, utf8_decode('Ciudad'), 1, 0, 'C', 1);
+      $this->Cell(30, 10, utf8_decode('Código Postal'), 1, 0, 'C', 1);
+      $this->Cell(50, 10, utf8_decode('Email'), 1, 0, 'C', 1);
+      $this->Cell(30, 10, utf8_decode('Teléfono'), 1, 1, 'C', 1);
    }
 
    function Footer()
@@ -62,34 +61,32 @@ $i = 0;
 $pdf->SetFont('Arial', '', 12);
 $pdf->SetDrawColor(163, 163, 163); 
 
-$consulta_reporte_pedidos = $conexion->query("
+$consulta_reporte_destinatario = $conexion->query("
     SELECT 
-        id_pedidos,
-        correo_Usua,
-        direccion_Remi,
-        telefono_Remi,
-        nombreempresa_Remi,
-        id_Mercancia,
-        fecha
+        id_Destinatario,
+        nombre_Des,
+        nombreempresa_Des,
+        pais_Des,
+        ciudad_Des,
+        codigo_Postal,
+        email_Des,
+        telefono
     FROM 
-        pedidos
+        destinatario
 ");
 
-
-while ($datos_reporte = $consulta_reporte_pedidos->fetch_object()) {
+while ($datos_reporte = $consulta_reporte_destinatario->fetch_object()) {
    $i = $i + 1;
    /* TABLA */
    $pdf->Cell(15, 10, utf8_decode($i), 1, 0, 'C', 0);
-   $pdf->Cell(85, 10, utf8_decode($datos_reporte->correo_Usua), 1, 0, 'L', 0);
-   $pdf->Cell(40, 10, utf8_decode($datos_reporte->direccion_Remi), 1, 0, 'L', 0);
-   $pdf->Cell(30, 10, utf8_decode($datos_reporte->telefono_Remi), 1, 0, 'L', 0);
-   $pdf->Cell(50, 10, utf8_decode($datos_reporte->nombreempresa_Remi), 1, 0, 'L', 0);
-   $pdf->Cell(25, 10, utf8_decode($datos_reporte->id_Mercancia), 1, 0, 'C', 0);
-   $pdf->Cell(25, 10, utf8_decode($datos_reporte->fecha), 1, 1, 'C', 0);
-   
-   
+   $pdf->Cell(30, 10, utf8_decode($datos_reporte->nombre_Des), 1, 0, 'L', 0);
+   $pdf->Cell(40, 10, utf8_decode($datos_reporte->nombreempresa_Des), 1, 0, 'L', 0);
+   $pdf->Cell(30, 10, utf8_decode($datos_reporte->pais_Des), 1, 0, 'L', 0);
+   $pdf->Cell(30, 10, utf8_decode($datos_reporte->ciudad_Des), 1, 0, 'L', 0);
+   $pdf->Cell(30, 10, utf8_decode($datos_reporte->codigo_Postal), 1, 0, 'L', 0);
+   $pdf->Cell(50, 10, utf8_decode($datos_reporte->email_Des), 1, 0, 'L', 0);
+   $pdf->Cell(30, 10, utf8_decode($datos_reporte->telefono), 1, 1, 'L', 0);
 }
 
-
-$pdf->Output('Reporte reporte pedidos.pdf', 'I');
+$pdf->Output('Reporte_destinatarios.pdf', 'I');
 ?>
