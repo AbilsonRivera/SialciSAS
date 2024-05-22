@@ -26,43 +26,18 @@ $resultado = $mysqli->query($sql);
 </head>
 
 <body>
-<?php if($resultado) { ?>
-    <script>
-        $(document).ready(function(){
-            $('#exampleModal').modal('show');
-        });
-    </script>
-<?php } ?>
-
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">
-          <?php if($resultado) { ?>
-            REGISTRO ELIMINADO
-          <?php } else { ?>
-            ERROR AL ELIMINAR
-          <?php } ?>
-        </h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <!-- Contenido adicional si es necesario -->
-        <?php if($resultado) { ?>
-          ¡El registro ha sido eliminado con éxito!
-        <?php } else { ?>
-          Se produjo un error al intentar eliminar el registro.
-        <?php } ?>
-      </div>
-      <div class="modal-footer">
-        <a href="destinatario.php" class="btn btn-primary">Regresar</a>
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-      </div>
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="text-center">
+                <?php if($resultado) { ?>
+                    <h3>REGISTRO ELIMINADO</h3>
+                <?php } else { ?>
+                    <h3>ERROR AL ELIMINAR</h3>
+                <?php } ?>
+                <a href="destinatario.php" class="btn btn-primary mt-3">Regresar</a> 
+            </div>
+        </div>
     </div>
-  </div>
-</div>
 </body>
 </html>

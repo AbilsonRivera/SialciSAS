@@ -7,62 +7,71 @@ if (empty($_SESSION["correo_usuario"])) {
     exit;
 }
 
-$id_usuario = $_SESSION["correo_usuario"];
+$usuario = $_SESSION["correo_usuario"];
 
-$sql = $conexion->prepare("SELECT * FROM usuario WHERE correo_Usua = ?");
-$sql->bind_param("s", $id_usuario);
-$sql->execute();
-$result = $sql->get_result();
+$array_ids_pedidos = array();
 
-if ($datos = $result->fetch_object()) {
+$sql = $conexion->query("SELECT * FROM usuario WHERE correo_Usua = '$usuario'");
+
+if ($datos = $sql->fetch_object()) {
     $nombre = $datos->nombre_Usua;
     $apellidos = $datos->apellidos_Usua;
     $correo = $datos->correo_Usua;
 } else {
-    // Manejar el caso en que no se encuentre el usuario
+    echo '<div class="alert alert-danger" role="alert">No se encontraron datos del usuario.</div>';
+    exit;
 }
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $nombre_remi = $_POST["nombre"];
-    $apellidos_remi = $_POST["apellidos"];
-    $direccion_remi = $_POST["Direccion_Remi"];
-    $correo_remi = $_POST["correo"];
-    $telefono_remi = $_POST["Telefono_Remi"];
-    $nombre_empresa_remi = $_POST["NombreEmprese_Remi"];
+    $nombre_Usua = $_POST["nombre_Usua"];
+    $apellidos_Usua = $_POST["apellidos_Usua"];
+    $direccion_Remi = $_POST["direccion_Remi"];
+    $telefono_Remi = $_POST["telefono_Remi"];
+    $nombreempresa_Remi = $_POST["nombreempresa_Remi"];
     $paquetes = $_POST["paquetes"];
-    $DescripcionPaquete = $_POST["DescripcionPaquete"];
+    $descripcion_Paque = $_POST["descripcion_Paque"];
     $peso = $_POST["peso"];
-    $largo = $_POST["Largo"];
-    $ancho = $_POST["Ancho"];
-    $alto = $_POST["Alto"];
-    $valor_mercancia = $_POST["Valor_mercancia"];
-    $nombre_des = $_POST["Nombre_Des"];
-    $nombre_empresa_des = $_POST["NombreEmpresa_Des"];
-    $pais_des = $_POST["Pais_Des"];
-    $ciudad_des = $_POST["Ciudad"];
-    $codigo_postal_des = $_POST["Codigo_postal"];
-    $correo_des = $_POST["Email_Des"];
-    $telefono_des = $_POST["Telefono"];
+    $largo = $_POST["largo"];
+    $ancho = $_POST["ancho"];
+    $alto = $_POST["alto"];
+    $valor_Mercancia = $_POST["valor_Mercancia"];
+    $nombre_Des = $_POST["nombre_Des"];
+    $nombreempresa_Des = $_POST["nombreempresa_Des"];
+    $pais_Des = $_POST["pais_Des"];
+    $ciudad_Des = $_POST["ciudad_Des"];
+    $codigo_Postal = $_POST["codigo_Postal"];
+    $email_Des = $_POST["email_Des"];
+    $telefono = $_POST["telefono"];
+    $peso_Units = $_POST["peso_Units"];
 
-    $sql_insert_des = $conexion->prepare("INSERT INTO destinatario (nombre_Des, nombreempresa_Des, pais_Des, ciudad_Des, codigo_Postal, email_Des, telefono) VALUES (?, ?, ?, ?, ?, ?, ?)");
-    $sql_insert_des->bind_param("sssssss", $nombre_des, $nombre_empresa_des, $pais_des, $ciudad_des, $codigo_postal_des, $correo_des, $telefono_des);
-    $sql_insert_des->execute();
-    $id_destinatario = $conexion->insert_id;
+    // Insertar nuevo destinatario
+    $sql_insert_Des = "INSERT INTO destinatario (nombre_Des, nombreempresa_Des, pais_Des, ciudad_Des, codigo_Postal, email_Des, telefono)
+                        VALUES ('$nombre_Des', '$nombreempresa_Des', '$pais_Des', '$ciudad_Des', '$codigo_Postal', '$email_Des', '$telefono')";
+    $conexion->query($sql_insert_Des);
+    $id_Destinatario = $conexion->insert_id;
 
+    // Insertar mercancías y pedidos
     foreach ($paquetes as $key => $paquete) {
-        $unidad_peso = $_POST["peso_units"][$key];
+        $unidad_peso = $peso_Units[$key];
 
-        $sql_insert_mercancia = $conexion->prepare("INSERT INTO mercancia (paquetes, descripcion_Paque, valor_Mercancia, peso, largo, ancho, alto, peso_Units, id_Destinatario) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
-        $sql_insert_mercancia->bind_param("ssssssssi", $paquete, $DescripcionPaquete[$key], $valor_mercancia[$key], $peso[$key], $largo[$key], $ancho[$key], $alto[$key], $unidad_peso, $id_destinatario);
-        $sql_insert_mercancia->execute();
-        $id_mercancia = $conexion->insert_id;
+        $sql_insert_mercancia = "INSERT INTO mercancia (paquetes, descripcion_Paque, valor_Mercancia, peso, largo, ancho, alto, peso_Units, id_Destinatario)
+                                VALUES ('$paquete', '{$descripcion_Paque[$key]}', '{$valor_Mercancia[$key]}', '{$peso[$key]}', '{$largo[$key]}', '{$ancho[$key]}', '{$alto[$key]}', '{$peso_Units[$key]}', '$id_Destinatario')";
+        $conexion->query($sql_insert_mercancia);
+        $id_Mercancia = $conexion->insert_id;
 
-        $sql_insert_pedidos = $conexion->prepare("INSERT INTO pedidos (correo_Usua, direccion_Remi, telefono_Remi, nombreempresa_Remi, id_Mercancia, fecha) VALUES (?, ?, ?, ?, ?, NOW())");
-        $sql_insert_pedidos->bind_param("ssssi", $id_usuario, $direccion_remi, $telefono_remi, $nombre_empresa_remi, $id_mercancia);
-        $sql_insert_pedidos->execute();
-        $id_pedido = $conexion->insert_id;
+        $sql_insert_pedidos = "INSERT INTO pedidos (correo_Usua, direccion_Remi, telefono_Remi, nombreempresa_Remi, id_Mercancia, fecha)
+    VALUES ('$correo', '$direccion_Remi', '$telefono_Remi', '$nombreempresa_Remi', '$id_Mercancia', NOW())";
+
+        if ($conexion->query($sql_insert_pedidos) === TRUE) {
+            $id_pedidos = $conexion->insert_id;
+            $array_ids_pedidos[] = $id_pedidos;
+        } else {
+            // Manejar el caso en que la inserción falla
+            echo '<div class="alert alert-danger" role="alert">Error al insertar el pedido: ' . $conexion->error . '</div>';
+            exit;
         }
     }
+}
 ?>
 
 <!DOCTYPE html>
@@ -116,7 +125,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             <a class="nav-link mx-lg-2" href="Servicios.php">Servicios</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link mx-lg-2" href="#producto">Envio</a>
+                            <a class="nav-link mx-lg-2" href="#usuario">Envio</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link mx-lg-2" href="EditarInformacion.php">Informacion Personal</a>
@@ -146,38 +155,43 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         <div class="fields">
                             <div class="input-field">
                                 <label>Nombre(s):</label>
-                                <input type="text" name="nombre" placeholder="Ingrese su nombre"
-                                oninput="this.value = this.value.replace(/[^A-Za-z]/g, '');" title="Por favor, ingrese solo letras" required
-                                    value="<?php echo $nombre; ?>">
+                                <input type="text" name="nombre_Usua" placeholder="Ingrese su nombre"
+                                    oninput="this.value = this.value.replace(/[^A-Za-z]/g, '');"
+                                    title="Por favor, ingrese solo letras" required value="<?php echo $nombre; ?>">
                             </div>
 
                             <div class="input-field">
                                 <label>Apellidos:</label>
-                                <input type="text" name="apellidos" placeholder="Ingrese su apellido"
-                                oninput="this.value = this.value.replace(/[^A-Za-z]/g, '');" title="Por favor, ingrese solo letras" required
-                                    value="<?php echo $apellidos; ?>">
+                                <input type="text" name="apellidos_Usua" placeholder="Ingrese su apellido"
+                                    oninput="this.value = this.value.replace(/[^A-Za-z]/g, '');"
+                                    title="Por favor, ingrese solo letras" required value="<?php echo $apellidos; ?>">
                             </div>
 
                             <div class="input-field">
                                 <label>Direccion</label>
-                                <input type="text" name="Direccion_Remi" placeholder="ingrese su Direccion" required>
+                                <input type="text" name="direccion_Remi" placeholder="ingrese su Direccion" required>
                             </div>
 
                             <div class="input-field">
-                                <label>Correo</label>
-                                <input type="email" oninput="this.value = this.value.replace(/[^A-Za-z@.]/g, '');" name="correo" placeholder="Ingrese su correo " required
+                                <label>Correo electrónico</label>
+                                <input type="email" oninput="this.value = this.value.replace(/[^A-Za-z@.]/g, '');"
+                                    name="correo_Usuass" placeholder="Ingrese su correo electrónico" required
                                     value="<?php echo $correo; ?>">
                             </div>
 
+
+
+
                             <div class="input-field">
                                 <label>Telefono</label>
-                                <input type="Number" oninput="this.value = this.value.replace(/[^0-9]/g, '');" name="Telefono_Remi" placeholder="Ingrese su numero de telefono"
-                                    required>
+                                <input type="Number" oninput="this.value = this.value.replace(/[^0-9\+]/g, '');"
+                                    name="telefono_Remi" placeholder="Ingrese su numero de telefono" required>
                             </div>
 
                             <div class="input-field">
                                 <label>Nombre de la empresa (si aplica):</label>
-                                <input type="text" oninput="this.value = this.value.replace(/[^A-Za-z]/g, '');" name="NombreEmprese_Remi" placeholder="Ingrese nombre de la empresa">
+                                <input type="text" oninput="this.value = this.value.replace(/[^A-Za-z]/g, '');"
+                                    name="nombreempresa_Remi" placeholder="Ingrese nombre de la empresa">
                             </div>
 
                         </div>
@@ -188,20 +202,22 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         <div class="fields">
                             <div class="input-field">
                                 <label>Paquetes</label>
-                                <input type="number" name="paquetes[]" placeholder="#-?" oninput="this.value = this.value.replace(/[^0-9]/g, '');" required>
+                                <input type="number" name="paquetes[]" placeholder="#-?"
+                                    oninput="this.value = this.value.replace(/[^0-9]/g, '');" required>
                             </div>
 
                             <div class="input-field">
                                 <label>Descripcion del paquete: </label>
-                                <input type="text" name="DescripcionPaquete[]" placeholder="Ingrese una Descripcion"
-                                oninput="this.value = this.value.replace(/[^A-Za-z]/g, '');" title="Por favor, ingrese solo letras" required>
+                                <input type="text" name="descripcion_Paque[]" placeholder="Ingrese una Descripcion"
+                                    title="Por favor, ingrese solo letras" required>
                             </div>
 
                             <div class="input-field pesos">
                                 <label>Peso</label>
                                 <div class="input-group">
-                                    <input type="number" name="peso[]" placeholder="#" oninput="this.value = this.value.replace(/[^0-9]/g, '');" required>
-                                    <select name="peso_units[]" class="">
+                                    <input type="number" name="peso[]" placeholder="#"
+                                        oninput="this.value = this.value.replace(/[^0-9]/g, '');" required>
+                                    <select name="peso_Units[]" class="">
                                         <option value="lb">lb</option>
                                         <option value="kg">kg</option>
                                     </select>
@@ -212,21 +228,22 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
                             <div class="input-field">
                                 <label>Valor Mercancia</label>
-                                <input type="number" oninput="this.value = this.value.replace(/[^0-9]/g, '');"  name="Valor_mercancia[]" placeholder="#-?" required>
+                                <input type="number" oninput="this.value = this.value.replace(/[^0-9]/g, '');"
+                                    name="valor_Mercancia[]" placeholder="#-?" required>
                             </div>
 
-                            
+
                             <div class="input-field dimensiones">
                                 <label>Dimensiones (LARGO X ANCHO X ALTURA EN CM)</label>
                                 <div class="input-group">
-                                    <input type="number" oninput="this.value = this.value.replace(/[^0-9]/g, '');" name="Largo[]" class="form-control auto-width" placeholder="L"
-                                        required>
+                                    <input type="number" oninput="this.value = this.value.replace(/[^0-9]/g, '');"
+                                        name="largo[]" class="form-control auto-width" placeholder="L" required>
                                     <span style="margin: 0px 4px;">x</span>
-                                    <input type="number" oninput="this.value = this.value.replace(/[^0-9]/g, '');" name="Ancho[]" class="form-control auto-width" placeholder="A"
-                                        required>
+                                    <input type="number" oninput="this.value = this.value.replace(/[^0-9]/g, '');"
+                                        name="ancho[]" class="form-control auto-width" placeholder="A" required>
                                     <span style="margin: 0px 4px;">x</span>
-                                    <input type="number" oninput="this.value = this.value.replace(/[^0-9]/g, '');" name="Alto[]" class="form-control auto-width" placeholder="A"
-                                        required>
+                                    <input type="number" oninput="this.value = this.value.replace(/[^0-9]/g, '');"
+                                        name="alto[]" class="form-control auto-width" placeholder="A" required>
                                     <span style="margin: 0px 4px;">CM</span>
                                 </div>
                             </div>
@@ -240,39 +257,43 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         <div class="fields">
                             <div class="input-field">
                                 <label>Nombre Completo</label>
-                                <input type="text" oninput="this.value = this.value.replace(/[^A-Za-z]/g, '');" name="Nombre_Des" placeholder="Ingrese Nombre" required>
+                                <input type="text" oninput="this.value = this.value.replace(/[^A-Za-z]/g, '');"
+                                    name="nombre_Des" placeholder="Ingrese Nombre" required>
                             </div>
 
                             <div class="input-field">
                                 <label>Nombre de la empresa (si aplica):</label>
-                                <input type="text" oninput="this.value = this.value.replace(/[^A-Za-z]/g, '');" name="NombreEmpresa_Des"
-                                    placeholder="Ingrese el nombre de la empresa">
+                                <input type="text" oninput="this.value = this.value.replace(/[^A-Za-z]/g, '');"
+                                    name="nombreempresa_Des" placeholder="Ingrese el nombre de la empresa">
                             </div>
 
                             <div class="input-field">
                                 <label>Pais</label>
-                                <input type="text" oninput="this.value = this.value.replace(/[^A-Za-z]/g, '');" name="Pais_Des" placeholder="Ingrese el pais" required>
+                                <input type="text" oninput="this.value = this.value.replace(/[^A-Za-z]/g, '');"
+                                    name="pais_Des" placeholder="Ingrese el pais" required>
                             </div>
 
                             <div class="input-field">
                                 <label>Ciudad</label>
-                                <input type="text" oninput="this.value = this.value.replace(/[^A-Za-z]/g, '');" name="Ciudad" placeholder="Ingrese nombre de la ciudad" required>
+                                <input type="text" oninput="this.value = this.value.replace(/[^A-Za-z]/g, '');"
+                                    name="ciudad_Des" placeholder="Ingrese nombre de la ciudad" required>
                             </div>
 
                             <div class="input-field">
                                 <label>Codigo postal</label>
-                                <input type="text" name="Codigo_postal" placeholder="Ingrese codigo postal" required>
+                                <input type="text" name="codigo_Postal" placeholder="Ingrese codigo postal" required>
                             </div>
 
                             <div class="input-field">
                                 <label>Correo</label>
-                                <input type="email" oninput="this.value = this.value.replace(/[^A-Za-z@.]/g, '');" name="Email_Des" placeholder="Ingrese el correo" required>
+                                <input type="email" oninput="this.value = this.value.replace(/[^A-Za-z@.]/g, '');"
+                                    name="email_Des" placeholder="Ingrese el correo" required>
                             </div>
 
                             <div class="input-field">
                                 <label>Numero del telefono</label>
-                                <input type="number" oninput="this.value = this.value.replace(/[^0-9]/g, '');" name="Telefono" placeholder="Ingrese el numero de telefono"
-                                    required>
+                                <input type="number" oninput="this.value = this.value.replace(/[^0-9\+]/g, '');"
+                                    name="telefono" placeholder="Ingrese el numero de telefono" required>
                             </div>
 
                         </div>
@@ -299,7 +320,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <p>Se han enviado sus pedidos correctamente. El ID del usuario es: <?php echo $id_usuario; ?>
+                    <p>Se han enviado sus pedidos correctamente. El ID de su mercancia es: <?php echo $id_Mercancia; ?>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Aceptar</button>
