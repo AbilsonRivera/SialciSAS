@@ -38,6 +38,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $nombre_Des = $_POST["nombre_Des"];
     $nombreempresa_Des = $_POST["nombreempresa_Des"];
     $pais_Des = $_POST["pais_Des"];
+    $depar_Des = $_POST["depar_Des"];
     $ciudad_Des = $_POST["ciudad_Des"];
     $codigo_Postal = $_POST["codigo_Postal"];
     $email_Des = $_POST["email_Des"];
@@ -45,8 +46,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $peso_Units = $_POST["peso_Units"];
 
     // Insertar nuevo destinatario
-    $sql_insert_Des = "INSERT INTO destinatario (nombre_Des, nombreempresa_Des, pais_Des, ciudad_Des, codigo_Postal, email_Des, telefono)
-                        VALUES ('$nombre_Des', '$nombreempresa_Des', '$pais_Des', '$ciudad_Des', '$codigo_Postal', '$email_Des', '$telefono')";
+    $sql_insert_Des = "INSERT INTO destinatario (nombre_Des, nombreempresa_Des, pais_Des, depar_Des, ciudad_Des, codigo_Postal, email_Des, telefono)
+                        VALUES ('$nombre_Des', '$nombreempresa_Des', '$pais_Des', '$depar_Des', '$ciudad_Des', '$codigo_Postal', '$email_Des', '$telefono')";
     $conexion->query($sql_insert_Des);
     $id_Destinatario = $conexion->insert_id;
 
@@ -267,15 +268,24 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             </div>
 
                             <div class="input-field">
-                                <label>Pais</label>
-                                <input type="text" oninput="this.value = this.value.replace(/[^A-Za-z\s]/g, '');" 
-                                    name="pais_Des" placeholder="Ingrese el pais" required>
+                                <label for="pais_Des">Pais</label>
+                                <select class="form-select country" name="pais_Des" id="pais_Des" aria-label="Default select example" onchange="loadStates()">
+                                    <option selected>Select country</option>
+                                </select>
                             </div>
 
                             <div class="input-field">
-                                <label>Ciudad</label>
-                                <input type="text" oninput="this.value = this.value.replace(/[^A-Za-z\s]/g, '');" 
-                                    name="ciudad_Des" placeholder="Ingrese nombre de la ciudad" required>
+                                <label for="depar_Des">Regiòn</label>
+                                <select class="form-select state" name="depar_Des" id="depar_Des" aria-label="Default select example" onchange=" loadCities()">
+                                    <option selected>Select State</option>
+                                </select>
+                            </div>
+
+                            <div class="input-field">
+                                <label for="ciudad_Des">Ciudad</label>
+                                <select class="form-select city" name="ciudad_Des" id="ciudad_Des" aria-label="Default select example">
+                                    <option selected>Select city</option>
+                                </select>
                             </div>
 
                             <div class="input-field">
@@ -328,11 +338,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         </div>
     </div>
 
-
+    
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script>
         $(document).ready(function () {
-            // Mostrar el modal de registro exitoso después de enviar el formulario
             <?php if ($_SERVER["REQUEST_METHOD"] == "POST") { ?>
                 $('#registroExitosoModal').modal('show');
             <?php } ?>
@@ -340,6 +349,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     </script>
 
     <script src="../JS/script.js"></script>
+    <script src="../JS/ciudades.js"></script>
 
 </body>
 
