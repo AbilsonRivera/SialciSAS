@@ -21,35 +21,43 @@ if ($datos = $sql->fetch_object()) {
     echo '<div class="alert alert-danger" role="alert">No se encontraron datos del usuario.</div>';
     exit;
 }
-
+// Verificar si se enviaron los datos del formulario
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $nombre_Usua = $_POST["nombre_Usua"];
-    $apellidos_Usua = $_POST["apellidos_Usua"];
-    $direccion_Remi = $_POST["direccion_Remi"];
-    $telefono_Remi = $_POST["telefono_Remi"];
-    $nombreempresa_Remi = $_POST["nombreempresa_Remi"];
-    $paquetes = $_POST["paquetes"];
-    $descripcion_Paque = $_POST["descripcion_Paque"];
-    $peso = $_POST["peso"];
-    $largo = $_POST["largo"];
-    $ancho = $_POST["ancho"];
-    $alto = $_POST["alto"];
-    $valor_Mercancia = $_POST["valor_Mercancia"];
-    $nombre_Des = $_POST["nombre_Des"];
-    $nombreempresa_Des = $_POST["nombreempresa_Des"];
-    $pais_Des = $_POST["pais_Des"];
-    $depar_Des = $_POST["depar_Des"];
-    $ciudad_Des = $_POST["ciudad_Des"];
-    $codigo_Postal = $_POST["codigo_Postal"];
-    $email_Des = $_POST["email_Des"];
-    $telefono = $_POST["telefono"];
-    $peso_Units = $_POST["peso_Units"];
 
-    // Insertar nuevo destinatario
+    $nombre_Usua = isset($_POST["nombre_Usua"]) ? $_POST["nombre_Usua"] : '';
+    $apellidos_Usua = isset($_POST["apellidos_Usua"]) ? $_POST["apellidos_Usua"] : '';
+    $direccion_Remi = isset($_POST["direccion_Remi"]) ? $_POST["direccion_Remi"] : '';
+    $telefono_Remi = isset($_POST["telefono_Remi"]) ? $_POST["telefono_Remi"] : '';
+    $nombreempresa_Remi = isset($_POST["nombreempresa_Remi"]) ? $_POST["nombreempresa_Remi"] : '';
+    $paquetes = isset($_POST["paquetes"]) ? $_POST["paquetes"] : [];
+    $descripcion_Paque = isset($_POST["descripcion_Paque"]) ? $_POST["descripcion_Paque"] : [];
+    $peso = isset($_POST["peso"]) ? $_POST["peso"] : [];
+    $largo = isset($_POST["largo"]) ? $_POST["largo"] : [];
+    $ancho = isset($_POST["ancho"]) ? $_POST["ancho"] : [];
+    $alto = isset($_POST["alto"]) ? $_POST["alto"] : [];
+    $valor_Mercancia = isset($_POST["valor_Mercancia"]) ? $_POST["valor_Mercancia"] : [];
+    $nombre_Des = isset($_POST["nombre_Des"]) ? $_POST["nombre_Des"] : '';
+    $nombreempresa_Des = isset($_POST["nombreempresa_Des"]) ? $_POST["nombreempresa_Des"] : '';
+    $pais_Des = isset($_POST["pais_Des"]) ? $_POST["pais_Des"] : '';
+    $depar_Des = isset($_POST["depar_Des"]) ? $_POST["depar_Des"] : '';
+    $ciudad_Des = isset($_POST["ciudad_Des"]) ? $_POST["ciudad_Des"] : '';
+    $codigo_Postal = isset($_POST["codigo_Postal"]) ? $_POST["codigo_Postal"] : '';
+    $email_Des = isset($_POST["email_Des"]) ? $_POST["email_Des"] : '';
+    $telefono = isset($_POST["telefono"]) ? $_POST["telefono"] : '';
+    $peso_Units = isset($_POST["peso_Units"]) ? $_POST["peso_Units"] : [];
+
+    // Crear consulta SQL para insertar destinatario
     $sql_insert_Des = "INSERT INTO destinatario (nombre_Des, nombreempresa_Des, pais_Des, depar_Des, ciudad_Des, codigo_Postal, email_Des, telefono)
                         VALUES ('$nombre_Des', '$nombreempresa_Des', '$pais_Des', '$depar_Des', '$ciudad_Des', '$codigo_Postal', '$email_Des', '$telefono')";
-    $conexion->query($sql_insert_Des);
-    $id_Destinatario = $conexion->insert_id;
+
+
+    if ($conexion->query($sql_insert_Des) === TRUE) {
+        $id_Destinatario = $conexion->insert_id;
+        echo '<div class="alert alert-success" role="alert">Destinatario insertado correctamente. ID: ' . $id_Destinatario . '</div>';
+    } else {
+        echo '<div class="alert alert-danger" role="alert">Error al insertar el destinatario: ' . $conexion->error . '</div>';
+        exit;
+    }
 
     // Insertar mercancías y pedidos
     foreach ($paquetes as $key => $paquete) {
@@ -67,7 +75,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $id_pedidos = $conexion->insert_id;
             $array_ids_pedidos[] = $id_pedidos;
         } else {
-            // Manejar el caso en que la inserción falla
             echo '<div class="alert alert-danger" role="alert">Error al insertar el pedido: ' . $conexion->error . '</div>';
             exit;
         }
@@ -267,6 +274,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                     name="nombreempresa_Des" placeholder="Ingrese el nombre de la empresa">
                             </div>
 
+                            <form id="destinationForm" method="POST" action="../JS/ciudades.js" onsubmit="return validateForm()">
                             <div class="input-field">
                                 <label for="pais_Des">Pais</label>
                                 <select class="form-select country" name="pais_Des" id="pais_Des" aria-label="Default select example" onchange="loadStates()">
@@ -284,10 +292,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             <div class="input-field">
                                 <label for="ciudad_Des">Ciudad</label>
                                 <select class="form-select city" name="ciudad_Des" id="ciudad_Des" aria-label="Default select example">
-                                    <option selected>Select city</option>
+                                    <option selected>Select City</option>
                                 </select>
                             </div>
-
+                            </form>
                             <div class="input-field">
                                 <label>Codigo postal</label>
                                 <input type="text" name="codigo_Postal" placeholder="Ingrese codigo postal" required>
@@ -340,6 +348,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        function validateForm() {
+            const cityValue = document.querySelector('#ciudad_Des').value;
+            if (cityValue === "" || cityValue === "undefined") {
+                alert("Por favor, selecciona una ciudad válida.");
+                return false;
+            }
+            return true;
+        }
+    </script>
     <script>
         $(document).ready(function () {
             <?php if ($_SERVER["REQUEST_METHOD"] == "POST") { ?>

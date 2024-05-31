@@ -208,14 +208,11 @@ article{
 }
 
 .contenedorimg {
-    background-image: url(../img/Cafesub.jpeg);
     background-position: center center;
     background-repeat: no-repeat;
-    background-size: 100% auto; 
-    padding: 200px 180px;
-    margin: auto;
-    color: #fff;
-    width: 77%;
+    background-size: 50% auto;
+    display: flex;
+    justify-content: center;
 }
 
 .qr {

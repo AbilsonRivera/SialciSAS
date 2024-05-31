@@ -71,6 +71,7 @@ $resultado = $mysqli->query($sql);
                         <th>Nombre</th>
                         <th>Nombre de la Empresa</th>
                         <th>Pais</th>
+                        <th>Región</th>
                         <th>Ciudad</th>
                         <th>Codigo Postal</th>
                         <th>Correo</th>
@@ -85,6 +86,7 @@ $resultado = $mysqli->query($sql);
                             <td><?php echo $row['nombre_Des']; ?></td>
                             <td><?php echo $row['nombreempresa_Des']; ?></td>
                             <td><?php echo $row['pais_Des']; ?></td>
+                            <td><?php echo $row['depar_Des']; ?></td>
                             <td><?php echo $row['ciudad_Des']; ?></td>
                             <td><?php echo $row['codigo_Postal']; ?></td>
                             <td><?php echo $row['email_Des']; ?></td>

@@ -142,12 +142,11 @@
         </div>
     </div>
 
-
+    <h1 id="productos" ><span>De colombia para el Mundo</span></h1>
 
     <article>
         <div class="contenedorimg">
-            <h1>Hola Mundo</h1>
-            <p>Soy un parrafo </p>
+            <img src="img/Cafesub.jpeg" alt="imagen cafe">
         </div>
     </article>
 

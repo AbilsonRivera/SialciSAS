@@ -1,5 +1,4 @@
 <?php
-
 $mysqli = new mysqli("localhost", "root", "", "sialci");
 
 if ($mysqli->connect_errno) {
@@ -7,26 +6,33 @@ if ($mysqli->connect_errno) {
     exit();
 }
 
-    $id = $_POST['id'];
-    $correo_Usua = $_POST['correo_Usua'];
-    $direccion_remitente = $_POST['direccion_remitente'];
-    $telefono_remitente = $_POST['telefono_remitente'];
-    $nombre_empresa_remitente = $_POST['nombre_empresa_remitente'];
-    $id_mercancia = $_POST['id_mercancia'];
-    $fecha = $_POST['fecha'];
+$resultado = false; // Inicializa la variable $resultado
 
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $id = $mysqli->real_escape_string($_POST['id']);
+    $correo_Usua = $mysqli->real_escape_string($_POST['correo_Usua']);
+    $direccion_remitente = $mysqli->real_escape_string($_POST['direccion_remitente']);
+    $telefono_remitente = $mysqli->real_escape_string($_POST['telefono_remitente']);
+    $nombre_empresa_remitente = $mysqli->real_escape_string($_POST['nombre_empresa_remitente']);
+    $id_mercancia = $mysqli->real_escape_string($_POST['id_mercancia']);
+    $fecha = $mysqli->real_escape_string($_POST['fecha']);
 
     $sql = "UPDATE pedidos SET 
-            correo_Usua='$correo_Usua',
-            direccion_Remi='$direccion_remitente', 
-            telefono_Remi='$telefono_remitente', 
-            nombreempresa_Remi='$nombre_empresa_remitente', 
-            id_Mercancia='$id_mercancia', 
-            fecha='$fecha' 
-        WHERE id_pedidos = '$id'";
+                correo_Usua = '$correo_Usua', 
+                direccion_Remi = '$direccion_remitente', 
+                telefono_Remi = '$telefono_remitente', 
+                nombreempresa_Remi = '$nombre_empresa_remitente', 
+                id_Mercancia = '$id_mercancia', 
+                fecha = '$fecha' 
+            WHERE id_pedidos = '$id'";
 
-
-            $resultado = $mysqli->query($sql);
+    if ($mysqli->query($sql) === TRUE) {
+        $resultado = true; // Actualiza $resultado a true si la consulta fue exitosa
+    } else {
+        $resultado = false; // Actualiza $resultado a false si hubo un error
+        echo "Error al actualizar el registro: " . $mysqli->error;
+    }
+}
 ?>
 
 <html lang="es">
