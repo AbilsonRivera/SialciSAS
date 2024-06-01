@@ -85,71 +85,92 @@
 
         <script>
         $(document).ready(function() {
-            <?php
-            try {
-                if (isset($_POST['email']) && !empty($_POST['email'])) {
-                    $email = filter_var($_POST['email'], FILTER_SANITIZE_EMAIL);
-                    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-                        echo 'alert("Correo electrónico no válido");';
-                        return;
-                    }
+          <?php
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
 
-                    $pass = substr(md5(microtime()), 1, 10);
+require '../PHPMailer/Exception.php';
+require '../PHPMailer/PHPMailer.php';
+require '../PHPMailer/SMTP.php';
 
-                    $conn = new mysqli("localhost", "root", "", "sialci");
-                    if ($conn->connect_error) {
-                        die("Connection failed: " . $conn->connect_error);
-                    }
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    if (isset($_POST['email']) && !empty($_POST['email'])) {
+        $email = filter_var($_POST['email'], FILTER_SANITIZE_EMAIL);
+        if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            echo '<script>$(document).ready(function() { alert("Correo electrónico no válido"); });</script>';
+            return;
+        }
 
-                    $updated = false;
+        $pass = substr(md5(microtime()), 1, 10);
 
-                    $check_sql_login = "SELECT * FROM usuario WHERE correo_Usua='$email'";
-                    $result_login = $conn->query($check_sql_login);
-                    if ($result_login->num_rows > 0) {
-                        $sql_login = "UPDATE usuario SET password_Usua='$pass' WHERE correo_Usua='$email'";
-                        if ($conn->query($sql_login) === TRUE) {
-                            $updated = true;
-                        } else {
-                            echo 'alert("Error modificando en login: ' . $conn->error . '");';
-                        }
-                    }
+        $conn = new mysqli("localhost", "root", "", "sialci");
+        if ($conn->connect_error) {
+            die("Connection failed: " . $conn->connect_error);
+        }
 
-                    $check_sql_admi = "SELECT * FROM usuario WHERE correo_Admi='$email'";
-                    $result_admi = $conn->query($check_sql_admi);
-                    if ($result_admi->num_rows > 0) {
-                        $admin_sql = "UPDATE usuario SET password_Admi='$pass' WHERE correo_Admi='$email'";
-                        if ($conn->query($admin_sql) === TRUE) {
-                            $updated = true;
-                        } else {
-                            echo 'alert("Error modificando en admi: ' . $conn->error . '");';
-                        }
-                    }
+        $updated = false;
 
-                    if ($updated) {
-                        $to = $email;
-                        $subject = "Recordar contraseña";
-                        $message = "El sistema le asignó la siguiente clave: " . $pass . "\r\n";
-                        $message .= "Por favor copie la clave asignada y cuando inicie sesión de nuevo, cámbiela en la opción de editar información.\r\n";
-                        $message .= "Haga click en el siguiente enlace para volver al formulario de inicio de sesión:\r\n";
-                        $message .= "http://localhost/SIALCI.SAS/PHP/logueo.php"; 
-                        $headers = "From: SIALCI-SAS@gmail.com\r\n";
-
-                        if (mail($to, $subject, $message, $headers)) {
-                            echo '$("#successModal").modal("show");';
-                        } else {
-                            echo '$("#errorModal").modal("show");';
-                            echo 'alert("Error al enviar el correo");';
-                        }
-                    } else {
-                        echo '$("#errorModal").modal("show");';
-                    }
-
-                    $conn->close();
-                } 
-            } catch (Exception $e) {
-                echo 'alert("Excepción capturada: ' . $e->getMessage() . '");';
+        // Actualizar contraseña para el usuario si existe
+        $check_sql_login = "SELECT * FROM usuario WHERE correo_Usua='$email'";
+        $result_login = $conn->query($check_sql_login);
+        if ($result_login->num_rows > 0) {
+            $sql_login = "UPDATE usuario SET password_Usua='$pass' WHERE correo_Usua='$email'";
+            if ($conn->query($sql_login) === TRUE) {
+                $updated = true;
+            } else {
+                echo '<script>$(document).ready(function() { alert("Error modificando en login: ' . $conn->error . '"); });</script>';
+                return;
             }
-            ?>
+        }
+
+        // Actualizar contraseña para el administrador si existe
+        $check_sql_admi = "SELECT * FROM usuario WHERE correo_Admi='$email'";
+        $result_admi = $conn->query($check_sql_admi);
+        if ($result_admi->num_rows > 0) {
+            $admin_sql = "UPDATE usuario SET password_Admi='$pass' WHERE correo_Admi='$email'";
+            if ($conn->query($admin_sql) === TRUE) {
+                $updated = true;
+            } else {
+                echo '<script>$(document).ready(function() { alert("Error modificando en admi: ' . $conn->error . '"); });</script>';
+                return;
+            }
+        }
+
+        if ($updated) {
+            $mail = new PHPMailer(true);
+            try {
+                // Configuración del servidor SMTP
+                $mail->isSMTP();
+                $mail->Host = 'smtp.gmail.com';
+                $mail->SMTPAuth = true;
+                $mail->Username = 'alvaromauricioramirezquintero@gmail.com'; // Reemplaza con tu correo de Gmail
+                $mail->Password = 'pkez mcwv ekxq ikyr'; // Reemplaza con tu contraseña de Gmail o contraseña de aplicación
+                $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
+                $mail->Port = 587;
+
+                // Configuración del correo
+                $mail->setFrom('alvaromauricioramirezquintero@gmail.com', 'SIALCI-SAS'); // Reemplaza con tu correo de Gmail
+                $mail->addAddress($email);
+
+                // Contenido del correo
+                $mail->isHTML(true);
+                $mail->Subject = 'Recordar Password';
+                $mail->Body = "El sistema le asignó la siguiente clave: " . $pass . "<br>Por favor copie la clave asignada y cuando inicie sesión de nuevo, cámbiela en la opción de editar información.<br>Haga click en el siguiente enlace para volver al formulario de inicio de sesión:<br><a href='http://localhost/SIALCI.SAS/PHP/logueo.php'>Iniciar sesión</a>";
+
+                $mail->send();
+                echo '$("#successModal").modal("show");';
+            } catch (Exception $e) {
+              echo '$("#errorModal").modal("show");';
+              echo 'alert("Error al enviar el correo");';
+            }
+        } else {
+          echo '$("#errorModal").modal("show");';
+        }
+
+        $conn->close();
+    }
+}
+?>
         });
     </script>
 </body>
